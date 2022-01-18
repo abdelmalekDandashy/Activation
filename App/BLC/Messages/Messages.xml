@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MESSAGES>
+  <ENGLISH>
+    <MESSAGE CODE="BR_9999" CONTENT="Invalid Credentials" />
+    <MESSAGE CODE="BR_0000" CONTENT="%1 must be unique" />
+    <MESSAGE CODE="BR_0001" CONTENT="Password should be at least 4 characters" />
+  </ENGLISH>
+</MESSAGES>
+
