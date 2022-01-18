@@ -6021,9 +6021,14 @@ return oList;
 }
 public void Delete_Address(Params_Delete_Address i_Params_Delete_Address)
 {
+Params_Get_Address_By_ADDRESS_ID oParams_Get_Address_By_ADDRESS_ID = new Params_Get_Address_By_ADDRESS_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Address");}
 #region Body Section.
 try
+{
+oParams_Get_Address_By_ADDRESS_ID.ADDRESS_ID = i_Params_Delete_Address.ADDRESS_ID;
+_Address = Get_Address_By_ADDRESS_ID_Adv(oParams_Get_Address_By_ADDRESS_ID);
+if (_Address != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6034,6 +6039,7 @@ return;
 }
 _AppContext.Delete_Address(i_Params_Delete_Address.ADDRESS_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6056,9 +6062,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Address");}
 }
 public void Delete_Answer(Params_Delete_Answer i_Params_Delete_Answer)
 {
+Params_Get_Answer_By_ANSWER_ID oParams_Get_Answer_By_ANSWER_ID = new Params_Get_Answer_By_ANSWER_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Answer");}
 #region Body Section.
 try
+{
+oParams_Get_Answer_By_ANSWER_ID.ANSWER_ID = i_Params_Delete_Answer.ANSWER_ID;
+_Answer = Get_Answer_By_ANSWER_ID_Adv(oParams_Get_Answer_By_ANSWER_ID);
+if (_Answer != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6069,6 +6080,7 @@ return;
 }
 _AppContext.Delete_Answer(i_Params_Delete_Answer.ANSWER_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6091,9 +6103,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Answer");}
 }
 public void Delete_Category(Params_Delete_Category i_Params_Delete_Category)
 {
+Params_Get_Category_By_CATEGORY_ID oParams_Get_Category_By_CATEGORY_ID = new Params_Get_Category_By_CATEGORY_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Category");}
 #region Body Section.
 try
+{
+oParams_Get_Category_By_CATEGORY_ID.CATEGORY_ID = i_Params_Delete_Category.CATEGORY_ID;
+_Category = Get_Category_By_CATEGORY_ID_Adv(oParams_Get_Category_By_CATEGORY_ID);
+if (_Category != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6104,6 +6121,7 @@ return;
 }
 _AppContext.Delete_Category(i_Params_Delete_Category.CATEGORY_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6126,9 +6144,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category");}
 }
 public void Delete_Category_favorite(Params_Delete_Category_favorite i_Params_Delete_Category_favorite)
 {
+Params_Get_Category_favorite_By_CATEGORY_FAVORITE_ID oParams_Get_Category_favorite_By_CATEGORY_FAVORITE_ID = new Params_Get_Category_favorite_By_CATEGORY_FAVORITE_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Category_favorite");}
 #region Body Section.
 try
+{
+oParams_Get_Category_favorite_By_CATEGORY_FAVORITE_ID.CATEGORY_FAVORITE_ID = i_Params_Delete_Category_favorite.CATEGORY_FAVORITE_ID;
+_Category_favorite = Get_Category_favorite_By_CATEGORY_FAVORITE_ID_Adv(oParams_Get_Category_favorite_By_CATEGORY_FAVORITE_ID);
+if (_Category_favorite != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6139,6 +6162,7 @@ return;
 }
 _AppContext.Delete_Category_favorite(i_Params_Delete_Category_favorite.CATEGORY_FAVORITE_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6161,9 +6185,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category_favorite")
 }
 public void Delete_Contact(Params_Delete_Contact i_Params_Delete_Contact)
 {
+Params_Get_Contact_By_CONTACT_ID oParams_Get_Contact_By_CONTACT_ID = new Params_Get_Contact_By_CONTACT_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Contact");}
 #region Body Section.
 try
+{
+oParams_Get_Contact_By_CONTACT_ID.CONTACT_ID = i_Params_Delete_Contact.CONTACT_ID;
+_Contact = Get_Contact_By_CONTACT_ID_Adv(oParams_Get_Contact_By_CONTACT_ID);
+if (_Contact != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6174,6 +6203,7 @@ return;
 }
 _AppContext.Delete_Contact(i_Params_Delete_Contact.CONTACT_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6196,9 +6226,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Contact");}
 }
 public void Delete_Evaluation(Params_Delete_Evaluation i_Params_Delete_Evaluation)
 {
+Params_Get_Evaluation_By_EVALUATION_ID oParams_Get_Evaluation_By_EVALUATION_ID = new Params_Get_Evaluation_By_EVALUATION_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Evaluation");}
 #region Body Section.
 try
+{
+oParams_Get_Evaluation_By_EVALUATION_ID.EVALUATION_ID = i_Params_Delete_Evaluation.EVALUATION_ID;
+_Evaluation = Get_Evaluation_By_EVALUATION_ID_Adv(oParams_Get_Evaluation_By_EVALUATION_ID);
+if (_Evaluation != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6209,6 +6244,7 @@ return;
 }
 _AppContext.Delete_Evaluation(i_Params_Delete_Evaluation.EVALUATION_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6231,9 +6267,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Evaluation");}
 }
 public void Delete_Favorite_teacher(Params_Delete_Favorite_teacher i_Params_Delete_Favorite_teacher)
 {
+Params_Get_Favorite_teacher_By_FAVORITE_TEACHER_ID oParams_Get_Favorite_teacher_By_FAVORITE_TEACHER_ID = new Params_Get_Favorite_teacher_By_FAVORITE_TEACHER_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Favorite_teacher");}
 #region Body Section.
 try
+{
+oParams_Get_Favorite_teacher_By_FAVORITE_TEACHER_ID.FAVORITE_TEACHER_ID = i_Params_Delete_Favorite_teacher.FAVORITE_TEACHER_ID;
+_Favorite_teacher = Get_Favorite_teacher_By_FAVORITE_TEACHER_ID_Adv(oParams_Get_Favorite_teacher_By_FAVORITE_TEACHER_ID);
+if (_Favorite_teacher != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6244,6 +6285,7 @@ return;
 }
 _AppContext.Delete_Favorite_teacher(i_Params_Delete_Favorite_teacher.FAVORITE_TEACHER_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6266,9 +6308,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Favorite_teacher");
 }
 public void Delete_Loc_l1(Params_Delete_Loc_l1 i_Params_Delete_Loc_l1)
 {
+Params_Get_Loc_l1_By_LOC_L1_ID oParams_Get_Loc_l1_By_LOC_L1_ID = new Params_Get_Loc_l1_By_LOC_L1_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l1");}
 #region Body Section.
 try
+{
+oParams_Get_Loc_l1_By_LOC_L1_ID.LOC_L1_ID = i_Params_Delete_Loc_l1.LOC_L1_ID;
+_Loc_l1 = Get_Loc_l1_By_LOC_L1_ID_Adv(oParams_Get_Loc_l1_By_LOC_L1_ID);
+if (_Loc_l1 != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6279,6 +6326,7 @@ return;
 }
 _AppContext.Delete_Loc_l1(i_Params_Delete_Loc_l1.LOC_L1_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6301,9 +6349,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l1");}
 }
 public void Delete_Loc_l2(Params_Delete_Loc_l2 i_Params_Delete_Loc_l2)
 {
+Params_Get_Loc_l2_By_LOC_L2_ID oParams_Get_Loc_l2_By_LOC_L2_ID = new Params_Get_Loc_l2_By_LOC_L2_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l2");}
 #region Body Section.
 try
+{
+oParams_Get_Loc_l2_By_LOC_L2_ID.LOC_L2_ID = i_Params_Delete_Loc_l2.LOC_L2_ID;
+_Loc_l2 = Get_Loc_l2_By_LOC_L2_ID_Adv(oParams_Get_Loc_l2_By_LOC_L2_ID);
+if (_Loc_l2 != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6314,6 +6367,7 @@ return;
 }
 _AppContext.Delete_Loc_l2(i_Params_Delete_Loc_l2.LOC_L2_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6336,9 +6390,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l2");}
 }
 public void Delete_Loc_l3(Params_Delete_Loc_l3 i_Params_Delete_Loc_l3)
 {
+Params_Get_Loc_l3_By_LOC_L3_ID oParams_Get_Loc_l3_By_LOC_L3_ID = new Params_Get_Loc_l3_By_LOC_L3_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l3");}
 #region Body Section.
 try
+{
+oParams_Get_Loc_l3_By_LOC_L3_ID.LOC_L3_ID = i_Params_Delete_Loc_l3.LOC_L3_ID;
+_Loc_l3 = Get_Loc_l3_By_LOC_L3_ID_Adv(oParams_Get_Loc_l3_By_LOC_L3_ID);
+if (_Loc_l3 != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6349,6 +6408,7 @@ return;
 }
 _AppContext.Delete_Loc_l3(i_Params_Delete_Loc_l3.LOC_L3_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6371,9 +6431,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l3");}
 }
 public void Delete_Loc_l4(Params_Delete_Loc_l4 i_Params_Delete_Loc_l4)
 {
+Params_Get_Loc_l4_By_LOC_L4_ID oParams_Get_Loc_l4_By_LOC_L4_ID = new Params_Get_Loc_l4_By_LOC_L4_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l4");}
 #region Body Section.
 try
+{
+oParams_Get_Loc_l4_By_LOC_L4_ID.LOC_L4_ID = i_Params_Delete_Loc_l4.LOC_L4_ID;
+_Loc_l4 = Get_Loc_l4_By_LOC_L4_ID_Adv(oParams_Get_Loc_l4_By_LOC_L4_ID);
+if (_Loc_l4 != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6384,6 +6449,7 @@ return;
 }
 _AppContext.Delete_Loc_l4(i_Params_Delete_Loc_l4.LOC_L4_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6441,9 +6507,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Owner");}
 }
 public void Delete_Person(Params_Delete_Person i_Params_Delete_Person)
 {
+Params_Get_Person_By_PERSON_ID oParams_Get_Person_By_PERSON_ID = new Params_Get_Person_By_PERSON_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Person");}
 #region Body Section.
 try
+{
+oParams_Get_Person_By_PERSON_ID.PERSON_ID = i_Params_Delete_Person.PERSON_ID;
+_Person = Get_Person_By_PERSON_ID_Adv(oParams_Get_Person_By_PERSON_ID);
+if (_Person != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6454,6 +6525,7 @@ return;
 }
 _AppContext.Delete_Person(i_Params_Delete_Person.PERSON_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6476,9 +6548,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Person");}
 }
 public void Delete_Question(Params_Delete_Question i_Params_Delete_Question)
 {
+Params_Get_Question_By_QUESTION_ID oParams_Get_Question_By_QUESTION_ID = new Params_Get_Question_By_QUESTION_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question");}
 #region Body Section.
 try
+{
+oParams_Get_Question_By_QUESTION_ID.QUESTION_ID = i_Params_Delete_Question.QUESTION_ID;
+_Question = Get_Question_By_QUESTION_ID_Adv(oParams_Get_Question_By_QUESTION_ID);
+if (_Question != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6489,6 +6566,7 @@ return;
 }
 _AppContext.Delete_Question(i_Params_Delete_Question.QUESTION_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6511,9 +6589,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question");}
 }
 public void Delete_Question_token(Params_Delete_Question_token i_Params_Delete_Question_token)
 {
+Params_Get_Question_token_By_QUESTION_TOKEN_ID oParams_Get_Question_token_By_QUESTION_TOKEN_ID = new Params_Get_Question_token_By_QUESTION_TOKEN_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question_token");}
 #region Body Section.
 try
+{
+oParams_Get_Question_token_By_QUESTION_TOKEN_ID.QUESTION_TOKEN_ID = i_Params_Delete_Question_token.QUESTION_TOKEN_ID;
+_Question_token = Get_Question_token_By_QUESTION_TOKEN_ID_Adv(oParams_Get_Question_token_By_QUESTION_TOKEN_ID);
+if (_Question_token != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6524,6 +6607,7 @@ return;
 }
 _AppContext.Delete_Question_token(i_Params_Delete_Question_token.QUESTION_TOKEN_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6546,9 +6630,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question_token");}
 }
 public void Delete_Student(Params_Delete_Student i_Params_Delete_Student)
 {
+Params_Get_Student_By_STUDENT_ID oParams_Get_Student_By_STUDENT_ID = new Params_Get_Student_By_STUDENT_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student");}
 #region Body Section.
 try
+{
+oParams_Get_Student_By_STUDENT_ID.STUDENT_ID = i_Params_Delete_Student.STUDENT_ID;
+_Student = Get_Student_By_STUDENT_ID_Adv(oParams_Get_Student_By_STUDENT_ID);
+if (_Student != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6559,6 +6648,7 @@ return;
 }
 _AppContext.Delete_Student(i_Params_Delete_Student.STUDENT_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6581,9 +6671,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student");}
 }
 public void Delete_Student_report(Params_Delete_Student_report i_Params_Delete_Student_report)
 {
+Params_Get_Student_report_By_STUDENT_REPORT_ID oParams_Get_Student_report_By_STUDENT_REPORT_ID = new Params_Get_Student_report_By_STUDENT_REPORT_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_report");}
 #region Body Section.
 try
+{
+oParams_Get_Student_report_By_STUDENT_REPORT_ID.STUDENT_REPORT_ID = i_Params_Delete_Student_report.STUDENT_REPORT_ID;
+_Student_report = Get_Student_report_By_STUDENT_REPORT_ID_Adv(oParams_Get_Student_report_By_STUDENT_REPORT_ID);
+if (_Student_report != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6594,6 +6689,7 @@ return;
 }
 _AppContext.Delete_Student_report(i_Params_Delete_Student_report.STUDENT_REPORT_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6616,9 +6712,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_report");}
 }
 public void Delete_Teacher(Params_Delete_Teacher i_Params_Delete_Teacher)
 {
+Params_Get_Teacher_By_TEACHER_ID oParams_Get_Teacher_By_TEACHER_ID = new Params_Get_Teacher_By_TEACHER_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher");}
 #region Body Section.
 try
+{
+oParams_Get_Teacher_By_TEACHER_ID.TEACHER_ID = i_Params_Delete_Teacher.TEACHER_ID;
+_Teacher = Get_Teacher_By_TEACHER_ID_Adv(oParams_Get_Teacher_By_TEACHER_ID);
+if (_Teacher != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6629,6 +6730,7 @@ return;
 }
 _AppContext.Delete_Teacher(i_Params_Delete_Teacher.TEACHER_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6651,9 +6753,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher");}
 }
 public void Delete_Teacher_category(Params_Delete_Teacher_category i_Params_Delete_Teacher_category)
 {
+Params_Get_Teacher_category_By_TEACHER_CATEGORY_ID oParams_Get_Teacher_category_By_TEACHER_CATEGORY_ID = new Params_Get_Teacher_category_By_TEACHER_CATEGORY_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_category");}
 #region Body Section.
 try
+{
+oParams_Get_Teacher_category_By_TEACHER_CATEGORY_ID.TEACHER_CATEGORY_ID = i_Params_Delete_Teacher_category.TEACHER_CATEGORY_ID;
+_Teacher_category = Get_Teacher_category_By_TEACHER_CATEGORY_ID_Adv(oParams_Get_Teacher_category_By_TEACHER_CATEGORY_ID);
+if (_Teacher_category != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6664,6 +6771,7 @@ return;
 }
 _AppContext.Delete_Teacher_category(i_Params_Delete_Teacher_category.TEACHER_CATEGORY_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6686,9 +6794,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_category");
 }
 public void Delete_Teacher_favorite(Params_Delete_Teacher_favorite i_Params_Delete_Teacher_favorite)
 {
+Params_Get_Teacher_favorite_By_TEACHER_FAVORITE_ID oParams_Get_Teacher_favorite_By_TEACHER_FAVORITE_ID = new Params_Get_Teacher_favorite_By_TEACHER_FAVORITE_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_favorite");}
 #region Body Section.
 try
+{
+oParams_Get_Teacher_favorite_By_TEACHER_FAVORITE_ID.TEACHER_FAVORITE_ID = i_Params_Delete_Teacher_favorite.TEACHER_FAVORITE_ID;
+_Teacher_favorite = Get_Teacher_favorite_By_TEACHER_FAVORITE_ID_Adv(oParams_Get_Teacher_favorite_By_TEACHER_FAVORITE_ID);
+if (_Teacher_favorite != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6699,6 +6812,7 @@ return;
 }
 _AppContext.Delete_Teacher_favorite(i_Params_Delete_Teacher_favorite.TEACHER_FAVORITE_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6721,9 +6835,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_favorite");
 }
 public void Delete_Teacher_report(Params_Delete_Teacher_report i_Params_Delete_Teacher_report)
 {
+Params_Get_Teacher_report_By_TEACHER_REPORT_ID oParams_Get_Teacher_report_By_TEACHER_REPORT_ID = new Params_Get_Teacher_report_By_TEACHER_REPORT_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_report");}
 #region Body Section.
 try
+{
+oParams_Get_Teacher_report_By_TEACHER_REPORT_ID.TEACHER_REPORT_ID = i_Params_Delete_Teacher_report.TEACHER_REPORT_ID;
+_Teacher_report = Get_Teacher_report_By_TEACHER_REPORT_ID_Adv(oParams_Get_Teacher_report_By_TEACHER_REPORT_ID);
+if (_Teacher_report != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6734,6 +6853,7 @@ return;
 }
 _AppContext.Delete_Teacher_report(i_Params_Delete_Teacher_report.TEACHER_REPORT_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6756,9 +6876,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_report");}
 }
 public void Delete_User(Params_Delete_User i_Params_Delete_User)
 {
+Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User");}
 #region Body Section.
 try
+{
+oParams_Get_User_By_USER_ID.USER_ID = i_Params_Delete_User.USER_ID;
+_User = Get_User_By_USER_ID_Adv(oParams_Get_User_By_USER_ID);
+if (_User != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6769,6 +6894,7 @@ return;
 }
 _AppContext.Delete_User(i_Params_Delete_User.USER_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6791,9 +6917,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User");}
 }
 public void Delete_User_type_code(Params_Delete_User_type_code i_Params_Delete_User_type_code)
 {
+Params_Get_User_type_code_By_USER_TYPE_CODE_ID oParams_Get_User_type_code_By_USER_TYPE_CODE_ID = new Params_Get_User_type_code_By_USER_TYPE_CODE_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_type_code");}
 #region Body Section.
 try
+{
+oParams_Get_User_type_code_By_USER_TYPE_CODE_ID.USER_TYPE_CODE_ID = i_Params_Delete_User_type_code.USER_TYPE_CODE_ID;
+_User_type_code = Get_User_type_code_By_USER_TYPE_CODE_ID_Adv(oParams_Get_User_type_code_By_USER_TYPE_CODE_ID);
+if (_User_type_code != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -6804,6 +6935,7 @@ return;
 }
 _AppContext.Delete_User_type_code(i_Params_Delete_User_type_code.USER_TYPE_CODE_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -6826,6 +6958,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_type_code");}
 }
 public void Delete_Address_By_PERSON_ID(Params_Delete_Address_By_PERSON_ID i_Params_Delete_Address_By_PERSON_ID)
 {
+Params_Get_Address_By_PERSON_ID oParams_Get_Address_By_PERSON_ID = new Params_Get_Address_By_PERSON_ID();
+List<Address> _List_Address = new List<Address>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Address_By_PERSON_ID");}
 #region Body Section.
 try
@@ -6861,6 +6995,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Address_By_PERSON_I
 }
 public void Delete_Address_By_LOC_L1_ID(Params_Delete_Address_By_LOC_L1_ID i_Params_Delete_Address_By_LOC_L1_ID)
 {
+Params_Get_Address_By_LOC_L1_ID oParams_Get_Address_By_LOC_L1_ID = new Params_Get_Address_By_LOC_L1_ID();
+List<Address> _List_Address = new List<Address>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Address_By_LOC_L1_ID");}
 #region Body Section.
 try
@@ -6896,6 +7032,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Address_By_LOC_L1_I
 }
 public void Delete_Address_By_LOC_L2_ID(Params_Delete_Address_By_LOC_L2_ID i_Params_Delete_Address_By_LOC_L2_ID)
 {
+Params_Get_Address_By_LOC_L2_ID oParams_Get_Address_By_LOC_L2_ID = new Params_Get_Address_By_LOC_L2_ID();
+List<Address> _List_Address = new List<Address>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Address_By_LOC_L2_ID");}
 #region Body Section.
 try
@@ -6931,6 +7069,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Address_By_LOC_L2_I
 }
 public void Delete_Address_By_LOC_L3_ID(Params_Delete_Address_By_LOC_L3_ID i_Params_Delete_Address_By_LOC_L3_ID)
 {
+Params_Get_Address_By_LOC_L3_ID oParams_Get_Address_By_LOC_L3_ID = new Params_Get_Address_By_LOC_L3_ID();
+List<Address> _List_Address = new List<Address>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Address_By_LOC_L3_ID");}
 #region Body Section.
 try
@@ -6966,6 +7106,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Address_By_LOC_L3_I
 }
 public void Delete_Address_By_OWNER_ID(Params_Delete_Address_By_OWNER_ID i_Params_Delete_Address_By_OWNER_ID)
 {
+Params_Get_Address_By_OWNER_ID oParams_Get_Address_By_OWNER_ID = new Params_Get_Address_By_OWNER_ID();
+List<Address> _List_Address = new List<Address>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Address_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7001,6 +7143,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Address_By_OWNER_ID
 }
 public void Delete_Address_By_PERSON_ID_ADDRESS_TYPE_CODE(Params_Delete_Address_By_PERSON_ID_ADDRESS_TYPE_CODE i_Params_Delete_Address_By_PERSON_ID_ADDRESS_TYPE_CODE)
 {
+Params_Get_Address_By_PERSON_ID_ADDRESS_TYPE_CODE oParams_Get_Address_By_PERSON_ID_ADDRESS_TYPE_CODE = new Params_Get_Address_By_PERSON_ID_ADDRESS_TYPE_CODE();
+List<Address> _List_Address = new List<Address>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Address_By_PERSON_ID_ADDRESS_TYPE_CODE");}
 #region Body Section.
 try
@@ -7036,6 +7180,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Address_By_PERSON_I
 }
 public void Delete_Address_By_LOC_L4_ID(Params_Delete_Address_By_LOC_L4_ID i_Params_Delete_Address_By_LOC_L4_ID)
 {
+Params_Get_Address_By_LOC_L4_ID oParams_Get_Address_By_LOC_L4_ID = new Params_Get_Address_By_LOC_L4_ID();
+List<Address> _List_Address = new List<Address>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Address_By_LOC_L4_ID");}
 #region Body Section.
 try
@@ -7071,6 +7217,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Address_By_LOC_L4_I
 }
 public void Delete_Answer_By_OWNER_ID(Params_Delete_Answer_By_OWNER_ID i_Params_Delete_Answer_By_OWNER_ID)
 {
+Params_Get_Answer_By_OWNER_ID oParams_Get_Answer_By_OWNER_ID = new Params_Get_Answer_By_OWNER_ID();
+List<Answer> _List_Answer = new List<Answer>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Answer_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7106,6 +7254,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Answer_By_OWNER_ID"
 }
 public void Delete_Answer_By_QUESTION_ID(Params_Delete_Answer_By_QUESTION_ID i_Params_Delete_Answer_By_QUESTION_ID)
 {
+Params_Get_Answer_By_QUESTION_ID oParams_Get_Answer_By_QUESTION_ID = new Params_Get_Answer_By_QUESTION_ID();
+List<Answer> _List_Answer = new List<Answer>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Answer_By_QUESTION_ID");}
 #region Body Section.
 try
@@ -7141,6 +7291,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Answer_By_QUESTION_
 }
 public void Delete_Answer_By_TEACHER_ID(Params_Delete_Answer_By_TEACHER_ID i_Params_Delete_Answer_By_TEACHER_ID)
 {
+Params_Get_Answer_By_TEACHER_ID oParams_Get_Answer_By_TEACHER_ID = new Params_Get_Answer_By_TEACHER_ID();
+List<Answer> _List_Answer = new List<Answer>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Answer_By_TEACHER_ID");}
 #region Body Section.
 try
@@ -7176,6 +7328,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Answer_By_TEACHER_I
 }
 public void Delete_Answer_By_STUDENT_ID(Params_Delete_Answer_By_STUDENT_ID i_Params_Delete_Answer_By_STUDENT_ID)
 {
+Params_Get_Answer_By_STUDENT_ID oParams_Get_Answer_By_STUDENT_ID = new Params_Get_Answer_By_STUDENT_ID();
+List<Answer> _List_Answer = new List<Answer>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Answer_By_STUDENT_ID");}
 #region Body Section.
 try
@@ -7211,6 +7365,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Answer_By_STUDENT_I
 }
 public void Delete_Category_By_OWNER_ID(Params_Delete_Category_By_OWNER_ID i_Params_Delete_Category_By_OWNER_ID)
 {
+Params_Get_Category_By_OWNER_ID oParams_Get_Category_By_OWNER_ID = new Params_Get_Category_By_OWNER_ID();
+List<Category> _List_Category = new List<Category>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Category_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7246,6 +7402,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category_By_OWNER_I
 }
 public void Delete_Category_favorite_By_OWNER_ID(Params_Delete_Category_favorite_By_OWNER_ID i_Params_Delete_Category_favorite_By_OWNER_ID)
 {
+Params_Get_Category_favorite_By_OWNER_ID oParams_Get_Category_favorite_By_OWNER_ID = new Params_Get_Category_favorite_By_OWNER_ID();
+List<Category_favorite> _List_Category_favorite = new List<Category_favorite>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Category_favorite_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7281,6 +7439,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category_favorite_B
 }
 public void Delete_Category_favorite_By_STUDENT_ID(Params_Delete_Category_favorite_By_STUDENT_ID i_Params_Delete_Category_favorite_By_STUDENT_ID)
 {
+Params_Get_Category_favorite_By_STUDENT_ID oParams_Get_Category_favorite_By_STUDENT_ID = new Params_Get_Category_favorite_By_STUDENT_ID();
+List<Category_favorite> _List_Category_favorite = new List<Category_favorite>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Category_favorite_By_STUDENT_ID");}
 #region Body Section.
 try
@@ -7316,6 +7476,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category_favorite_B
 }
 public void Delete_Category_favorite_By_CATEGORY_ID(Params_Delete_Category_favorite_By_CATEGORY_ID i_Params_Delete_Category_favorite_By_CATEGORY_ID)
 {
+Params_Get_Category_favorite_By_CATEGORY_ID oParams_Get_Category_favorite_By_CATEGORY_ID = new Params_Get_Category_favorite_By_CATEGORY_ID();
+List<Category_favorite> _List_Category_favorite = new List<Category_favorite>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Category_favorite_By_CATEGORY_ID");}
 #region Body Section.
 try
@@ -7351,6 +7513,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category_favorite_B
 }
 public void Delete_Contact_By_PERSON_ID(Params_Delete_Contact_By_PERSON_ID i_Params_Delete_Contact_By_PERSON_ID)
 {
+Params_Get_Contact_By_PERSON_ID oParams_Get_Contact_By_PERSON_ID = new Params_Get_Contact_By_PERSON_ID();
+List<Contact> _List_Contact = new List<Contact>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Contact_By_PERSON_ID");}
 #region Body Section.
 try
@@ -7386,6 +7550,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Contact_By_PERSON_I
 }
 public void Delete_Contact_By_PERSON_ID_CONTACT_TYPE_CODE_CONTACT(Params_Delete_Contact_By_PERSON_ID_CONTACT_TYPE_CODE_CONTACT i_Params_Delete_Contact_By_PERSON_ID_CONTACT_TYPE_CODE_CONTACT)
 {
+Params_Get_Contact_By_PERSON_ID_CONTACT_TYPE_CODE_CONTACT oParams_Get_Contact_By_PERSON_ID_CONTACT_TYPE_CODE_CONTACT = new Params_Get_Contact_By_PERSON_ID_CONTACT_TYPE_CODE_CONTACT();
+List<Contact> _List_Contact = new List<Contact>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Contact_By_PERSON_ID_CONTACT_TYPE_CODE_CONTACT");}
 #region Body Section.
 try
@@ -7421,6 +7587,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Contact_By_PERSON_I
 }
 public void Delete_Contact_By_OWNER_ID(Params_Delete_Contact_By_OWNER_ID i_Params_Delete_Contact_By_OWNER_ID)
 {
+Params_Get_Contact_By_OWNER_ID oParams_Get_Contact_By_OWNER_ID = new Params_Get_Contact_By_OWNER_ID();
+List<Contact> _List_Contact = new List<Contact>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Contact_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7456,6 +7624,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Contact_By_OWNER_ID
 }
 public void Delete_Evaluation_By_OWNER_ID(Params_Delete_Evaluation_By_OWNER_ID i_Params_Delete_Evaluation_By_OWNER_ID)
 {
+Params_Get_Evaluation_By_OWNER_ID oParams_Get_Evaluation_By_OWNER_ID = new Params_Get_Evaluation_By_OWNER_ID();
+List<Evaluation> _List_Evaluation = new List<Evaluation>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Evaluation_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7491,6 +7661,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Evaluation_By_OWNER
 }
 public void Delete_Evaluation_By_STUDENT_ID(Params_Delete_Evaluation_By_STUDENT_ID i_Params_Delete_Evaluation_By_STUDENT_ID)
 {
+Params_Get_Evaluation_By_STUDENT_ID oParams_Get_Evaluation_By_STUDENT_ID = new Params_Get_Evaluation_By_STUDENT_ID();
+List<Evaluation> _List_Evaluation = new List<Evaluation>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Evaluation_By_STUDENT_ID");}
 #region Body Section.
 try
@@ -7526,6 +7698,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Evaluation_By_STUDE
 }
 public void Delete_Evaluation_By_ANSWER_ID(Params_Delete_Evaluation_By_ANSWER_ID i_Params_Delete_Evaluation_By_ANSWER_ID)
 {
+Params_Get_Evaluation_By_ANSWER_ID oParams_Get_Evaluation_By_ANSWER_ID = new Params_Get_Evaluation_By_ANSWER_ID();
+List<Evaluation> _List_Evaluation = new List<Evaluation>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Evaluation_By_ANSWER_ID");}
 #region Body Section.
 try
@@ -7561,6 +7735,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Evaluation_By_ANSWE
 }
 public void Delete_Favorite_teacher_By_OWNER_ID(Params_Delete_Favorite_teacher_By_OWNER_ID i_Params_Delete_Favorite_teacher_By_OWNER_ID)
 {
+Params_Get_Favorite_teacher_By_OWNER_ID oParams_Get_Favorite_teacher_By_OWNER_ID = new Params_Get_Favorite_teacher_By_OWNER_ID();
+List<Favorite_teacher> _List_Favorite_teacher = new List<Favorite_teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Favorite_teacher_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7596,6 +7772,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Favorite_teacher_By
 }
 public void Delete_Favorite_teacher_By_STUDENT_ID(Params_Delete_Favorite_teacher_By_STUDENT_ID i_Params_Delete_Favorite_teacher_By_STUDENT_ID)
 {
+Params_Get_Favorite_teacher_By_STUDENT_ID oParams_Get_Favorite_teacher_By_STUDENT_ID = new Params_Get_Favorite_teacher_By_STUDENT_ID();
+List<Favorite_teacher> _List_Favorite_teacher = new List<Favorite_teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Favorite_teacher_By_STUDENT_ID");}
 #region Body Section.
 try
@@ -7631,6 +7809,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Favorite_teacher_By
 }
 public void Delete_Favorite_teacher_By_TEACHER_ID(Params_Delete_Favorite_teacher_By_TEACHER_ID i_Params_Delete_Favorite_teacher_By_TEACHER_ID)
 {
+Params_Get_Favorite_teacher_By_TEACHER_ID oParams_Get_Favorite_teacher_By_TEACHER_ID = new Params_Get_Favorite_teacher_By_TEACHER_ID();
+List<Favorite_teacher> _List_Favorite_teacher = new List<Favorite_teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Favorite_teacher_By_TEACHER_ID");}
 #region Body Section.
 try
@@ -7666,6 +7846,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Favorite_teacher_By
 }
 public void Delete_Loc_l1_By_CODE(Params_Delete_Loc_l1_By_CODE i_Params_Delete_Loc_l1_By_CODE)
 {
+Params_Get_Loc_l1_By_CODE oParams_Get_Loc_l1_By_CODE = new Params_Get_Loc_l1_By_CODE();
+List<Loc_l1> _List_Loc_l1 = new List<Loc_l1>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l1_By_CODE");}
 #region Body Section.
 try
@@ -7701,6 +7883,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l1_By_CODE");}
 }
 public void Delete_Loc_l1_By_OWNER_ID(Params_Delete_Loc_l1_By_OWNER_ID i_Params_Delete_Loc_l1_By_OWNER_ID)
 {
+Params_Get_Loc_l1_By_OWNER_ID oParams_Get_Loc_l1_By_OWNER_ID = new Params_Get_Loc_l1_By_OWNER_ID();
+List<Loc_l1> _List_Loc_l1 = new List<Loc_l1>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l1_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7736,6 +7920,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l1_By_OWNER_ID"
 }
 public void Delete_Loc_l2_By_LOC_L1_ID_CODE(Params_Delete_Loc_l2_By_LOC_L1_ID_CODE i_Params_Delete_Loc_l2_By_LOC_L1_ID_CODE)
 {
+Params_Get_Loc_l2_By_LOC_L1_ID_CODE oParams_Get_Loc_l2_By_LOC_L1_ID_CODE = new Params_Get_Loc_l2_By_LOC_L1_ID_CODE();
+List<Loc_l2> _List_Loc_l2 = new List<Loc_l2>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l2_By_LOC_L1_ID_CODE");}
 #region Body Section.
 try
@@ -7771,6 +7957,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l2_By_LOC_L1_ID
 }
 public void Delete_Loc_l2_By_LOC_L1_ID(Params_Delete_Loc_l2_By_LOC_L1_ID i_Params_Delete_Loc_l2_By_LOC_L1_ID)
 {
+Params_Get_Loc_l2_By_LOC_L1_ID oParams_Get_Loc_l2_By_LOC_L1_ID = new Params_Get_Loc_l2_By_LOC_L1_ID();
+List<Loc_l2> _List_Loc_l2 = new List<Loc_l2>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l2_By_LOC_L1_ID");}
 #region Body Section.
 try
@@ -7806,6 +7994,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l2_By_LOC_L1_ID
 }
 public void Delete_Loc_l2_By_OWNER_ID(Params_Delete_Loc_l2_By_OWNER_ID i_Params_Delete_Loc_l2_By_OWNER_ID)
 {
+Params_Get_Loc_l2_By_OWNER_ID oParams_Get_Loc_l2_By_OWNER_ID = new Params_Get_Loc_l2_By_OWNER_ID();
+List<Loc_l2> _List_Loc_l2 = new List<Loc_l2>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l2_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7841,6 +8031,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l2_By_OWNER_ID"
 }
 public void Delete_Loc_l3_By_LOC_L2_ID_CODE(Params_Delete_Loc_l3_By_LOC_L2_ID_CODE i_Params_Delete_Loc_l3_By_LOC_L2_ID_CODE)
 {
+Params_Get_Loc_l3_By_LOC_L2_ID_CODE oParams_Get_Loc_l3_By_LOC_L2_ID_CODE = new Params_Get_Loc_l3_By_LOC_L2_ID_CODE();
+List<Loc_l3> _List_Loc_l3 = new List<Loc_l3>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l3_By_LOC_L2_ID_CODE");}
 #region Body Section.
 try
@@ -7876,6 +8068,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l3_By_LOC_L2_ID
 }
 public void Delete_Loc_l3_By_LOC_L2_ID(Params_Delete_Loc_l3_By_LOC_L2_ID i_Params_Delete_Loc_l3_By_LOC_L2_ID)
 {
+Params_Get_Loc_l3_By_LOC_L2_ID oParams_Get_Loc_l3_By_LOC_L2_ID = new Params_Get_Loc_l3_By_LOC_L2_ID();
+List<Loc_l3> _List_Loc_l3 = new List<Loc_l3>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l3_By_LOC_L2_ID");}
 #region Body Section.
 try
@@ -7911,6 +8105,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l3_By_LOC_L2_ID
 }
 public void Delete_Loc_l3_By_OWNER_ID(Params_Delete_Loc_l3_By_OWNER_ID i_Params_Delete_Loc_l3_By_OWNER_ID)
 {
+Params_Get_Loc_l3_By_OWNER_ID oParams_Get_Loc_l3_By_OWNER_ID = new Params_Get_Loc_l3_By_OWNER_ID();
+List<Loc_l3> _List_Loc_l3 = new List<Loc_l3>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l3_By_OWNER_ID");}
 #region Body Section.
 try
@@ -7946,6 +8142,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l3_By_OWNER_ID"
 }
 public void Delete_Loc_l4_By_LOC_L3_ID_CODE(Params_Delete_Loc_l4_By_LOC_L3_ID_CODE i_Params_Delete_Loc_l4_By_LOC_L3_ID_CODE)
 {
+Params_Get_Loc_l4_By_LOC_L3_ID_CODE oParams_Get_Loc_l4_By_LOC_L3_ID_CODE = new Params_Get_Loc_l4_By_LOC_L3_ID_CODE();
+List<Loc_l4> _List_Loc_l4 = new List<Loc_l4>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l4_By_LOC_L3_ID_CODE");}
 #region Body Section.
 try
@@ -7981,6 +8179,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l4_By_LOC_L3_ID
 }
 public void Delete_Loc_l4_By_LOC_L3_ID(Params_Delete_Loc_l4_By_LOC_L3_ID i_Params_Delete_Loc_l4_By_LOC_L3_ID)
 {
+Params_Get_Loc_l4_By_LOC_L3_ID oParams_Get_Loc_l4_By_LOC_L3_ID = new Params_Get_Loc_l4_By_LOC_L3_ID();
+List<Loc_l4> _List_Loc_l4 = new List<Loc_l4>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l4_By_LOC_L3_ID");}
 #region Body Section.
 try
@@ -8016,6 +8216,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l4_By_LOC_L3_ID
 }
 public void Delete_Loc_l4_By_OWNER_ID(Params_Delete_Loc_l4_By_OWNER_ID i_Params_Delete_Loc_l4_By_OWNER_ID)
 {
+Params_Get_Loc_l4_By_OWNER_ID oParams_Get_Loc_l4_By_OWNER_ID = new Params_Get_Loc_l4_By_OWNER_ID();
+List<Loc_l4> _List_Loc_l4 = new List<Loc_l4>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Loc_l4_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8051,6 +8253,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Loc_l4_By_OWNER_ID"
 }
 public void Delete_Person_By_OWNER_ID(Params_Delete_Person_By_OWNER_ID i_Params_Delete_Person_By_OWNER_ID)
 {
+Params_Get_Person_By_OWNER_ID oParams_Get_Person_By_OWNER_ID = new Params_Get_Person_By_OWNER_ID();
+List<Person> _List_Person = new List<Person>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Person_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8086,6 +8290,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Person_By_OWNER_ID"
 }
 public void Delete_Question_By_OWNER_ID(Params_Delete_Question_By_OWNER_ID i_Params_Delete_Question_By_OWNER_ID)
 {
+Params_Get_Question_By_OWNER_ID oParams_Get_Question_By_OWNER_ID = new Params_Get_Question_By_OWNER_ID();
+List<Question> _List_Question = new List<Question>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8121,6 +8327,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question_By_OWNER_I
 }
 public void Delete_Question_By_STUDENT_ID(Params_Delete_Question_By_STUDENT_ID i_Params_Delete_Question_By_STUDENT_ID)
 {
+Params_Get_Question_By_STUDENT_ID oParams_Get_Question_By_STUDENT_ID = new Params_Get_Question_By_STUDENT_ID();
+List<Question> _List_Question = new List<Question>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question_By_STUDENT_ID");}
 #region Body Section.
 try
@@ -8156,6 +8364,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question_By_STUDENT
 }
 public void Delete_Question_By_CATEGORY_ID(Params_Delete_Question_By_CATEGORY_ID i_Params_Delete_Question_By_CATEGORY_ID)
 {
+Params_Get_Question_By_CATEGORY_ID oParams_Get_Question_By_CATEGORY_ID = new Params_Get_Question_By_CATEGORY_ID();
+List<Question> _List_Question = new List<Question>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question_By_CATEGORY_ID");}
 #region Body Section.
 try
@@ -8191,6 +8401,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question_By_CATEGOR
 }
 public void Delete_Question_By_TEACHER_ID(Params_Delete_Question_By_TEACHER_ID i_Params_Delete_Question_By_TEACHER_ID)
 {
+Params_Get_Question_By_TEACHER_ID oParams_Get_Question_By_TEACHER_ID = new Params_Get_Question_By_TEACHER_ID();
+List<Question> _List_Question = new List<Question>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question_By_TEACHER_ID");}
 #region Body Section.
 try
@@ -8226,6 +8438,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question_By_TEACHER
 }
 public void Delete_Question_token_By_PART(Params_Delete_Question_token_By_PART i_Params_Delete_Question_token_By_PART)
 {
+Params_Get_Question_token_By_PART oParams_Get_Question_token_By_PART = new Params_Get_Question_token_By_PART();
+List<Question_token> _List_Question_token = new List<Question_token>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question_token_By_PART");}
 #region Body Section.
 try
@@ -8261,6 +8475,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question_token_By_P
 }
 public void Delete_Question_token_By_OWNER_ID(Params_Delete_Question_token_By_OWNER_ID i_Params_Delete_Question_token_By_OWNER_ID)
 {
+Params_Get_Question_token_By_OWNER_ID oParams_Get_Question_token_By_OWNER_ID = new Params_Get_Question_token_By_OWNER_ID();
+List<Question_token> _List_Question_token = new List<Question_token>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question_token_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8296,6 +8512,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question_token_By_O
 }
 public void Delete_Question_token_By_QUESTION_ID(Params_Delete_Question_token_By_QUESTION_ID i_Params_Delete_Question_token_By_QUESTION_ID)
 {
+Params_Get_Question_token_By_QUESTION_ID oParams_Get_Question_token_By_QUESTION_ID = new Params_Get_Question_token_By_QUESTION_ID();
+List<Question_token> _List_Question_token = new List<Question_token>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Question_token_By_QUESTION_ID");}
 #region Body Section.
 try
@@ -8331,6 +8549,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Question_token_By_Q
 }
 public void Delete_Student_By_OWNER_ID(Params_Delete_Student_By_OWNER_ID i_Params_Delete_Student_By_OWNER_ID)
 {
+Params_Get_Student_By_OWNER_ID oParams_Get_Student_By_OWNER_ID = new Params_Get_Student_By_OWNER_ID();
+List<Student> _List_Student = new List<Student>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8366,6 +8586,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_By_OWNER_ID
 }
 public void Delete_Student_By_USER_TYPE_CODE_ID(Params_Delete_Student_By_USER_TYPE_CODE_ID i_Params_Delete_Student_By_USER_TYPE_CODE_ID)
 {
+Params_Get_Student_By_USER_TYPE_CODE_ID oParams_Get_Student_By_USER_TYPE_CODE_ID = new Params_Get_Student_By_USER_TYPE_CODE_ID();
+List<Student> _List_Student = new List<Student>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_By_USER_TYPE_CODE_ID");}
 #region Body Section.
 try
@@ -8401,6 +8623,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_By_USER_TYP
 }
 public void Delete_Student_By_USER_ID(Params_Delete_Student_By_USER_ID i_Params_Delete_Student_By_USER_ID)
 {
+Params_Get_Student_By_USER_ID oParams_Get_Student_By_USER_ID = new Params_Get_Student_By_USER_ID();
+List<Student> _List_Student = new List<Student>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_By_USER_ID");}
 #region Body Section.
 try
@@ -8436,6 +8660,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_By_USER_ID"
 }
 public void Delete_Student_report_By_OWNER_ID(Params_Delete_Student_report_By_OWNER_ID i_Params_Delete_Student_report_By_OWNER_ID)
 {
+Params_Get_Student_report_By_OWNER_ID oParams_Get_Student_report_By_OWNER_ID = new Params_Get_Student_report_By_OWNER_ID();
+List<Student_report> _List_Student_report = new List<Student_report>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_report_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8471,6 +8697,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_report_By_O
 }
 public void Delete_Student_report_By_REPORTED_BY_STUDENT_ID(Params_Delete_Student_report_By_REPORTED_BY_STUDENT_ID i_Params_Delete_Student_report_By_REPORTED_BY_STUDENT_ID)
 {
+Params_Get_Student_report_By_REPORTED_BY_STUDENT_ID oParams_Get_Student_report_By_REPORTED_BY_STUDENT_ID = new Params_Get_Student_report_By_REPORTED_BY_STUDENT_ID();
+List<Student_report> _List_Student_report = new List<Student_report>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_report_By_REPORTED_BY_STUDENT_ID");}
 #region Body Section.
 try
@@ -8506,6 +8734,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_report_By_R
 }
 public void Delete_Student_report_By_REPORTED_STUDENT_ID(Params_Delete_Student_report_By_REPORTED_STUDENT_ID i_Params_Delete_Student_report_By_REPORTED_STUDENT_ID)
 {
+Params_Get_Student_report_By_REPORTED_STUDENT_ID oParams_Get_Student_report_By_REPORTED_STUDENT_ID = new Params_Get_Student_report_By_REPORTED_STUDENT_ID();
+List<Student_report> _List_Student_report = new List<Student_report>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Student_report_By_REPORTED_STUDENT_ID");}
 #region Body Section.
 try
@@ -8541,6 +8771,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Student_report_By_R
 }
 public void Delete_Teacher_By_OWNER_ID(Params_Delete_Teacher_By_OWNER_ID i_Params_Delete_Teacher_By_OWNER_ID)
 {
+Params_Get_Teacher_By_OWNER_ID oParams_Get_Teacher_By_OWNER_ID = new Params_Get_Teacher_By_OWNER_ID();
+List<Teacher> _List_Teacher = new List<Teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8576,6 +8808,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_By_OWNER_ID
 }
 public void Delete_Teacher_By_CATEGORY_ID(Params_Delete_Teacher_By_CATEGORY_ID i_Params_Delete_Teacher_By_CATEGORY_ID)
 {
+Params_Get_Teacher_By_CATEGORY_ID oParams_Get_Teacher_By_CATEGORY_ID = new Params_Get_Teacher_By_CATEGORY_ID();
+List<Teacher> _List_Teacher = new List<Teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_By_CATEGORY_ID");}
 #region Body Section.
 try
@@ -8611,6 +8845,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_By_CATEGORY
 }
 public void Delete_Teacher_By_USER_TYPE_CODE_ID(Params_Delete_Teacher_By_USER_TYPE_CODE_ID i_Params_Delete_Teacher_By_USER_TYPE_CODE_ID)
 {
+Params_Get_Teacher_By_USER_TYPE_CODE_ID oParams_Get_Teacher_By_USER_TYPE_CODE_ID = new Params_Get_Teacher_By_USER_TYPE_CODE_ID();
+List<Teacher> _List_Teacher = new List<Teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_By_USER_TYPE_CODE_ID");}
 #region Body Section.
 try
@@ -8646,6 +8882,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_By_USER_TYP
 }
 public void Delete_Teacher_By_USER_ID(Params_Delete_Teacher_By_USER_ID i_Params_Delete_Teacher_By_USER_ID)
 {
+Params_Get_Teacher_By_USER_ID oParams_Get_Teacher_By_USER_ID = new Params_Get_Teacher_By_USER_ID();
+List<Teacher> _List_Teacher = new List<Teacher>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_By_USER_ID");}
 #region Body Section.
 try
@@ -8681,6 +8919,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_By_USER_ID"
 }
 public void Delete_Teacher_category_By_OWNER_ID(Params_Delete_Teacher_category_By_OWNER_ID i_Params_Delete_Teacher_category_By_OWNER_ID)
 {
+Params_Get_Teacher_category_By_OWNER_ID oParams_Get_Teacher_category_By_OWNER_ID = new Params_Get_Teacher_category_By_OWNER_ID();
+List<Teacher_category> _List_Teacher_category = new List<Teacher_category>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_category_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8716,6 +8956,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_category_By
 }
 public void Delete_Teacher_category_By_TEACHER_ID(Params_Delete_Teacher_category_By_TEACHER_ID i_Params_Delete_Teacher_category_By_TEACHER_ID)
 {
+Params_Get_Teacher_category_By_TEACHER_ID oParams_Get_Teacher_category_By_TEACHER_ID = new Params_Get_Teacher_category_By_TEACHER_ID();
+List<Teacher_category> _List_Teacher_category = new List<Teacher_category>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_category_By_TEACHER_ID");}
 #region Body Section.
 try
@@ -8751,6 +8993,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_category_By
 }
 public void Delete_Teacher_category_By_CATEGORY_ID(Params_Delete_Teacher_category_By_CATEGORY_ID i_Params_Delete_Teacher_category_By_CATEGORY_ID)
 {
+Params_Get_Teacher_category_By_CATEGORY_ID oParams_Get_Teacher_category_By_CATEGORY_ID = new Params_Get_Teacher_category_By_CATEGORY_ID();
+List<Teacher_category> _List_Teacher_category = new List<Teacher_category>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_category_By_CATEGORY_ID");}
 #region Body Section.
 try
@@ -8786,6 +9030,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_category_By
 }
 public void Delete_Teacher_favorite_By_OWNER_ID(Params_Delete_Teacher_favorite_By_OWNER_ID i_Params_Delete_Teacher_favorite_By_OWNER_ID)
 {
+Params_Get_Teacher_favorite_By_OWNER_ID oParams_Get_Teacher_favorite_By_OWNER_ID = new Params_Get_Teacher_favorite_By_OWNER_ID();
+List<Teacher_favorite> _List_Teacher_favorite = new List<Teacher_favorite>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_favorite_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8821,6 +9067,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_favorite_By
 }
 public void Delete_Teacher_favorite_By_STUDENT_ID(Params_Delete_Teacher_favorite_By_STUDENT_ID i_Params_Delete_Teacher_favorite_By_STUDENT_ID)
 {
+Params_Get_Teacher_favorite_By_STUDENT_ID oParams_Get_Teacher_favorite_By_STUDENT_ID = new Params_Get_Teacher_favorite_By_STUDENT_ID();
+List<Teacher_favorite> _List_Teacher_favorite = new List<Teacher_favorite>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_favorite_By_STUDENT_ID");}
 #region Body Section.
 try
@@ -8856,6 +9104,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_favorite_By
 }
 public void Delete_Teacher_favorite_By_TEACHER_ID(Params_Delete_Teacher_favorite_By_TEACHER_ID i_Params_Delete_Teacher_favorite_By_TEACHER_ID)
 {
+Params_Get_Teacher_favorite_By_TEACHER_ID oParams_Get_Teacher_favorite_By_TEACHER_ID = new Params_Get_Teacher_favorite_By_TEACHER_ID();
+List<Teacher_favorite> _List_Teacher_favorite = new List<Teacher_favorite>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_favorite_By_TEACHER_ID");}
 #region Body Section.
 try
@@ -8891,6 +9141,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_favorite_By
 }
 public void Delete_Teacher_report_By_OWNER_ID(Params_Delete_Teacher_report_By_OWNER_ID i_Params_Delete_Teacher_report_By_OWNER_ID)
 {
+Params_Get_Teacher_report_By_OWNER_ID oParams_Get_Teacher_report_By_OWNER_ID = new Params_Get_Teacher_report_By_OWNER_ID();
+List<Teacher_report> _List_Teacher_report = new List<Teacher_report>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_report_By_OWNER_ID");}
 #region Body Section.
 try
@@ -8926,6 +9178,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_report_By_O
 }
 public void Delete_Teacher_report_By_TEACHER_ID(Params_Delete_Teacher_report_By_TEACHER_ID i_Params_Delete_Teacher_report_By_TEACHER_ID)
 {
+Params_Get_Teacher_report_By_TEACHER_ID oParams_Get_Teacher_report_By_TEACHER_ID = new Params_Get_Teacher_report_By_TEACHER_ID();
+List<Teacher_report> _List_Teacher_report = new List<Teacher_report>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_report_By_TEACHER_ID");}
 #region Body Section.
 try
@@ -8961,6 +9215,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_report_By_T
 }
 public void Delete_Teacher_report_By_STUDENT_ID(Params_Delete_Teacher_report_By_STUDENT_ID i_Params_Delete_Teacher_report_By_STUDENT_ID)
 {
+Params_Get_Teacher_report_By_STUDENT_ID oParams_Get_Teacher_report_By_STUDENT_ID = new Params_Get_Teacher_report_By_STUDENT_ID();
+List<Teacher_report> _List_Teacher_report = new List<Teacher_report>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Teacher_report_By_STUDENT_ID");}
 #region Body Section.
 try
@@ -8996,6 +9252,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Teacher_report_By_S
 }
 public void Delete_User_By_OWNER_ID(Params_Delete_User_By_OWNER_ID i_Params_Delete_User_By_OWNER_ID)
 {
+Params_Get_User_By_OWNER_ID oParams_Get_User_By_OWNER_ID = new Params_Get_User_By_OWNER_ID();
+List<User> _List_User = new List<User>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_By_OWNER_ID");}
 #region Body Section.
 try
@@ -9031,6 +9289,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_OWNER_ID");
 }
 public void Delete_User_By_USERNAME(Params_Delete_User_By_USERNAME i_Params_Delete_User_By_USERNAME)
 {
+Params_Get_User_By_USERNAME oParams_Get_User_By_USERNAME = new Params_Get_User_By_USERNAME();
+List<User> _List_User = new List<User>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_By_USERNAME");}
 #region Body Section.
 try
@@ -9066,6 +9326,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_USERNAME");
 }
 public void Delete_User_By_USER_TYPE_CODE_ID(Params_Delete_User_By_USER_TYPE_CODE_ID i_Params_Delete_User_By_USER_TYPE_CODE_ID)
 {
+Params_Get_User_By_USER_TYPE_CODE_ID oParams_Get_User_By_USER_TYPE_CODE_ID = new Params_Get_User_By_USER_TYPE_CODE_ID();
+List<User> _List_User = new List<User>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_By_USER_TYPE_CODE_ID");}
 #region Body Section.
 try
@@ -9101,6 +9363,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_USER_TYPE_C
 }
 public void Delete_User_By_EMAIL(Params_Delete_User_By_EMAIL i_Params_Delete_User_By_EMAIL)
 {
+Params_Get_User_By_EMAIL oParams_Get_User_By_EMAIL = new Params_Get_User_By_EMAIL();
+List<User> _List_User = new List<User>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_By_EMAIL");}
 #region Body Section.
 try
@@ -9136,6 +9400,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_EMAIL");}
 }
 public void Delete_User_type_code_By_OWNER_ID(Params_Delete_User_type_code_By_OWNER_ID i_Params_Delete_User_type_code_By_OWNER_ID)
 {
+Params_Get_User_type_code_By_OWNER_ID oParams_Get_User_type_code_By_OWNER_ID = new Params_Get_User_type_code_By_OWNER_ID();
+List<User_type_code> _List_User_type_code = new List<User_type_code>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_type_code_By_OWNER_ID");}
 #region Body Section.
 try
