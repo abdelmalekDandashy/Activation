@@ -58,5 +58,9 @@ public delegate BLCInitializer PostEvent_Handler_BLC_Init(string i_Ticket, Enum_
 public event PreEvent_Handler_BLC_Init OnPreEvent_BLC_Init;
 public event PostEvent_Handler_BLC_Init OnPostEvent_BLC_Init;
 #endregion
+public  delegate void PreEvent_Handler_Edit_Table(Table i_Table,Enum_EditMode i_Enum_EditMode);
+public  delegate void  PostEvent_Handler_Edit_Table(Table i_Table,Enum_EditMode i_Enum_EditMode);
+public event PreEvent_Handler_Edit_Table OnPreEvent_Edit_Table;
+public event PostEvent_Handler_Edit_Table OnPostEvent_Edit_Table;
 }
 }

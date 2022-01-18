@@ -28,16 +28,16 @@
 
   <ItemGroup>
     <Reference Include="CBCoreClient">
-      <HintPath>bin\DLL\CBCoreClient.dll</HintPath>
+      <HintPath>..\DLL\CBCoreClient.dll</HintPath>
     </Reference>
     <Reference Include="CBCoreCommon">
       <HintPath>..\DLL\CBCoreCommon.dll</HintPath>
     </Reference>
     <Reference Include="CBCoreProxy">
-      <HintPath>bin\DLL\CBCoreProxy.dll</HintPath>
+      <HintPath>..\DLL\CBCoreProxy.dll</HintPath>
     </Reference>
     <Reference Include="CoreTools">
-      <HintPath>bin\DLL\CoreTools.dll</HintPath>
+      <HintPath>..\DLL\CoreTools.dll</HintPath>
     </Reference>
   </ItemGroup>
 
