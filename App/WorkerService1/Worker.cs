@@ -40,12 +40,60 @@ namespace WorkerService1
                         Tools.Tools oTools = new Tools.Tools();
                 #endregion
 
-                Params_Get_Extension_By_EXTENSION_ID oParams_Get_Extension_By_EXTENSION_ID = new Params_Get_Extension_By_EXTENSION_ID();
-                oParams_Get_Extension_By_EXTENSION_ID.EXTENSION_ID = 1;
-               
-                var result = oBLC.Get_Extension_By_EXTENSION_ID(oParams_Get_Extension_By_EXTENSION_ID);
-                Console.WriteLine(result.NUMBER_OF_EXTENSIONS);
-                await Task.Delay(1000, stoppingToken);
+                #region Test worker service 
+                //Params_Get_Extension_By_EXTENSION_ID oParams_Get_Extension_By_EXTENSION_ID = new Params_Get_Extension_By_EXTENSION_ID();
+                //oParams_Get_Extension_By_EXTENSION_ID.EXTENSION_ID = 1;
+
+                //var result = oBLC.Get_Extension_By_EXTENSION_ID(oParams_Get_Extension_By_EXTENSION_ID);
+                //Console.WriteLine(result.NUMBER_OF_EXTENSIONS);
+
+                #endregion
+
+                #region charging_batteries
+                var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
+                var resultTables = oBLC.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
+
+                foreach(var table in resultTables)
+                {
+                    
+
+                    if(table.IS_CHARGING == true && table.CHARGING_PERCENTAGE <100)
+                    {
+                        var value = table.CHARGING_PERCENTAGE;
+
+
+                        switch (value)
+                        {
+                            case var expression when (value < 25):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 15;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE+" is now " + table.TABLE_NAME);
+                                break;
+
+                            case var expression when (value < 50):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 12;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+
+                            case var expression when (value < 90):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 10;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+                            
+                            case var expression when (value < 98):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 3;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+                        }
+
+                    }
+                }
+                #endregion
+                Console.WriteLine("5 seconds passed");
+                await Task.Delay(5*1000, stoppingToken);
             }
         }
     }

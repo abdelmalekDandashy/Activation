@@ -177,7 +177,40 @@ namespace BLC
             #endregion
         }
         #endregion
-        #endregion        
+        #endregion
+        #region auth
+        public User Authenticate(Params_Authenticate i_Params_Authenticate)
+        {
+            #region declaration
+
+            User oUser = new User();
+            #endregion
+
+            List<dynamic> oList = _AppContext.UP_GET_USER_BY_CREDENTIALS(i_Params_Authenticate.OWNER_ID,i_Params_Authenticate.USERNAME,i_Params_Authenticate.PASSWORD);
+            if ((oList != null) && (oList.Count > 0))
+            {
+                if (i_Params_Authenticate.PASSWORD == oList[0].PASSWORD)
+                {
+                    oUser.USER_ID = oList[0].USER_ID;
+                    oUser.OWNER_ID = oList[0].OWNER_ID;
+                    oUser.USERNAME = oList[0].USERNAME;
+                    //oUser.USER_TYPE_CODE = oList[0].USER_TYPE_CODE;
+
+
+                    //oUser.My_User_type_code = oList[0].My_User_type_code;
+
+                }
+
+            }
+            else
+            {
+                throw new BLCException(GetMessageContent(Enum_BR_Codes.BR_9999));
+            }
+
+            return oUser;
+
+        }
+        #endregion
     }
     #region Business Entities
     #region Setup
@@ -206,13 +239,24 @@ namespace BLC
     }
     #endregion    
     #endregion
+    public class Params_Authenticate
+    {
+        #region Properties
+
+        public int OWNER_ID { get; set; }
+        public string USERNAME { get; set; }
+        public string PASSWORD { get; set; }
+
+        #endregion
+    }
+    #endregion
     #region Uploaded_file
     public partial class Uploaded_file
     {
         public string My_URL { get; set; }
     }
     #endregion
-    #endregion
+   
 }
 
 

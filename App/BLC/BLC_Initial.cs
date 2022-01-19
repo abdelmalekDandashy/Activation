@@ -108,7 +108,8 @@ namespace BLC
         }
 
         private void BLC_OnPreEvent_Edit_Table(Table i_Table, Enum_EditMode i_Enum_EditMode)
-        {
+        {   
+
 
             #region check_if_extensions_are_available
             Params_Get_Extension_By_OWNER_ID oParams_Get_Extension_By_OWNER_ID = new Params_Get_Extension_By_OWNER_ID();
@@ -116,7 +117,7 @@ namespace BLC
 
             var result = this.Get_Extension_By_OWNER_ID(oParams_Get_Extension_By_OWNER_ID);
             
-            if (result.Count >= 2)
+            if (result.Count >= 2 && i_Table.TABLE_ID == -1)
             {   
                 Console.WriteLine(result);
                 

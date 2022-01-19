@@ -202,7 +202,7 @@ namespace CodeGenerator
 
             str_Option = Console.ReadLine();
 
-            
+
             #region API
 
 
@@ -211,7 +211,26 @@ namespace CodeGenerator
             //oCodeBooster.APIMethodsSelection.Add("Edit_Car");
             //oCodeBooster.APIMethodsSelection.Add("Delete_Car");
             //oCodeBooster.APIMethodsSelection.Add("Get_Car_By_OWNER_ID");
-            //oCodeBooster.APIMethodsSelection.Add("Authenticate");
+
+
+            oCodeBooster.APIMethodsSelection.Add("Get_Table_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Edit_Table");
+
+
+
+
+            oCodeBooster.APIMethodsSelection.Add("Get_Extension_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Edit_Extension");
+
+
+
+
+
+            oCodeBooster.APIMethodsSelection.Add("Get_User_By_USER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Get_User_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Delete_User");
+            oCodeBooster.APIMethodsSelection.Add("Edit_User");
+            oCodeBooster.APIMethodsSelection.Add("Authenticate");
             //----------------------------
 
             #endregion

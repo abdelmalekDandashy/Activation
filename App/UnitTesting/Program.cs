@@ -64,6 +64,19 @@ namespace UnitTesting
             //oBLC.Edit_Table(oTable);
 
 
+            #region test authenticate
+            //var oParams_Authenticate = new Params_Authenticate()
+            //{
+            //    OWNER_ID = 1,
+            //    USERNAME = "Admin",
+            //    PASSWORD = "/y6wmiMsec8 ="
+            //};
+
+            //var result = oBLC.Authenticate(oParams_Authenticate);
+
+
+            //Console.WriteLine(result);
+            #endregion
 
 
         }
