@@ -93,6 +93,72 @@ return oResult_Authenticate;
 #endregion
 }
 #endregion
+#region Delete_Tables
+[HttpPost]
+[Route("Delete_Tables")]
+public Result_Delete_Tables Delete_Tables(Params_Delete_Tables i_Params_Delete_Tables)
+{
+#region Declaration And Initialization Section.
+List<Table>  oReturnValue = new List<Table> ();
+string i_Ticket = string.Empty;
+Result_Delete_Tables oResult_Delete_Tables = new Result_Delete_Tables();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Delete_Tables(i_Params_Delete_Tables);
+oResult_Delete_Tables.My_Result = oReturnValue;
+oResult_Delete_Tables.My_Params_Delete_Tables = i_Params_Delete_Tables;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Delete_Tables.ExceptionMsg = string.Format("Delete_Tables : {0}", ex.Message);
+}
+else
+{
+oResult_Delete_Tables.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Delete_Tables;
+#endregion
+}
+#endregion
 #region Delete_User
 [HttpPost]
 [Route("Delete_User")]
@@ -640,6 +706,15 @@ public partial class Result_Authenticate : Action_Result
 #region Properties.
 public User My_Result { get; set; }
 public Params_Authenticate My_Params_Authenticate { get; set; }
+#endregion
+}
+#endregion
+#region Result_Delete_Tables
+public partial class Result_Delete_Tables : Action_Result
+{
+#region Properties.
+public List<Table>  My_Result { get; set; }
+public Params_Delete_Tables My_Params_Delete_Tables { get; set; }
 #endregion
 }
 #endregion

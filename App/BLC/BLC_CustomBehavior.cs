@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Transactions;
 
 namespace BLC
 {
@@ -211,6 +212,72 @@ namespace BLC
 
         }
         #endregion
+        #region delete_table
+        public List<Table> Delete_Tables(Params_Delete_Tables i_Params_Delete_Tables)
+        {
+            var oListTables = new List<Table>();
+
+            Params_Get_Table_By_TABLE_ID oParams_Get_Table_By_TABLE_ID = new Params_Get_Table_By_TABLE_ID();
+            if (OnPreEvent_General != null) { OnPreEvent_General("Delete_Table"); }
+            #region Body Section.
+            try
+            {
+                oParams_Get_Table_By_TABLE_ID.TABLE_ID = i_Params_Delete_Tables.TABLE_ID;
+                _Table = Get_Table_By_TABLE_ID_Adv(oParams_Get_Table_By_TABLE_ID);
+                if (_Table != null)
+                {
+                    using (TransactionScope oScope = new TransactionScope())
+                    {
+                        if (_Stop_Delete_Table_Execution)
+                        {
+                            _Stop_Delete_Table_Execution = false;
+                            throw new BLCException("deletion was stopped");
+                        }
+                        _AppContext.Delete_Table(i_Params_Delete_Tables.TABLE_ID);
+                        oScope.Complete();
+                    }
+                }
+                if (_Table.TABLE_ID == null)
+                {
+                    throw new BLCException("table you wanted to delete was not found");
+                }
+
+                if(_Table != null)
+                {
+                    var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
+                    var oResultListTables = this.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
+                    if (oResultListTables.Count > 0)
+                    {
+                        oListTables = oResultListTables;
+                        return oListTables;
+                    }
+                    
+                }
+                
+                if (OnPostEvent_General != null) { OnPostEvent_General("Delete_Table"); }
+
+               
+            }
+            catch (BLCException blcex)
+            {
+                throw new BLCException(blcex.Message);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    throw new BLCException("Cannot be deleted because of related records in other tables");
+                }
+                else
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            #endregion
+            Console.WriteLine(oListTables);
+            return oListTables;
+        }
+        #endregion
     }
     #region Business Entities
     #region Setup
@@ -249,7 +316,17 @@ namespace BLC
 
         #endregion
     }
+
+    #region Params_Delete_Tables
+    public partial class Params_Delete_Tables
+    {
+        #region Properties
+        public Int32? TABLE_ID { get; set; }
+        #endregion
+    }
     #endregion
+    #endregion
+
     #region Uploaded_file
     public partial class Uploaded_file
     {

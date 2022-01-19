@@ -215,14 +215,11 @@ namespace CodeGenerator
 
             oCodeBooster.APIMethodsSelection.Add("Get_Table_By_OWNER_ID");
             oCodeBooster.APIMethodsSelection.Add("Edit_Table");
-
-
+            oCodeBooster.APIMethodsSelection.Add("Delete_Tables");
 
 
             oCodeBooster.APIMethodsSelection.Add("Get_Extension_By_OWNER_ID");
             oCodeBooster.APIMethodsSelection.Add("Edit_Extension");
-
-
 
 
 
