@@ -195,6 +195,17 @@ namespace BLC
                     oUser.USER_ID = oList[0].USER_ID;
                     oUser.OWNER_ID = oList[0].OWNER_ID;
                     oUser.USERNAME = oList[0].USERNAME;
+
+                    var oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID() { USER_ID = oList[0].USER_ID };
+
+                    var userResult = this.Get_User_By_USER_ID(oParams_Get_User_By_USER_ID);
+
+                    if(userResult != null)
+                    {
+                        oUser.USER_TYPE_CODE = userResult.USER_TYPE_CODE;
+                    }
+
+                   
                     //oUser.USER_TYPE_CODE = oList[0].USER_TYPE_CODE;
 
 
