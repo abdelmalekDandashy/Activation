@@ -40,7 +40,6 @@ namespace WorkerService1
                         Tools.Tools oTools = new Tools.Tools();
                 #endregion
 
-                #region Test worker service 
                 //Params_Get_Extension_By_EXTENSION_ID oParams_Get_Extension_By_EXTENSION_ID = new Params_Get_Extension_By_EXTENSION_ID();
                 //oParams_Get_Extension_By_EXTENSION_ID.EXTENSION_ID = 1;
 
@@ -73,6 +72,8 @@ namespace WorkerService1
                             case var expression when (value < 50):
                                 table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 12;
                                 oBLC.Edit_Table(table);
+                #region Test worker service 
+                                break;
                                 Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
                                 break;
 
@@ -80,7 +81,6 @@ namespace WorkerService1
                                 table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 10;
                                 oBLC.Edit_Table(table);
                                 Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
-                                break;
                             
                             case var expression when (value < 98):
                                 table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 3;
@@ -95,13 +95,31 @@ namespace WorkerService1
                 Console.WriteLine("5 seconds passed");
                 await Task.Delay(5*1000, stoppingToken);
 
-                Console.WriteLine("10 seconds passed");
-                await Task.Delay(10 * 1000, stoppingToken);
+
             }
 
 
            
 
         }
+     
+
+
+    }
+
+    public class Worker2 : BackgroundService
+    {
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                Console.WriteLine("2 seconds passed");
+                await Task.Delay(2 * 1000, stoppingToken);
+
+            }
+        }
+
+
     }
 }
