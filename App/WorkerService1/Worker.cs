@@ -94,7 +94,14 @@ namespace WorkerService1
                 #endregion
                 Console.WriteLine("5 seconds passed");
                 await Task.Delay(5*1000, stoppingToken);
+
+                Console.WriteLine("10 seconds passed");
+                await Task.Delay(10 * 1000, stoppingToken);
             }
+
+
+           
+
         }
     }
 }

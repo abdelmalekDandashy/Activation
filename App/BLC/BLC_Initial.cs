@@ -118,49 +118,49 @@ namespace BLC
         {   
 
 
-            #region check_if_extensions_are_available
-            Params_Get_Extension_By_OWNER_ID oParams_Get_Extension_By_OWNER_ID = new Params_Get_Extension_By_OWNER_ID();
-            oParams_Get_Extension_By_OWNER_ID.OWNER_ID = 1;
+            //#region check_if_extensions_are_available
+            //Params_Get_Extension_By_OWNER_ID oParams_Get_Extension_By_OWNER_ID = new Params_Get_Extension_By_OWNER_ID();
+            //oParams_Get_Extension_By_OWNER_ID.OWNER_ID = 1;
 
-            var result = this.Get_Extension_By_OWNER_ID(oParams_Get_Extension_By_OWNER_ID);
+            //var result = this.Get_Extension_By_OWNER_ID(oParams_Get_Extension_By_OWNER_ID);
             
-            if (result.Count >= 2 && i_Table.TABLE_ID == -1)
-            {   
-                Console.WriteLine(result);
+            //if (result.Count >= 2 && i_Table.TABLE_ID == -1)
+            //{   
+            //    Console.WriteLine(result);
                 
-                if (result[0].NUMBER_OF_EXTENSIONS < i_Table.NB_OF_TYPE_A)
-                {
-                    throw new BLCException("you don't have enough type A extensions");
-                }
+            //    if (result[0].NUMBER_OF_EXTENSIONS < i_Table.NB_OF_TYPE_A)
+            //    {
+            //        throw new BLCException("you don't have enough type A extensions");
+            //    }
 
 
-                if (result[1].NUMBER_OF_EXTENSIONS < i_Table.NB_OF_TYPE_C)
-                {
-                    throw new BLCException("you don't have enough type C extensions");
-                }
+            //    if (result[1].NUMBER_OF_EXTENSIONS < i_Table.NB_OF_TYPE_C)
+            //    {
+            //        throw new BLCException("you don't have enough type C extensions");
+            //    }
 
-                #region na22ess_extensions_men_db
-                result[0].NUMBER_OF_EXTENSIONS = result[0].NUMBER_OF_EXTENSIONS - i_Table.NB_OF_TYPE_A;
-                Edit_Extension(result[0]);
+            //    #region na22ess_extensions_men_db
+            //    result[0].NUMBER_OF_EXTENSIONS = result[0].NUMBER_OF_EXTENSIONS - i_Table.NB_OF_TYPE_A;
+            //    Edit_Extension(result[0]);
                 
-                result[1].NUMBER_OF_EXTENSIONS = result[1].NUMBER_OF_EXTENSIONS - i_Table.NB_OF_TYPE_C;
-                Edit_Extension(result[1]);
+            //    result[1].NUMBER_OF_EXTENSIONS = result[1].NUMBER_OF_EXTENSIONS - i_Table.NB_OF_TYPE_C;
+            //    Edit_Extension(result[1]);
 
 
-                #endregion
+            //    #endregion
 
-                //throw new NotImplementedException();
-            }
+            //    //throw new NotImplementedException();
+            //}
 
-            #endregion
+            //#endregion
 
 
-            if(i_Table.TABLE_ID == -1)
-            {
-                i_Table.CHARGING_PERCENTAGE = 10;
-                i_Table.IS_CHARGING = true;
-                i_Table.IS_READY = false;
-            }
+            //if(i_Table.TABLE_ID == -1)
+            //{
+            //    i_Table.CHARGING_PERCENTAGE = 10;
+            //    i_Table.IS_CHARGING = true;
+            //    i_Table.IS_READY = false;
+            //}
 
         }
         #endregion
