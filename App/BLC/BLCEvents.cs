@@ -14,7 +14,16 @@ public partial class BLC
 #region Enum_API_Method
 public enum Enum_API_Method
 {
-
+Get_Table_By_OWNER_ID,
+Edit_Table,
+Delete_Tables,
+Get_Extension_By_OWNER_ID,
+Edit_Extension,
+Get_User_By_USER_ID,
+Get_User_By_OWNER_ID,
+Delete_User,
+Edit_User,
+Authenticate
 }
 #endregion
 

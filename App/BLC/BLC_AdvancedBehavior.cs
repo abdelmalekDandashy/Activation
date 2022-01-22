@@ -262,7 +262,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_Criteria_Adv");
 if ((i_Params_Get_Table_By_Criteria.OWNER_ID == null) || (i_Params_Get_Table_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Table_By_Criteria.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_Table_By_Criteria.START_ROW == null) { i_Params_Get_Table_By_Criteria.START_ROW = 0; }
 if ((i_Params_Get_Table_By_Criteria.END_ROW == null) || (i_Params_Get_Table_By_Criteria.END_ROW == 0)) { i_Params_Get_Table_By_Criteria.END_ROW = 1000000; }
-List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Criteria_Adv(i_Params_Get_Table_By_Criteria.TABLE_NAME,i_Params_Get_Table_By_Criteria.OWNER_ID,i_Params_Get_Table_By_Criteria.START_ROW,i_Params_Get_Table_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Criteria_Adv(i_Params_Get_Table_By_Criteria.TABLE_NAME,i_Params_Get_Table_By_Criteria.DEPO,i_Params_Get_Table_By_Criteria.OWNER_ID,i_Params_Get_Table_By_Criteria.START_ROW,i_Params_Get_Table_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -287,7 +287,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_Where_Adv");}
 if ((i_Params_Get_Table_By_Where.OWNER_ID == null) || (i_Params_Get_Table_By_Where.OWNER_ID == 0)) { i_Params_Get_Table_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_Table_By_Where.START_ROW == null) { i_Params_Get_Table_By_Where.START_ROW = 0; }
 if ((i_Params_Get_Table_By_Where.END_ROW == null) || (i_Params_Get_Table_By_Where.END_ROW == 0)) { i_Params_Get_Table_By_Where.END_ROW = 1000000; }
-List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Where_Adv(i_Params_Get_Table_By_Where.TABLE_NAME,i_Params_Get_Table_By_Where.OWNER_ID,i_Params_Get_Table_By_Where.START_ROW,i_Params_Get_Table_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Where_Adv(i_Params_Get_Table_By_Where.TABLE_NAME,i_Params_Get_Table_By_Where.DEPO,i_Params_Get_Table_By_Where.OWNER_ID,i_Params_Get_Table_By_Where.START_ROW,i_Params_Get_Table_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)

@@ -392,11 +392,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Table> Get_Table_By_Criteria ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_Criteria ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.TABLE_NAME = TABLE_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.TABLE_NAME = TABLE_NAME; p.DEPO = DEPO; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_CRITERIA", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
@@ -407,11 +407,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Table> Get_Table_By_Where ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_Where ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.TABLE_NAME = TABLE_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.TABLE_NAME = TABLE_NAME; p.DEPO = DEPO; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_WHERE", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
@@ -482,11 +482,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Table> Get_Table_By_Criteria_Adv ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_Criteria_Adv ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.TABLE_NAME = TABLE_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.TABLE_NAME = TABLE_NAME; p.DEPO = DEPO; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_CRITERIA_ADV", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
@@ -497,11 +497,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Table> Get_Table_By_Where_Adv ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_Where_Adv ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.TABLE_NAME = TABLE_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.TABLE_NAME = TABLE_NAME; p.DEPO = DEPO; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_WHERE_ADV", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
@@ -596,10 +596,10 @@ oOwner.OWNER_ID = OWNER_ID;oOwner.CODE = CODE;oOwner.MAINTENANCE_DUE_DATE = MAIN
 ExecuteEdit("UPG_EDIT_OWNER", oOwner, "OWNER_ID");
 return oOwner.OWNER_ID;
 }
-public Int32? Edit_Table ( Int32? TABLE_ID, string TABLE_NAME, Int32? TABLE_AGE_COUNTER, bool? IS_CHARGING, Int32? CHARGING_PERCENTAGE, Int32? NB_OF_TYPE_A, Int32? NB_OF_TYPE_C, bool? IS_READY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
+public Int32? Edit_Table ( Int32? TABLE_ID, string TABLE_NAME, Int32? TABLE_AGE_COUNTER, bool? IS_CHARGING, Int32? CHARGING_PERCENTAGE, Int32? NB_OF_TYPE_A, Int32? NB_OF_TYPE_C, string DEPO, bool? IS_READY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
 {
 Table oTable = new Table();
-oTable.TABLE_ID = TABLE_ID;oTable.TABLE_NAME = TABLE_NAME;oTable.TABLE_AGE_COUNTER = TABLE_AGE_COUNTER;oTable.IS_CHARGING = IS_CHARGING;oTable.CHARGING_PERCENTAGE = CHARGING_PERCENTAGE;oTable.NB_OF_TYPE_A = NB_OF_TYPE_A;oTable.NB_OF_TYPE_C = NB_OF_TYPE_C;oTable.IS_READY = IS_READY;oTable.ENTRY_USER_ID = ENTRY_USER_ID;oTable.ENTRY_DATE = ENTRY_DATE;oTable.OWNER_ID = OWNER_ID;
+oTable.TABLE_ID = TABLE_ID;oTable.TABLE_NAME = TABLE_NAME;oTable.TABLE_AGE_COUNTER = TABLE_AGE_COUNTER;oTable.IS_CHARGING = IS_CHARGING;oTable.CHARGING_PERCENTAGE = CHARGING_PERCENTAGE;oTable.NB_OF_TYPE_A = NB_OF_TYPE_A;oTable.NB_OF_TYPE_C = NB_OF_TYPE_C;oTable.DEPO = DEPO;oTable.IS_READY = IS_READY;oTable.ENTRY_USER_ID = ENTRY_USER_ID;oTable.ENTRY_DATE = ENTRY_DATE;oTable.OWNER_ID = OWNER_ID;
 ExecuteEdit("UPG_EDIT_TABLE", oTable, "TABLE_ID");
 return oTable.TABLE_ID;
 }

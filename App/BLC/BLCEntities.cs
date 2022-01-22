@@ -178,6 +178,7 @@ public partial class Params_Get_Table_By_Criteria
 
 public Int32? OWNER_ID {get;set;}
 public string TABLE_NAME {get;set;}
+public string DEPO {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -187,6 +188,7 @@ public partial class Params_Get_Table_By_Where
 
 public Int32? OWNER_ID {get;set;}
 public string TABLE_NAME {get;set;}
+public string DEPO {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -287,6 +289,7 @@ public bool? IS_CHARGING {get;set;}
 public Int32? CHARGING_PERCENTAGE {get;set;}
 public Int32? NB_OF_TYPE_A {get;set;}
 public Int32? NB_OF_TYPE_C {get;set;}
+public string DEPO {get;set;}
 public bool? IS_READY {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}

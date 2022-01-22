@@ -29,6 +29,7 @@ public bool? IS_CHARGING {get;set;}
 public Int32? CHARGING_PERCENTAGE {get;set;}
 public Int32? NB_OF_TYPE_A {get;set;}
 public Int32? NB_OF_TYPE_C {get;set;}
+public string DEPO {get;set;}
 public bool? IS_READY {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
@@ -75,14 +76,14 @@ List<Owner> Get_Owner_By_Criteria ( string CODE, string DESCRIPTION, Int32? OWNE
 List<Owner> Get_Owner_By_Where ( string CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Owner> Get_Owner_By_Criteria_V2 ( string CODE, string MAINTENANCE_DUE_DATE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Owner> Get_Owner_By_Where_V2 ( string CODE, string MAINTENANCE_DUE_DATE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Table> Get_Table_By_Criteria ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Table> Get_Table_By_Where ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Table> Get_Table_By_Criteria ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Table> Get_Table_By_Where ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User> Get_User_By_Criteria ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User> Get_User_By_Where ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Extension> Get_Extension_By_Criteria_Adv ( string EXTENSION_TYPE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Extension> Get_Extension_By_Where_Adv ( string EXTENSION_TYPE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Table> Get_Table_By_Criteria_Adv ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Table> Get_Table_By_Where_Adv ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Table> Get_Table_By_Criteria_Adv ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Table> Get_Table_By_Where_Adv ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User> Get_User_By_Criteria_Adv ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User> Get_User_By_Where_Adv ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 void Delete_Extension ( Int32? EXTENSION_ID);
@@ -95,7 +96,7 @@ void Delete_User_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_User_By_USERNAME ( string USERNAME);
 Int32? Edit_Extension ( Int32? EXTENSION_ID, string EXTENSION_TYPE, Int32? NUMBER_OF_EXTENSIONS, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 Int32? Edit_Owner ( Int32? OWNER_ID, string CODE, string MAINTENANCE_DUE_DATE, string DESCRIPTION, string ENTRY_DATE);
-Int32? Edit_Table ( Int32? TABLE_ID, string TABLE_NAME, Int32? TABLE_AGE_COUNTER, bool? IS_CHARGING, Int32? CHARGING_PERCENTAGE, Int32? NB_OF_TYPE_A, Int32? NB_OF_TYPE_C, bool? IS_READY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
+Int32? Edit_Table ( Int32? TABLE_ID, string TABLE_NAME, Int32? TABLE_AGE_COUNTER, bool? IS_CHARGING, Int32? CHARGING_PERCENTAGE, Int32? NB_OF_TYPE_A, Int32? NB_OF_TYPE_C, string DEPO, bool? IS_READY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string USERNAME, string PASSWORD, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE);
 List<dynamic> GET_DISTINCT_SETUP_TBL ( Int32? OWNER_ID);
 List<dynamic> GET_NEXT_VALUE ( string STARTER_CODE);
