@@ -15,7 +15,9 @@ public partial class BLC
 public enum Enum_API_Method
 {
 Get_Table_By_OWNER_ID,
+Get_Table_By_Where,
 Edit_Table,
+Edit_Tables,
 Delete_Tables,
 Get_Extension_By_OWNER_ID,
 Edit_Extension,
@@ -71,7 +73,9 @@ public  delegate void PreEvent_Handler_Edit_Table(Table i_Table,Enum_EditMode i_
 public  delegate void  PostEvent_Handler_Edit_Table(Table i_Table,Enum_EditMode i_Enum_EditMode);
 public event PreEvent_Handler_Edit_Table OnPreEvent_Edit_Table;
 public event PostEvent_Handler_Edit_Table OnPostEvent_Edit_Table;
-public event PreEvent_Handler_Edit_Table OnPreEvent_Edit_Tables;
-public event PostEvent_Handler_Edit_Table OnPostEvent_Edit_Tables;
+public  delegate void PreEvent_Handler_Edit_Tables(Table i_Table,Enum_EditMode i_Enum_EditMode);
+public  delegate void  PostEvent_Handler_Edit_Tables(List<Table>  i_Result, Table i_Table,Enum_EditMode i_Enum_EditMode);
+public event PreEvent_Handler_Edit_Tables OnPreEvent_Edit_Tables;
+public event PostEvent_Handler_Edit_Tables OnPostEvent_Edit_Tables;
 }
 }

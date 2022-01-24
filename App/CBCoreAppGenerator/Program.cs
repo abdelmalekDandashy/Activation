@@ -84,6 +84,7 @@ namespace CodeGenerator
             //oCodeBooster.Methods_With_Events.Add("Edit_Uploaded_file");
             //oCodeBooster.Methods_With_Events.Add("Edit_Table");
             oCodeBooster.Methods_With_Events.Add("Edit_Table");
+            oCodeBooster.Methods_With_Events.Add("Edit_Tables");
             #endregion
             #region Excluding Tables From 12M Hanlder
             oCodeBooster.Tables_Exluded_From_12M_Hanlder = new List<string>();
