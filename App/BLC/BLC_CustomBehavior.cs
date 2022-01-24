@@ -289,6 +289,96 @@ namespace BLC
             return oListTables;
         }
         #endregion
+
+        #region edit_tables
+        public List<Table> Edit_Tables(Table i_Table)
+        {
+            var oListTables = new List<Table>();
+            Enum_EditMode oEditMode_Flag = Enum_EditMode.Update;
+            if (i_Table.TABLE_ID == -1)
+            {
+                oEditMode_Flag = Enum_EditMode.Add;
+            }
+            if (OnPreEvent_General != null) { OnPreEvent_General("Edit_Tables"); }
+            #region Body Section.
+            if ((i_Table.TABLE_ID == null) || (i_Table.TABLE_ID == 0)) { throw new BLCException("Missing primary key while calling Edit_Tables"); }
+            i_Table.ENTRY_USER_ID = this.UserID;
+            i_Table.ENTRY_DATE = oTools.GetDateString(DateTime.Today);
+            i_Table.OWNER_ID = this.OwnerID;
+            using (TransactionScope oScope = new TransactionScope())
+            {
+                #region PreEvent_Edit_Tables
+                if (OnPreEvent_Edit_Tables != null)
+                {
+                    OnPreEvent_Edit_Tables(i_Table, oEditMode_Flag);
+                }
+                #endregion
+                if (_Stop_Edit_Table_Execution)
+                {
+                    _Stop_Edit_Table_Execution = false;
+                   
+                }
+                i_Table.TABLE_ID = _AppContext.Edit_Table
+                (
+                i_Table.TABLE_ID
+                , i_Table.TABLE_NAME
+                , i_Table.TABLE_AGE_COUNTER
+                , i_Table.IS_CHARGING
+                , i_Table.CHARGING_PERCENTAGE
+                , i_Table.NB_OF_TYPE_A
+                , i_Table.NB_OF_TYPE_C
+                , i_Table.DEPO
+                , i_Table.IS_READY
+                , i_Table.ENTRY_USER_ID
+                , i_Table.ENTRY_DATE
+                , i_Table.OWNER_ID
+                );
+
+                #region get_tables
+                Params_Get_Table_By_TABLE_ID oParams_Get_Table_By_TABLE_ID = new Params_Get_Table_By_TABLE_ID();
+                try
+                {
+                oParams_Get_Table_By_TABLE_ID.TABLE_ID = i_Table.TABLE_ID;
+                _Table = Get_Table_By_TABLE_ID(oParams_Get_Table_By_TABLE_ID);
+
+                if (_Table != null)
+                {
+                    var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = this.OwnerID };
+                    var oResultListTables = this.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
+                    if (oResultListTables.Count > 0)
+                    {
+                        oListTables = oResultListTables;
+                        return oListTables;
+                    }
+
+                    }
+                    else
+                    {
+                        throw new BLCException("Could not find table u want to edit");
+                    }
+                }
+                catch
+                {
+                    
+                }
+                #endregion
+                #region PostEvent_Edit_Tables
+                if (OnPostEvent_Edit_Tables != null)
+                {
+                    OnPostEvent_Edit_Tables(i_Table, oEditMode_Flag);
+                }
+                #endregion
+                oScope.Complete();
+            }
+            #endregion
+            if (OnPostEvent_General != null) { OnPostEvent_General("Edit_Table"); }
+
+            return oListTables;
+
+        }
+
+  
+        #endregion
     }
     #region Business Entities
     #region Setup

@@ -46,9 +46,9 @@ namespace WorkerService1
                 //var result = oBLC.Get_Extension_By_EXTENSION_ID(oParams_Get_Extension_By_EXTENSION_ID);
                 //Console.WriteLine(result.NUMBER_OF_EXTENSIONS);
 
-                #endregion
 
-                #region charging_batteries
+
+         
                 var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
                 var resultTables = oBLC.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
 
@@ -72,8 +72,6 @@ namespace WorkerService1
                             case var expression when (value < 50):
                                 table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 12;
                                 oBLC.Edit_Table(table);
-                #region Test worker service 
-                                break;
                                 Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
                                 break;
 
@@ -81,7 +79,8 @@ namespace WorkerService1
                                 table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 10;
                                 oBLC.Edit_Table(table);
                                 Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
-                            
+                                break;
+
                             case var expression when (value < 98):
                                 table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 3;
                                 oBLC.Edit_Table(table);
@@ -91,7 +90,7 @@ namespace WorkerService1
 
                     }
                 }
-                #endregion
+       
                 Console.WriteLine("5 seconds passed");
                 await Task.Delay(5*1000, stoppingToken);
 

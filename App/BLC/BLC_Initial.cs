@@ -105,13 +105,31 @@ namespace BLC
             #region Body Section.
             this.OnPreEvent_Edit_Table += BLC_OnPreEvent_Edit_Table;
             this.OnPostEvent_Edit_Table += BLC_OnPostEvent_Edit_Table;
+            this.OnPreEvent_Edit_Tables += BLC_OnPreEvent_Edit_Tables;
+            this.OnPostEvent_Edit_Tables += BLC_OnPostEvent_Edit_Tables;
+
+           
             #endregion
         }
 
+        private void BLC_OnPostEvent_Edit_Tables(Table i_Table, Enum_EditMode i_Enum_EditMode)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void BLC_OnPreEvent_Edit_Tables(Table i_Table, Enum_EditMode i_Enum_EditMode)
+        {
+            //throw new NotImplementedException();
+        }
+
         private void BLC_OnPostEvent_Edit_Table(Table i_Table, Enum_EditMode i_Enum_EditMode)
-        {   
+        {
 
             //throw new NotImplementedException();
+            //var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
+            //var result = this.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
+
+
         }
 
         private void BLC_OnPreEvent_Edit_Table(Table i_Table, Enum_EditMode i_Enum_EditMode)

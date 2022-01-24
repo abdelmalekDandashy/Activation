@@ -216,6 +216,7 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Get_Table_By_OWNER_ID");
             oCodeBooster.APIMethodsSelection.Add("Get_Table_By_Where");
             oCodeBooster.APIMethodsSelection.Add("Edit_Table");
+            oCodeBooster.APIMethodsSelection.Add("Edit_Tables");
             oCodeBooster.APIMethodsSelection.Add("Delete_Tables");
 
 

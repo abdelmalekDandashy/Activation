@@ -71,5 +71,7 @@ public  delegate void PreEvent_Handler_Edit_Table(Table i_Table,Enum_EditMode i_
 public  delegate void  PostEvent_Handler_Edit_Table(Table i_Table,Enum_EditMode i_Enum_EditMode);
 public event PreEvent_Handler_Edit_Table OnPreEvent_Edit_Table;
 public event PostEvent_Handler_Edit_Table OnPostEvent_Edit_Table;
+public event PreEvent_Handler_Edit_Table OnPreEvent_Edit_Tables;
+public event PostEvent_Handler_Edit_Table OnPostEvent_Edit_Tables;
 }
 }
