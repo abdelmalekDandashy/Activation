@@ -334,42 +334,39 @@ namespace BLC
                 , i_Table.OWNER_ID
                 );
 
-                #region get_tables
-                Params_Get_Table_By_TABLE_ID oParams_Get_Table_By_TABLE_ID = new Params_Get_Table_By_TABLE_ID();
-                try
-                {
-                oParams_Get_Table_By_TABLE_ID.TABLE_ID = i_Table.TABLE_ID;
-                _Table = Get_Table_By_TABLE_ID(oParams_Get_Table_By_TABLE_ID);
-
-                if (_Table != null)
-                {
-                    var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = this.OwnerID };
-                    var oResultListTables = this.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
-                    if (oResultListTables.Count > 0)
-                    {
-                        oListTables = oResultListTables;
-                        return oListTables;
-                    }
-
-                    }
-                    else
-                    {
-                        throw new BLCException("Could not find table u want to edit");
-                    }
-                }
-                catch
-                {
-                    
-                }
-                #endregion
+                
                 #region PostEvent_Edit_Tables
                 if (OnPostEvent_Edit_Tables != null)
                 {
-                    OnPostEvent_Edit_Tables(i_Table, oEditMode_Flag);
+                    OnPostEvent_Edit_Tables(oListTables, i_Table, oEditMode_Flag);
                 }
                 #endregion
                 oScope.Complete();
             }
+            #region get_tables
+            Params_Get_Table_By_TABLE_ID oParams_Get_Table_By_TABLE_ID = new Params_Get_Table_By_TABLE_ID();
+
+            oParams_Get_Table_By_TABLE_ID.TABLE_ID = i_Table.TABLE_ID;
+            _Table = Get_Table_By_TABLE_ID(oParams_Get_Table_By_TABLE_ID);
+
+            if (_Table.TABLE_ID != null)
+            {
+                var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = this.OwnerID };
+                var oResultListTables = this.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
+                if (oResultListTables.Count > 0)
+                {
+                    oListTables = oResultListTables;
+                    return oListTables;
+                }
+
+            }
+            if (_Table.TABLE_ID == null)
+            {
+                throw new BLCException("Could not find table that you Want to Edit");
+            }
+
+
+            #endregion
             #endregion
             if (OnPostEvent_General != null) { OnPostEvent_General("Edit_Table"); }
 

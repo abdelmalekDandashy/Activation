@@ -335,6 +335,68 @@ return oResult_Edit_Table;
 #endregion
 }
 #endregion
+#region Edit_Tables
+[HttpPost]
+[Route("Edit_Tables")]
+public Result_Edit_Tables Edit_Tables(Table i_Table)
+{
+#region Declaration And Initialization Section.
+List<Table>  oReturnValue = new List<Table> ();
+string i_Ticket = string.Empty;
+Result_Edit_Tables oResult_Edit_Tables = new Result_Edit_Tables();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Edit_Tables);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Edit_Tables(i_Table);
+oResult_Edit_Tables.My_Result = oReturnValue;
+oResult_Edit_Tables.My_Table = i_Table;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Edit_Tables.ExceptionMsg = string.Format("Edit_Tables : {0}", ex.Message);
+}
+else
+{
+oResult_Edit_Tables.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Edit_Tables;
+#endregion
+}
+#endregion
 #region Edit_User
 [HttpPost]
 [Route("Edit_User")]
@@ -556,11 +618,7 @@ throw new Exception("Invalid Ticket");
 //-------------------
 
 BLC.BLC oBLC_Default = new BLC.BLC();
-BLCInitializer oBLCInitializer = new BLCInitializer();
-oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
-oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
-oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
-oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_Table_By_Where);
 using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
 {
 oReturnValue = oBLC.Get_Table_By_Where(i_Params_Get_Table_By_Where);
@@ -768,6 +826,15 @@ public Extension My_Extension { get; set; }
 public partial class Result_Edit_Table : Action_Result
 {
 #region Properties.
+public Table My_Table { get; set; }
+#endregion
+}
+#endregion
+#region Result_Edit_Tables
+public partial class Result_Edit_Tables : Action_Result
+{
+#region Properties.
+public List<Table>  My_Result { get; set; }
 public Table My_Table { get; set; }
 #endregion
 }
