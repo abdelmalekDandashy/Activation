@@ -218,6 +218,20 @@ oList.Add(o);
 }
 return oList;
 }
+public List<Table> Get_Table_By_DEPO ( string DEPO)
+{
+List<Table> oList = new List<Table>();
+dynamic p = new ExpandoObject();
+p.DEPO = DEPO;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_DEPO", p);
+if (R != null) {foreach (var X in R) {
+Table o = new Table();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<User> Get_User_By_OWNER_ID ( Int32? OWNER_ID)
 {
 List<User> oList = new List<User>();
@@ -266,6 +280,20 @@ List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
 p.OWNER_ID = OWNER_ID;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_OWNER_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+Table o = new Table();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Table> Get_Table_By_DEPO_Adv ( string DEPO)
+{
+List<Table> oList = new List<Table>();
+dynamic p = new ExpandoObject();
+p.DEPO = DEPO;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_DEPO_ADV", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
@@ -571,6 +599,11 @@ public void Delete_Table_By_OWNER_ID ( Int32? OWNER_ID)
 {
 var p = new { OWNER_ID = OWNER_ID };
 ExecuteDelete("UPG_DELETE_TABLE_BY_OWNER_ID", p);
+}
+public void Delete_Table_By_DEPO ( string DEPO)
+{
+var p = new { DEPO = DEPO };
+ExecuteDelete("UPG_DELETE_TABLE_BY_DEPO", p);
 }
 public void Delete_User_By_OWNER_ID ( Int32? OWNER_ID)
 {

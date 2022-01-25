@@ -162,6 +162,26 @@ oList.Add(oTable);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_OWNER_ID_Adv");}
 return oList;
 }
+public List<Table> Get_Table_By_DEPO_Adv(Params_Get_Table_By_DEPO i_Params_Get_Table_By_DEPO)
+{
+List<Table> oList = new List<Table>();
+Table oTable = new Table();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_DEPO_Adv");}
+#region Body Section.
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_DEPO_Adv(i_Params_Get_Table_By_DEPO.DEPO);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTable = new Table();
+oTools.CopyPropValues(oDBEntry, oTable);
+oList.Add(oTable);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_DEPO_Adv");}
+return oList;
+}
 public List<User> Get_User_By_OWNER_ID_Adv(Params_Get_User_By_OWNER_ID i_Params_Get_User_By_OWNER_ID)
 {
 List<User> oList = new List<User>();

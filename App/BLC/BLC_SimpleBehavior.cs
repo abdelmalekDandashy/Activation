@@ -213,6 +213,26 @@ oList.Add(oTable);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_OWNER_ID");}
 return oList;
 }
+public List<Table> Get_Table_By_DEPO(Params_Get_Table_By_DEPO i_Params_Get_Table_By_DEPO)
+{
+List<Table> oList = new List<Table>();
+Table oTable = new Table();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_DEPO");}
+#region Body Section.
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_DEPO(i_Params_Get_Table_By_DEPO.DEPO);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTable = new Table();
+oTools.CopyPropValues(oDBEntry, oTable);
+oList.Add(oTable);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_DEPO");}
+return oList;
+}
 public List<User> Get_User_By_OWNER_ID(Params_Get_User_By_OWNER_ID i_Params_Get_User_By_OWNER_ID)
 {
 List<User> oList = new List<User>();
@@ -734,6 +754,41 @@ throw new Exception(ex.Message);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Table_By_OWNER_ID");}
+}
+public void Delete_Table_By_DEPO(Params_Delete_Table_By_DEPO i_Params_Delete_Table_By_DEPO)
+{
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Table_By_DEPO");}
+#region Body Section.
+try
+{
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Delete_Table_Execution)
+{
+_Stop_Delete_Table_Execution = false;
+return;
+}
+_AppContext.Delete_Table_By_DEPO(i_Params_Delete_Table_By_DEPO.DEPO);
+oScope.Complete();
+}
+}
+catch (BLCException blcex)
+{
+throw new BLCException(blcex.Message);
+}
+catch (Exception ex)
+{
+if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+{
+throw new BLCException("Cannot be deleted because of related records in other tables");
+}
+else
+{
+throw new Exception(ex.Message);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Table_By_DEPO");}
 }
 public void Delete_User_By_OWNER_ID(Params_Delete_User_By_OWNER_ID i_Params_Delete_User_By_OWNER_ID)
 {

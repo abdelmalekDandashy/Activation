@@ -103,6 +103,11 @@ public partial class Params_Get_Table_By_OWNER_ID
 public Int32? OWNER_ID {get;set;}
 
 }
+public partial class Params_Get_Table_By_DEPO
+{
+public string DEPO {get;set;}
+
+}
 public partial class Params_Get_User_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
@@ -254,6 +259,10 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Delete_Table_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
+}
+public partial class Params_Delete_Table_By_DEPO
+{
+public string DEPO {get;set;}
 }
 public partial class Params_Delete_User_By_OWNER_ID
 {
