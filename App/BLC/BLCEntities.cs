@@ -21,11 +21,11 @@ using System.Threading;
 
 namespace BLC
 {
-#region Params_Get_Extension_By_EXTENSION_ID
-public partial class Params_Get_Extension_By_EXTENSION_ID
+#region Params_Get_Depo_By_DEPO_ID
+public partial class Params_Get_Depo_By_DEPO_ID
 {
 #region Properties
-public Int32? EXTENSION_ID {get;set;}
+public Int32? DEPO_ID {get;set;}
 
 #endregion
 }
@@ -57,13 +57,13 @@ public long? USER_ID {get;set;}
 #endregion
 }
 #endregion
-public partial class Params_Get_Extension_By_EXTENSION_ID_List
+public partial class Params_Get_Depo_By_DEPO_ID_List
 {
-public List<Int32?> EXTENSION_ID_LIST {get;set;}
+public List<Int32?> DEPO_ID_LIST {get;set;}
 }
-public partial class Params_Get_Extension_By_EXTENSION_ID_List_SP
+public partial class Params_Get_Depo_By_DEPO_ID_List_SP
 {
-public string EXTENSION_ID_LIST {get;set;}
+public string DEPO_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Owner_By_OWNER_ID_List
@@ -93,7 +93,7 @@ public partial class Params_Get_User_By_USER_ID_List_SP
 public string USER_ID_LIST {get;set;}
 
 }
-public partial class Params_Get_Extension_By_OWNER_ID
+public partial class Params_Get_Depo_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
 
@@ -103,9 +103,9 @@ public partial class Params_Get_Table_By_OWNER_ID
 public Int32? OWNER_ID {get;set;}
 
 }
-public partial class Params_Get_Table_By_DEPO
+public partial class Params_Get_Table_By_DEPO_ID
 {
-public string DEPO {get;set;}
+public Int32? DEPO_ID {get;set;}
 
 }
 public partial class Params_Get_User_By_OWNER_ID
@@ -118,23 +118,10 @@ public partial class Params_Get_User_By_USERNAME
 public string USERNAME {get;set;}
 
 }
-public partial class Params_Get_Extension_By_Criteria
+public partial class Params_Get_Table_By_DEPO_ID_List
 {
+public List<Int32?> DEPO_ID_LIST {get;set;}
 
-public Int32? OWNER_ID {get;set;}
-public string EXTENSION_TYPE {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Extension_By_Where
-{
-
-public Int32? OWNER_ID {get;set;}
-public string EXTENSION_TYPE {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
 }
 public partial class Params_Get_Owner_By_Criteria
 {
@@ -183,7 +170,6 @@ public partial class Params_Get_Table_By_Criteria
 
 public Int32? OWNER_ID {get;set;}
 public string TABLE_NAME {get;set;}
-public string DEPO {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -193,7 +179,6 @@ public partial class Params_Get_Table_By_Where
 
 public Int32? OWNER_ID {get;set;}
 public string TABLE_NAME {get;set;}
-public string DEPO {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -220,11 +205,49 @@ public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
 }
-#region Params_Delete_Extension
-public partial class Params_Delete_Extension
+public partial class Params_Get_Table_By_Criteria_InList
+{
+
+public Int32? OWNER_ID {get;set;}
+public string TABLE_NAME {get;set;}
+public List<Int32?> DEPO_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_Table_By_Criteria_InList_SP
+{
+public Int32? OWNER_ID {get;set;}
+public string TABLE_NAME {get;set;}
+public string DEPO_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_Table_By_Where_InList
+{
+
+public Int32? OWNER_ID {get;set;}
+public string TABLE_NAME {get;set;}
+public List<Int32?> DEPO_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_Table_By_Where_InList_SP
+{
+public Int32? OWNER_ID {get;set;}
+public string TABLE_NAME {get;set;}
+public string DEPO_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+#region Params_Delete_Depo
+public partial class Params_Delete_Depo
 {
 #region Properties
-public Int32? EXTENSION_ID {get;set;}
+public Int32? DEPO_ID {get;set;}
 #endregion
 }
 #endregion
@@ -252,7 +275,7 @@ public long? USER_ID {get;set;}
 #endregion
 }
 #endregion
-public partial class Params_Delete_Extension_By_OWNER_ID
+public partial class Params_Delete_Depo_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
 }
@@ -260,9 +283,9 @@ public partial class Params_Delete_Table_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
 }
-public partial class Params_Delete_Table_By_DEPO
+public partial class Params_Delete_Table_By_DEPO_ID
 {
-public string DEPO {get;set;}
+public Int32? DEPO_ID {get;set;}
 }
 public partial class Params_Delete_User_By_OWNER_ID
 {
@@ -272,13 +295,14 @@ public partial class Params_Delete_User_By_USERNAME
 {
 public string USERNAME {get;set;}
 }
-public partial class Extension
+public partial class Depo
 {
-public Int32? EXTENSION_ID {get;set;}
-public string EXTENSION_TYPE {get;set;}
-public Int32? NUMBER_OF_EXTENSIONS {get;set;}
-public long? ENTRY_USER_ID {get;set;}
+public Int32? DEPO_ID {get;set;}
+public string DEPO_NAME {get;set;}
+public Int32? NB_OF_TYPE_A {get;set;}
+public Int32? NB_OF_TYPE_B {get;set;}
 public string ENTRY_DATE {get;set;}
+public long? ENTRY_USER_ID {get;set;}
 public Int32? OWNER_ID {get;set;}
 }
 public partial class Owner
@@ -295,10 +319,10 @@ public Int32? TABLE_ID {get;set;}
 public string TABLE_NAME {get;set;}
 public Int32? TABLE_AGE_COUNTER {get;set;}
 public bool? IS_CHARGING {get;set;}
-public Int32? CHARGING_PERCENTAGE {get;set;}
 public Int32? NB_OF_TYPE_A {get;set;}
 public Int32? NB_OF_TYPE_C {get;set;}
-public string DEPO {get;set;}
+public Int32? CHARGING_PERCENTAGE {get;set;}
+public Int32? DEPO_ID {get;set;}
 public bool? IS_READY {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
@@ -314,12 +338,12 @@ public string USER_TYPE_CODE {get;set;}
 public bool? IS_ACTIVE {get;set;}
 public string ENTRY_DATE {get;set;}
 }
-#region Params_Edit_Extension_List
-public partial class Params_Edit_Extension_List
+#region Params_Edit_Depo_List
+public partial class Params_Edit_Depo_List
 {
 #region Properties
-public List<Extension> My_List_To_Edit { get; set; }
-public List<Extension> My_List_To_Delete { get; set; }
+public List<Depo> My_List_To_Edit { get; set; }
+public List<Depo> My_List_To_Delete { get; set; }
 #endregion
 }
 #endregion

@@ -25,14 +25,14 @@ public partial class BLC
 {
 #region Members
 #region Used For Delete Operations
-private Extension _Extension;
+private Depo _Depo;
 private Owner _Owner;
 private Table _Table;
 private User _User;
 #endregion
 #region Stop Executing Flags For Edit and Delete Operations
-private bool _Stop_Edit_Extension_Execution;
-private bool _Stop_Delete_Extension_Execution;
+private bool _Stop_Edit_Depo_Execution;
+private bool _Stop_Delete_Depo_Execution;
 private bool _Stop_Edit_Owner_Execution;
 private bool _Stop_Delete_Owner_Execution;
 private bool _Stop_Edit_Table_Execution;
@@ -41,17 +41,17 @@ private bool _Stop_Edit_User_Execution;
 private bool _Stop_Delete_User_Execution;
 #endregion
 #endregion
-public Extension Get_Extension_By_EXTENSION_ID(Params_Get_Extension_By_EXTENSION_ID i_Params_Get_Extension_By_EXTENSION_ID)
+public Depo Get_Depo_By_DEPO_ID(Params_Get_Depo_By_DEPO_ID i_Params_Get_Depo_By_DEPO_ID)
 {
-Extension oExtension = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Extension_By_EXTENSION_ID");}
+Depo oDepo = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Depo_By_DEPO_ID");}
 #region Body Section.
-DALC.Extension oDBEntry = _AppContext.Get_Extension_By_EXTENSION_ID(i_Params_Get_Extension_By_EXTENSION_ID.EXTENSION_ID);
-oExtension = new Extension();
-oTools.CopyPropValues(oDBEntry, oExtension);
+DALC.Depo oDBEntry = _AppContext.Get_Depo_By_DEPO_ID(i_Params_Get_Depo_By_DEPO_ID.DEPO_ID);
+oDepo = new Depo();
+oTools.CopyPropValues(oDBEntry, oDepo);
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Extension_By_EXTENSION_ID");}
-return oExtension;
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Depo_By_DEPO_ID");}
+return oDepo;
 }
 public Owner Get_Owner_By_OWNER_ID(Params_Get_Owner_By_OWNER_ID i_Params_Get_Owner_By_OWNER_ID)
 {
@@ -89,25 +89,25 @@ oTools.CopyPropValues(oDBEntry, oUser);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID");}
 return oUser;
 }
-public List<Extension> Get_Extension_By_EXTENSION_ID_List(Params_Get_Extension_By_EXTENSION_ID_List i_Params_Get_Extension_By_EXTENSION_ID_List)
+public List<Depo> Get_Depo_By_DEPO_ID_List(Params_Get_Depo_By_DEPO_ID_List i_Params_Get_Depo_By_DEPO_ID_List)
 {
-Extension oExtension = null;
-List<Extension> oList = new List<Extension>();
-Params_Get_Extension_By_EXTENSION_ID_List_SP oParams_Get_Extension_By_EXTENSION_ID_List_SP = new Params_Get_Extension_By_EXTENSION_ID_List_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Extension_By_EXTENSION_ID_List");}
+Depo oDepo = null;
+List<Depo> oList = new List<Depo>();
+Params_Get_Depo_By_DEPO_ID_List_SP oParams_Get_Depo_By_DEPO_ID_List_SP = new Params_Get_Depo_By_DEPO_ID_List_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Depo_By_DEPO_ID_List");}
 #region Body Section.
-List<DALC.Extension> oList_DBEntries = _AppContext.Get_Extension_By_EXTENSION_ID_List(i_Params_Get_Extension_By_EXTENSION_ID_List.EXTENSION_ID_LIST);
+List<DALC.Depo> oList_DBEntries = _AppContext.Get_Depo_By_DEPO_ID_List(i_Params_Get_Depo_By_DEPO_ID_List.DEPO_ID_LIST);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oExtension = new Extension();
-oTools.CopyPropValues(oDBEntry, oExtension);
-oList.Add(oExtension);
+oDepo = new Depo();
+oTools.CopyPropValues(oDBEntry, oDepo);
+oList.Add(oDepo);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Extension_By_EXTENSION_ID_List");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Depo_By_DEPO_ID_List");}
 return oList;
 }
 public List<Owner> Get_Owner_By_OWNER_ID_List(Params_Get_Owner_By_OWNER_ID_List i_Params_Get_Owner_By_OWNER_ID_List)
@@ -173,24 +173,24 @@ oList.Add(oUser);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID_List");}
 return oList;
 }
-public List<Extension> Get_Extension_By_OWNER_ID(Params_Get_Extension_By_OWNER_ID i_Params_Get_Extension_By_OWNER_ID)
+public List<Depo> Get_Depo_By_OWNER_ID(Params_Get_Depo_By_OWNER_ID i_Params_Get_Depo_By_OWNER_ID)
 {
-List<Extension> oList = new List<Extension>();
-Extension oExtension = new Extension();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Extension_By_OWNER_ID");}
+List<Depo> oList = new List<Depo>();
+Depo oDepo = new Depo();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Depo_By_OWNER_ID");}
 #region Body Section.
-List<DALC.Extension> oList_DBEntries = _AppContext.Get_Extension_By_OWNER_ID(i_Params_Get_Extension_By_OWNER_ID.OWNER_ID);
+List<DALC.Depo> oList_DBEntries = _AppContext.Get_Depo_By_OWNER_ID(i_Params_Get_Depo_By_OWNER_ID.OWNER_ID);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oExtension = new Extension();
-oTools.CopyPropValues(oDBEntry, oExtension);
-oList.Add(oExtension);
+oDepo = new Depo();
+oTools.CopyPropValues(oDBEntry, oDepo);
+oList.Add(oDepo);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Extension_By_OWNER_ID");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Depo_By_OWNER_ID");}
 return oList;
 }
 public List<Table> Get_Table_By_OWNER_ID(Params_Get_Table_By_OWNER_ID i_Params_Get_Table_By_OWNER_ID)
@@ -213,13 +213,13 @@ oList.Add(oTable);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_OWNER_ID");}
 return oList;
 }
-public List<Table> Get_Table_By_DEPO(Params_Get_Table_By_DEPO i_Params_Get_Table_By_DEPO)
+public List<Table> Get_Table_By_DEPO_ID(Params_Get_Table_By_DEPO_ID i_Params_Get_Table_By_DEPO_ID)
 {
 List<Table> oList = new List<Table>();
 Table oTable = new Table();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_DEPO");}
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_DEPO_ID");}
 #region Body Section.
-List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_DEPO(i_Params_Get_Table_By_DEPO.DEPO);
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_DEPO_ID(i_Params_Get_Table_By_DEPO_ID.DEPO_ID);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -230,7 +230,7 @@ oList.Add(oTable);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_DEPO");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_DEPO_ID");}
 return oList;
 }
 public List<User> Get_User_By_OWNER_ID(Params_Get_User_By_OWNER_ID i_Params_Get_User_By_OWNER_ID)
@@ -273,54 +273,24 @@ oList.Add(oUser);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USERNAME");}
 return oList;
 }
-public List<Extension> Get_Extension_By_Criteria(Params_Get_Extension_By_Criteria i_Params_Get_Extension_By_Criteria)
+public List<Table> Get_Table_By_DEPO_ID_List(Params_Get_Table_By_DEPO_ID_List i_Params_Get_Table_By_DEPO_ID_List)
 {
-List<Extension> oList = new List<Extension>();
-Extension oExtension = new Extension();
-long? tmp_TOTAL_COUNT = 0;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Extension_By_Criteria");}
+List<Table> oList = new List<Table>();
+Table oTable = new Table();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_DEPO_ID_List");}
 #region Body Section.
-if ((i_Params_Get_Extension_By_Criteria.OWNER_ID == null) || (i_Params_Get_Extension_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Extension_By_Criteria.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Extension_By_Criteria.START_ROW == null) { i_Params_Get_Extension_By_Criteria.START_ROW = 0; }
-if ((i_Params_Get_Extension_By_Criteria.END_ROW == null) || (i_Params_Get_Extension_By_Criteria.END_ROW == 0)) { i_Params_Get_Extension_By_Criteria.END_ROW = 1000000; }
-List<DALC.Extension> oList_DBEntries = _AppContext.Get_Extension_By_Criteria(i_Params_Get_Extension_By_Criteria.EXTENSION_TYPE,i_Params_Get_Extension_By_Criteria.OWNER_ID,i_Params_Get_Extension_By_Criteria.START_ROW,i_Params_Get_Extension_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_DEPO_ID_List(i_Params_Get_Table_By_DEPO_ID_List.DEPO_ID_LIST);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oExtension = new Extension();
-oTools.CopyPropValues(oDBEntry, oExtension);
-oList.Add(oExtension);
+oTable = new Table();
+oTools.CopyPropValues(oDBEntry, oTable);
+oList.Add(oTable);
 }
 }
-i_Params_Get_Extension_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Extension_By_Criteria");}
-return oList;
-}
-public List<Extension> Get_Extension_By_Where(Params_Get_Extension_By_Where i_Params_Get_Extension_By_Where)
-{
-List<Extension> oList = new List<Extension>();
-Extension oExtension = new Extension();
-long? tmp_TOTAL_COUNT = 0;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Extension_By_Where");}
-#region Body Section.
-if ((i_Params_Get_Extension_By_Where.OWNER_ID == null) || (i_Params_Get_Extension_By_Where.OWNER_ID == 0)) { i_Params_Get_Extension_By_Where.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Extension_By_Where.START_ROW == null) { i_Params_Get_Extension_By_Where.START_ROW = 0; }
-if ((i_Params_Get_Extension_By_Where.END_ROW == null) || (i_Params_Get_Extension_By_Where.END_ROW == 0)) { i_Params_Get_Extension_By_Where.END_ROW = 1000000; }
-List<DALC.Extension> oList_DBEntries = _AppContext.Get_Extension_By_Where(i_Params_Get_Extension_By_Where.EXTENSION_TYPE,i_Params_Get_Extension_By_Where.OWNER_ID,i_Params_Get_Extension_By_Where.START_ROW,i_Params_Get_Extension_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oExtension = new Extension();
-oTools.CopyPropValues(oDBEntry, oExtension);
-oList.Add(oExtension);
-}
-}
-i_Params_Get_Extension_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Extension_By_Where");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_DEPO_ID_List");}
 return oList;
 }
 public List<Owner> Get_Owner_By_Criteria(Params_Get_Owner_By_Criteria i_Params_Get_Owner_By_Criteria)
@@ -433,7 +403,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_Criteria");}
 if ((i_Params_Get_Table_By_Criteria.OWNER_ID == null) || (i_Params_Get_Table_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Table_By_Criteria.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_Table_By_Criteria.START_ROW == null) { i_Params_Get_Table_By_Criteria.START_ROW = 0; }
 if ((i_Params_Get_Table_By_Criteria.END_ROW == null) || (i_Params_Get_Table_By_Criteria.END_ROW == 0)) { i_Params_Get_Table_By_Criteria.END_ROW = 1000000; }
-List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Criteria(i_Params_Get_Table_By_Criteria.TABLE_NAME,i_Params_Get_Table_By_Criteria.DEPO,i_Params_Get_Table_By_Criteria.OWNER_ID,i_Params_Get_Table_By_Criteria.START_ROW,i_Params_Get_Table_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Criteria(i_Params_Get_Table_By_Criteria.TABLE_NAME,i_Params_Get_Table_By_Criteria.OWNER_ID,i_Params_Get_Table_By_Criteria.START_ROW,i_Params_Get_Table_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -458,7 +428,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_Where");}
 if ((i_Params_Get_Table_By_Where.OWNER_ID == null) || (i_Params_Get_Table_By_Where.OWNER_ID == 0)) { i_Params_Get_Table_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_Table_By_Where.START_ROW == null) { i_Params_Get_Table_By_Where.START_ROW = 0; }
 if ((i_Params_Get_Table_By_Where.END_ROW == null) || (i_Params_Get_Table_By_Where.END_ROW == 0)) { i_Params_Get_Table_By_Where.END_ROW = 1000000; }
-List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Where(i_Params_Get_Table_By_Where.TABLE_NAME,i_Params_Get_Table_By_Where.DEPO,i_Params_Get_Table_By_Where.OWNER_ID,i_Params_Get_Table_By_Where.START_ROW,i_Params_Get_Table_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Where(i_Params_Get_Table_By_Where.TABLE_NAME,i_Params_Get_Table_By_Where.OWNER_ID,i_Params_Get_Table_By_Where.START_ROW,i_Params_Get_Table_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -523,25 +493,99 @@ i_Params_Get_User_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_Where");}
 return oList;
 }
-public void Delete_Extension(Params_Delete_Extension i_Params_Delete_Extension)
+public List<Table> Get_Table_By_Criteria_InList(Params_Get_Table_By_Criteria_InList i_Params_Get_Table_By_Criteria_InList)
 {
-Params_Get_Extension_By_EXTENSION_ID oParams_Get_Extension_By_EXTENSION_ID = new Params_Get_Extension_By_EXTENSION_ID();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Extension");}
+List<Table> oList = new List<Table>();
+Table oTable = new Table();
+long? tmp_TOTAL_COUNT = 0;
+Params_Get_Table_By_Criteria_InList_SP oParams_Get_Table_By_Criteria_InList_SP = new Params_Get_Table_By_Criteria_InList_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_Criteria_InList");}
+#region Body Section.
+if ((i_Params_Get_Table_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_Table_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_Table_By_Criteria_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Table_By_Criteria_InList.START_ROW == null) { i_Params_Get_Table_By_Criteria_InList.START_ROW = 0; }
+if ((i_Params_Get_Table_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Table_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Table_By_Criteria_InList.END_ROW = 1000000; }
+oParams_Get_Table_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Table_By_Criteria_InList.OWNER_ID;
+oParams_Get_Table_By_Criteria_InList_SP.TABLE_NAME = i_Params_Get_Table_By_Criteria_InList.TABLE_NAME;
+if ( i_Params_Get_Table_By_Criteria_InList.DEPO_ID_LIST == null)
+{
+i_Params_Get_Table_By_Criteria_InList.DEPO_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Table_By_Criteria_InList_SP.DEPO_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Table_By_Criteria_InList.DEPO_ID_LIST);
+oParams_Get_Table_By_Criteria_InList_SP.START_ROW = i_Params_Get_Table_By_Criteria_InList.START_ROW;
+oParams_Get_Table_By_Criteria_InList_SP.END_ROW = i_Params_Get_Table_By_Criteria_InList.END_ROW;
+oParams_Get_Table_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Table_By_Criteria_InList.TOTAL_COUNT;
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Criteria_InList(i_Params_Get_Table_By_Criteria_InList.TABLE_NAME,i_Params_Get_Table_By_Criteria_InList.DEPO_ID_LIST,i_Params_Get_Table_By_Criteria_InList.OWNER_ID,i_Params_Get_Table_By_Criteria_InList.START_ROW,i_Params_Get_Table_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTable = new Table();
+oTools.CopyPropValues(oDBEntry, oTable);
+oList.Add(oTable);
+}
+}
+i_Params_Get_Table_By_Criteria_InList.TOTAL_COUNT = oParams_Get_Table_By_Criteria_InList_SP.TOTAL_COUNT;
+i_Params_Get_Table_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_Criteria_InList");}
+return oList;
+}
+public List<Table> Get_Table_By_Where_InList(Params_Get_Table_By_Where_InList i_Params_Get_Table_By_Where_InList)
+{
+List<Table> oList = new List<Table>();
+Table oTable = new Table();
+long? tmp_TOTAL_COUNT = 0;
+Params_Get_Table_By_Where_InList_SP oParams_Get_Table_By_Where_InList_SP = new Params_Get_Table_By_Where_InList_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Table_By_Where_InList");}
+#region Body Section.
+if ((i_Params_Get_Table_By_Where_InList.OWNER_ID == null) || (i_Params_Get_Table_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_Table_By_Where_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Table_By_Where_InList.START_ROW == null) { i_Params_Get_Table_By_Where_InList.START_ROW = 0; }
+if ((i_Params_Get_Table_By_Where_InList.END_ROW == null) || (i_Params_Get_Table_By_Where_InList.END_ROW == 0)) { i_Params_Get_Table_By_Where_InList.END_ROW = 1000000; }
+oParams_Get_Table_By_Where_InList_SP.OWNER_ID = i_Params_Get_Table_By_Where_InList.OWNER_ID;
+oParams_Get_Table_By_Where_InList_SP.TABLE_NAME = i_Params_Get_Table_By_Where_InList.TABLE_NAME;
+if ( i_Params_Get_Table_By_Where_InList.DEPO_ID_LIST == null)
+{
+i_Params_Get_Table_By_Where_InList.DEPO_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Table_By_Where_InList_SP.DEPO_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Table_By_Where_InList.DEPO_ID_LIST);
+oParams_Get_Table_By_Where_InList_SP.START_ROW = i_Params_Get_Table_By_Where_InList.START_ROW;
+oParams_Get_Table_By_Where_InList_SP.END_ROW = i_Params_Get_Table_By_Where_InList.END_ROW;
+oParams_Get_Table_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Table_By_Where_InList.TOTAL_COUNT;
+List<DALC.Table> oList_DBEntries = _AppContext.Get_Table_By_Where_InList(i_Params_Get_Table_By_Where_InList.TABLE_NAME,i_Params_Get_Table_By_Where_InList.DEPO_ID_LIST,i_Params_Get_Table_By_Where_InList.OWNER_ID,i_Params_Get_Table_By_Where_InList.START_ROW,i_Params_Get_Table_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oTable = new Table();
+oTools.CopyPropValues(oDBEntry, oTable);
+oList.Add(oTable);
+}
+}
+i_Params_Get_Table_By_Where_InList.TOTAL_COUNT = oParams_Get_Table_By_Where_InList_SP.TOTAL_COUNT;
+i_Params_Get_Table_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_Where_InList");}
+return oList;
+}
+public void Delete_Depo(Params_Delete_Depo i_Params_Delete_Depo)
+{
+Params_Get_Depo_By_DEPO_ID oParams_Get_Depo_By_DEPO_ID = new Params_Get_Depo_By_DEPO_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Depo");}
 #region Body Section.
 try
 {
-oParams_Get_Extension_By_EXTENSION_ID.EXTENSION_ID = i_Params_Delete_Extension.EXTENSION_ID;
-_Extension = Get_Extension_By_EXTENSION_ID_Adv(oParams_Get_Extension_By_EXTENSION_ID);
-if (_Extension != null)
+oParams_Get_Depo_By_DEPO_ID.DEPO_ID = i_Params_Delete_Depo.DEPO_ID;
+_Depo = Get_Depo_By_DEPO_ID_Adv(oParams_Get_Depo_By_DEPO_ID);
+if (_Depo != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
-if (_Stop_Delete_Extension_Execution)
+if (_Stop_Delete_Depo_Execution)
 {
-_Stop_Delete_Extension_Execution = false;
+_Stop_Delete_Depo_Execution = false;
 return;
 }
-_AppContext.Delete_Extension(i_Params_Delete_Extension.EXTENSION_ID);
+_AppContext.Delete_Depo(i_Params_Delete_Depo.DEPO_ID);
 oScope.Complete();
 }
 }
@@ -562,7 +606,7 @@ throw new Exception(ex.Message);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Extension");}
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Depo");}
 }
 public void Delete_Owner(Params_Delete_Owner i_Params_Delete_Owner)
 {
@@ -681,22 +725,22 @@ throw new Exception(ex.Message);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_User");}
 }
-public void Delete_Extension_By_OWNER_ID(Params_Delete_Extension_By_OWNER_ID i_Params_Delete_Extension_By_OWNER_ID)
+public void Delete_Depo_By_OWNER_ID(Params_Delete_Depo_By_OWNER_ID i_Params_Delete_Depo_By_OWNER_ID)
 {
-Params_Get_Extension_By_OWNER_ID oParams_Get_Extension_By_OWNER_ID = new Params_Get_Extension_By_OWNER_ID();
-List<Extension> _List_Extension = new List<Extension>();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Extension_By_OWNER_ID");}
+Params_Get_Depo_By_OWNER_ID oParams_Get_Depo_By_OWNER_ID = new Params_Get_Depo_By_OWNER_ID();
+List<Depo> _List_Depo = new List<Depo>();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Depo_By_OWNER_ID");}
 #region Body Section.
 try
 {
 using (TransactionScope oScope = new TransactionScope())
 {
-if (_Stop_Delete_Extension_Execution)
+if (_Stop_Delete_Depo_Execution)
 {
-_Stop_Delete_Extension_Execution = false;
+_Stop_Delete_Depo_Execution = false;
 return;
 }
-_AppContext.Delete_Extension_By_OWNER_ID(i_Params_Delete_Extension_By_OWNER_ID.OWNER_ID);
+_AppContext.Delete_Depo_By_OWNER_ID(i_Params_Delete_Depo_By_OWNER_ID.OWNER_ID);
 oScope.Complete();
 }
 }
@@ -716,7 +760,7 @@ throw new Exception(ex.Message);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Extension_By_OWNER_ID");}
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Depo_By_OWNER_ID");}
 }
 public void Delete_Table_By_OWNER_ID(Params_Delete_Table_By_OWNER_ID i_Params_Delete_Table_By_OWNER_ID)
 {
@@ -755,9 +799,11 @@ throw new Exception(ex.Message);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Table_By_OWNER_ID");}
 }
-public void Delete_Table_By_DEPO(Params_Delete_Table_By_DEPO i_Params_Delete_Table_By_DEPO)
+public void Delete_Table_By_DEPO_ID(Params_Delete_Table_By_DEPO_ID i_Params_Delete_Table_By_DEPO_ID)
 {
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Table_By_DEPO");}
+Params_Get_Table_By_DEPO_ID oParams_Get_Table_By_DEPO_ID = new Params_Get_Table_By_DEPO_ID();
+List<Table> _List_Table = new List<Table>();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Table_By_DEPO_ID");}
 #region Body Section.
 try
 {
@@ -768,7 +814,7 @@ if (_Stop_Delete_Table_Execution)
 _Stop_Delete_Table_Execution = false;
 return;
 }
-_AppContext.Delete_Table_By_DEPO(i_Params_Delete_Table_By_DEPO.DEPO);
+_AppContext.Delete_Table_By_DEPO_ID(i_Params_Delete_Table_By_DEPO_ID.DEPO_ID);
 oScope.Complete();
 }
 }
@@ -788,7 +834,7 @@ throw new Exception(ex.Message);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Table_By_DEPO");}
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Table_By_DEPO_ID");}
 }
 public void Delete_User_By_OWNER_ID(Params_Delete_User_By_OWNER_ID i_Params_Delete_User_By_OWNER_ID)
 {
@@ -864,39 +910,40 @@ throw new Exception(ex.Message);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_USERNAME");}
 }
-public void Edit_Extension(Extension i_Extension) 
+public void Edit_Depo(Depo i_Depo) 
 {
 Enum_EditMode oEditMode_Flag = Enum_EditMode.Update;
-if (i_Extension.EXTENSION_ID == -1)
+if (i_Depo.DEPO_ID == -1)
 {
 oEditMode_Flag = Enum_EditMode.Add;
 }
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Extension");}
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Depo");}
 #region Body Section.
-if ((i_Extension.EXTENSION_ID == null) || (i_Extension.EXTENSION_ID == 0)) { throw new BLCException("Missing primary key while calling Edit_Extension"); }
-i_Extension.ENTRY_USER_ID = this.UserID;
-i_Extension.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
-i_Extension.OWNER_ID      = this.OwnerID;
+if ((i_Depo.DEPO_ID == null) || (i_Depo.DEPO_ID == 0)) { throw new BLCException("Missing primary key while calling Edit_Depo"); }
+i_Depo.ENTRY_USER_ID = this.UserID;
+i_Depo.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
+i_Depo.OWNER_ID      = this.OwnerID;
 using (TransactionScope oScope = new TransactionScope())
 {
-if (_Stop_Edit_Extension_Execution)
+if (_Stop_Edit_Depo_Execution)
 {
-_Stop_Edit_Extension_Execution = false;
+_Stop_Edit_Depo_Execution = false;
 return;
 }
-i_Extension.EXTENSION_ID = _AppContext.Edit_Extension
+i_Depo.DEPO_ID = _AppContext.Edit_Depo
 (
-i_Extension.EXTENSION_ID
-,i_Extension.EXTENSION_TYPE
-,i_Extension.NUMBER_OF_EXTENSIONS
-,i_Extension.ENTRY_USER_ID
-,i_Extension.ENTRY_DATE
-,i_Extension.OWNER_ID
+i_Depo.DEPO_ID
+,i_Depo.DEPO_NAME
+,i_Depo.NB_OF_TYPE_A
+,i_Depo.NB_OF_TYPE_B
+,i_Depo.ENTRY_DATE
+,i_Depo.ENTRY_USER_ID
+,i_Depo.OWNER_ID
 );
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Extension");}
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Depo");}
 }
 public void Edit_Owner(Owner i_Owner) 
 {
@@ -962,10 +1009,10 @@ i_Table.TABLE_ID
 ,i_Table.TABLE_NAME
 ,i_Table.TABLE_AGE_COUNTER
 ,i_Table.IS_CHARGING
-,i_Table.CHARGING_PERCENTAGE
 ,i_Table.NB_OF_TYPE_A
 ,i_Table.NB_OF_TYPE_C
-,i_Table.DEPO
+,i_Table.CHARGING_PERCENTAGE
+,i_Table.DEPO_ID
 ,i_Table.IS_READY
 ,i_Table.ENTRY_USER_ID
 ,i_Table.ENTRY_DATE
@@ -1016,48 +1063,48 @@ oScope.Complete();
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Edit_User");}
 }
-public void Edit_Extension_List(List<Extension> i_List_Extension)
+public void Edit_Depo_List(List<Depo> i_List_Depo)
 {
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Extension_List");}
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Depo_List");}
 #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
-if (i_List_Extension != null)
+if (i_List_Depo != null)
 {
-foreach (var oRow in i_List_Extension)
+foreach (var oRow in i_List_Depo)
 {
-Edit_Extension(oRow);
+Edit_Depo(oRow);
 }
 }
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Extension_List");}
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Depo_List");}
 }
-public void Edit_Extension_List(Params_Edit_Extension_List i_Params_Edit_Extension_List)
+public void Edit_Depo_List(Params_Edit_Depo_List i_Params_Edit_Depo_List)
 {
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Extension_List");}
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Depo_List");}
 #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
-if (i_Params_Edit_Extension_List.My_List_To_Delete != null)
+if (i_Params_Edit_Depo_List.My_List_To_Delete != null)
 {
-foreach (var oRow in i_Params_Edit_Extension_List.My_List_To_Delete)
+foreach (var oRow in i_Params_Edit_Depo_List.My_List_To_Delete)
 {
-Delete_Extension(new Params_Delete_Extension() { EXTENSION_ID = oRow.EXTENSION_ID });
+Delete_Depo(new Params_Delete_Depo() { DEPO_ID = oRow.DEPO_ID });
 }
 }
-if (i_Params_Edit_Extension_List.My_List_To_Edit != null)
+if (i_Params_Edit_Depo_List.My_List_To_Edit != null)
 {
-foreach (var oRow in i_Params_Edit_Extension_List.My_List_To_Edit)
+foreach (var oRow in i_Params_Edit_Depo_List.My_List_To_Edit)
 {
-Edit_Extension(oRow);
+Edit_Depo(oRow);
 }
 }
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Extension_List");}
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Depo_List");}
 }
 public void Edit_Owner_List(List<Owner> i_List_Owner)
 {

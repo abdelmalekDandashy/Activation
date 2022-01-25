@@ -93,6 +93,70 @@ return oResult_Authenticate;
 #endregion
 }
 #endregion
+#region Delete_Depo
+[HttpPost]
+[Route("Delete_Depo")]
+public Result_Delete_Depo Delete_Depo(Params_Delete_Depo i_Params_Delete_Depo)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Delete_Depo oResult_Delete_Depo = new Result_Delete_Depo();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Delete_Depo(i_Params_Delete_Depo);
+oResult_Delete_Depo.My_Params_Delete_Depo = i_Params_Delete_Depo;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Delete_Depo.ExceptionMsg = string.Format("Delete_Depo : {0}", ex.Message);
+}
+else
+{
+oResult_Delete_Depo.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Delete_Depo;
+#endregion
+}
+#endregion
 #region Delete_Tables
 [HttpPost]
 [Route("Delete_Tables")]
@@ -215,14 +279,14 @@ return oResult_Delete_User;
 #endregion
 }
 #endregion
-#region Edit_Extension
+#region Edit_Depo
 [HttpPost]
-[Route("Edit_Extension")]
-public Result_Edit_Extension Edit_Extension(Extension i_Extension)
+[Route("Edit_Depo")]
+public Result_Edit_Depo Edit_Depo(Depo i_Depo)
 {
 #region Declaration And Initialization Section.
 string i_Ticket = string.Empty;
-Result_Edit_Extension oResult_Edit_Extension = new Result_Edit_Extension();
+Result_Edit_Depo oResult_Edit_Depo = new Result_Edit_Depo();
 #endregion
 #region Body Section.
 try
@@ -251,27 +315,31 @@ throw new Exception("Invalid Ticket");
 //-------------------
 
 BLC.BLC oBLC_Default = new BLC.BLC();
-BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Edit_Extension);
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
 using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
 {
-oBLC.Edit_Extension(i_Extension);
-oResult_Edit_Extension.My_Extension = i_Extension;
+oBLC.Edit_Depo(i_Depo);
+oResult_Edit_Depo.My_Depo = i_Depo;
 }
 }
 catch(Exception ex)
 {
 if (ex.GetType().FullName != "BLC.BLCException")
 {
-oResult_Edit_Extension.ExceptionMsg = string.Format("Edit_Extension : {0}", ex.Message);
+oResult_Edit_Depo.ExceptionMsg = string.Format("Edit_Depo : {0}", ex.Message);
 }
 else
 {
-oResult_Edit_Extension.ExceptionMsg = ex.Message;
+oResult_Edit_Depo.ExceptionMsg = ex.Message;
 }
 }
 #endregion
 #region Return Section
-return oResult_Edit_Extension;
+return oResult_Edit_Depo;
 #endregion
 }
 #endregion
@@ -457,15 +525,15 @@ return oResult_Edit_User;
 #endregion
 }
 #endregion
-#region Get_Extension_By_OWNER_ID
+#region Get_Depo_By_OWNER_ID
 [HttpPost]
-[Route("Get_Extension_By_OWNER_ID")]
-public Result_Get_Extension_By_OWNER_ID Get_Extension_By_OWNER_ID(Params_Get_Extension_By_OWNER_ID i_Params_Get_Extension_By_OWNER_ID)
+[Route("Get_Depo_By_OWNER_ID")]
+public Result_Get_Depo_By_OWNER_ID Get_Depo_By_OWNER_ID(Params_Get_Depo_By_OWNER_ID i_Params_Get_Depo_By_OWNER_ID)
 {
 #region Declaration And Initialization Section.
-List<Extension>  oReturnValue = new List<Extension> ();
+List<Depo>  oReturnValue = new List<Depo> ();
 string i_Ticket = string.Empty;
-Result_Get_Extension_By_OWNER_ID oResult_Get_Extension_By_OWNER_ID = new Result_Get_Extension_By_OWNER_ID();
+Result_Get_Depo_By_OWNER_ID oResult_Get_Depo_By_OWNER_ID = new Result_Get_Depo_By_OWNER_ID();
 #endregion
 #region Body Section.
 try
@@ -494,28 +562,32 @@ throw new Exception("Invalid Ticket");
 //-------------------
 
 BLC.BLC oBLC_Default = new BLC.BLC();
-BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_Extension_By_OWNER_ID);
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
 using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
 {
-oReturnValue = oBLC.Get_Extension_By_OWNER_ID(i_Params_Get_Extension_By_OWNER_ID);
-oResult_Get_Extension_By_OWNER_ID.My_Result = oReturnValue;
-oResult_Get_Extension_By_OWNER_ID.My_Params_Get_Extension_By_OWNER_ID = i_Params_Get_Extension_By_OWNER_ID;
+oReturnValue = oBLC.Get_Depo_By_OWNER_ID(i_Params_Get_Depo_By_OWNER_ID);
+oResult_Get_Depo_By_OWNER_ID.My_Result = oReturnValue;
+oResult_Get_Depo_By_OWNER_ID.My_Params_Get_Depo_By_OWNER_ID = i_Params_Get_Depo_By_OWNER_ID;
 }
 }
 catch(Exception ex)
 {
 if (ex.GetType().FullName != "BLC.BLCException")
 {
-oResult_Get_Extension_By_OWNER_ID.ExceptionMsg = string.Format("Get_Extension_By_OWNER_ID : {0}", ex.Message);
+oResult_Get_Depo_By_OWNER_ID.ExceptionMsg = string.Format("Get_Depo_By_OWNER_ID : {0}", ex.Message);
 }
 else
 {
-oResult_Get_Extension_By_OWNER_ID.ExceptionMsg = ex.Message;
+oResult_Get_Depo_By_OWNER_ID.ExceptionMsg = ex.Message;
 }
 }
 #endregion
 #region Return Section
-return oResult_Get_Extension_By_OWNER_ID;
+return oResult_Get_Depo_By_OWNER_ID;
 #endregion
 }
 #endregion
@@ -797,6 +869,14 @@ public Params_Authenticate My_Params_Authenticate { get; set; }
 #endregion
 }
 #endregion
+#region Result_Delete_Depo
+public partial class Result_Delete_Depo : Action_Result
+{
+#region Properties.
+public Params_Delete_Depo My_Params_Delete_Depo { get; set; }
+#endregion
+}
+#endregion
 #region Result_Delete_Tables
 public partial class Result_Delete_Tables : Action_Result
 {
@@ -814,11 +894,11 @@ public Params_Delete_User My_Params_Delete_User { get; set; }
 #endregion
 }
 #endregion
-#region Result_Edit_Extension
-public partial class Result_Edit_Extension : Action_Result
+#region Result_Edit_Depo
+public partial class Result_Edit_Depo : Action_Result
 {
 #region Properties.
-public Extension My_Extension { get; set; }
+public Depo My_Depo { get; set; }
 #endregion
 }
 #endregion
@@ -847,12 +927,12 @@ public User My_User { get; set; }
 #endregion
 }
 #endregion
-#region Result_Get_Extension_By_OWNER_ID
-public partial class Result_Get_Extension_By_OWNER_ID : Action_Result
+#region Result_Get_Depo_By_OWNER_ID
+public partial class Result_Get_Depo_By_OWNER_ID : Action_Result
 {
 #region Properties.
-public List<Extension>  My_Result { get; set; }
-public Params_Get_Extension_By_OWNER_ID My_Params_Get_Extension_By_OWNER_ID { get; set; }
+public List<Depo>  My_Result { get; set; }
+public Params_Get_Depo_By_OWNER_ID My_Params_Get_Depo_By_OWNER_ID { get; set; }
 #endregion
 }
 #endregion

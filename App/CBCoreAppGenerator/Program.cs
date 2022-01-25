@@ -221,8 +221,20 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Delete_Tables");
 
 
-            oCodeBooster.APIMethodsSelection.Add("Get_Extension_By_OWNER_ID");
-            oCodeBooster.APIMethodsSelection.Add("Edit_Extension");
+
+
+            oCodeBooster.APIMethodsSelection.Add("Edit_Depo");
+            oCodeBooster.APIMethodsSelection.Add("Delete_Depo");
+            oCodeBooster.APIMethodsSelection.Add("Get_Depo_By_OWNER_ID");
+            //oCodeBooster.APIMethodsSelection.Add("Get_Depo_By_Where");
+
+
+
+
+            //oCodeBooster.APIMethodsSelection.Add("Get_Extension_By_OWNER_ID");
+            //oCodeBooster.APIMethodsSelection.Add("Edit_Extension");
+
+
 
 
 

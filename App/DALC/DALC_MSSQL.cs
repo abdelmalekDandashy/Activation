@@ -8,12 +8,12 @@ namespace DALC
 {
 public partial class MSSQL_DALC : IDALC
 {
-public Extension Get_Extension_By_EXTENSION_ID ( Int32? EXTENSION_ID)
+public Depo Get_Depo_By_DEPO_ID ( Int32? DEPO_ID)
 {
-Extension o = new Extension();
+Depo o = new Depo();
 dynamic p = new ExpandoObject();
-p.EXTENSION_ID = EXTENSION_ID;
-IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_EXTENSION_ID", p);
+p.DEPO_ID = DEPO_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_DEPO_BY_DEPO_ID", p);
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
@@ -56,12 +56,12 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 }
 return o;
 }
-public Extension Get_Extension_By_EXTENSION_ID_Adv ( Int32? EXTENSION_ID)
+public Depo Get_Depo_By_DEPO_ID_Adv ( Int32? DEPO_ID)
 {
-Extension o = new Extension();
+Depo o = new Depo();
 dynamic p = new ExpandoObject();
-p.EXTENSION_ID = EXTENSION_ID;
-IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_EXTENSION_ID_ADV", p);
+p.DEPO_ID = DEPO_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_DEPO_BY_DEPO_ID_ADV", p);
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
@@ -77,6 +77,8 @@ IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_TABLE_BY_TABLE_ID_ADV",
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(R["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(R["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(R["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(R["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(R["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(R["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(R["T_DEPO_OWNER_ID"]);
 }
 return o;
 }
@@ -92,14 +94,14 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 }
 return o;
 }
-public List<Extension> Get_Extension_By_EXTENSION_ID_List ( List<Int32?> EXTENSION_ID_LIST)
+public List<Depo> Get_Depo_By_DEPO_ID_List ( List<Int32?> DEPO_ID_LIST)
 {
-List<Extension> oList = new List<Extension>();
+List<Depo> oList = new List<Depo>();
 dynamic p = new ExpandoObject();
-p.EXTENSION_ID_LIST = string.Join(",", EXTENSION_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_EXTENSION_ID_LIST", p);
+p.DEPO_ID_LIST = string.Join(",", DEPO_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_DEPO_BY_DEPO_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
-Extension o = new Extension();
+Depo o = new Depo();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -148,14 +150,14 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Extension> Get_Extension_By_EXTENSION_ID_List_Adv ( List<Int32?> EXTENSION_ID_LIST)
+public List<Depo> Get_Depo_By_DEPO_ID_List_Adv ( List<Int32?> DEPO_ID_LIST)
 {
-List<Extension> oList = new List<Extension>();
+List<Depo> oList = new List<Depo>();
 dynamic p = new ExpandoObject();
-p.EXTENSION_ID_LIST = string.Join(",", EXTENSION_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_EXTENSION_ID_LIST_ADV", p);
+p.DEPO_ID_LIST = string.Join(",", DEPO_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_DEPO_BY_DEPO_ID_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
-Extension o = new Extension();
+Depo o = new Depo();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -171,6 +173,8 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_TABLE_ID_LIST_
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(X["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(X["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(X["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(X["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(X["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(X["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(X["T_DEPO_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -190,14 +194,14 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Extension> Get_Extension_By_OWNER_ID ( Int32? OWNER_ID)
+public List<Depo> Get_Depo_By_OWNER_ID ( Int32? OWNER_ID)
 {
-List<Extension> oList = new List<Extension>();
+List<Depo> oList = new List<Depo>();
 dynamic p = new ExpandoObject();
 p.OWNER_ID = OWNER_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_OWNER_ID", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_DEPO_BY_OWNER_ID", p);
 if (R != null) {foreach (var X in R) {
-Extension o = new Extension();
+Depo o = new Depo();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -218,12 +222,12 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Table> Get_Table_By_DEPO ( string DEPO)
+public List<Table> Get_Table_By_DEPO_ID ( Int32? DEPO_ID)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.DEPO = DEPO;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_DEPO", p);
+p.DEPO_ID = DEPO_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_DEPO_ID", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
@@ -260,14 +264,14 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Extension> Get_Extension_By_OWNER_ID_Adv ( Int32? OWNER_ID)
+public List<Depo> Get_Depo_By_OWNER_ID_Adv ( Int32? OWNER_ID)
 {
-List<Extension> oList = new List<Extension>();
+List<Depo> oList = new List<Depo>();
 dynamic p = new ExpandoObject();
 p.OWNER_ID = OWNER_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_OWNER_ID_ADV", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_DEPO_BY_OWNER_ID_ADV", p);
 if (R != null) {foreach (var X in R) {
-Extension o = new Extension();
+Depo o = new Depo();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -283,20 +287,24 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_OWNER_ID_ADV",
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(X["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(X["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(X["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(X["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(X["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(X["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(X["T_DEPO_OWNER_ID"]);
 oList.Add(o);
 }
 }
 return oList;
 }
-public List<Table> Get_Table_By_DEPO_Adv ( string DEPO)
+public List<Table> Get_Table_By_DEPO_ID_Adv ( Int32? DEPO_ID)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.DEPO = DEPO;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_DEPO_ADV", p);
+p.DEPO_ID = DEPO_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_DEPO_ID_ADV", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(X["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(X["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(X["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(X["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(X["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(X["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(X["T_DEPO_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -330,34 +338,34 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Extension> Get_Extension_By_Criteria ( string EXTENSION_TYPE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_DEPO_ID_List ( List<Int32?> DEPO_ID_LIST)
 {
-List<Extension> oList = new List<Extension>();
+List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.EXTENSION_TYPE = EXTENSION_TYPE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_CRITERIA", p);
+p.DEPO_ID_LIST = string.Join(",", DEPO_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_DEPO_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
-Extension o = new Extension();
+Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
-TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Extension> Get_Extension_By_Where ( string EXTENSION_TYPE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_DEPO_ID_List_Adv ( List<Int32?> DEPO_ID_LIST)
 {
-List<Extension> oList = new List<Extension>();
+List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.EXTENSION_TYPE = EXTENSION_TYPE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_WHERE", p);
+p.DEPO_ID_LIST = string.Join(",", DEPO_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_DEPO_ID_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
-Extension o = new Extension();
+Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(X["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(X["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(X["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(X["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(X["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(X["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(X["T_DEPO_OWNER_ID"]);
 oList.Add(o);
 }
 }
-TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
 public List<Owner> Get_Owner_By_Criteria ( string CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
@@ -420,11 +428,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Table> Get_Table_By_Criteria ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_Criteria ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.TABLE_NAME = TABLE_NAME; p.DEPO = DEPO; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.TABLE_NAME = TABLE_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_CRITERIA", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
@@ -435,11 +443,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Table> Get_Table_By_Where ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_Where ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.TABLE_NAME = TABLE_NAME; p.DEPO = DEPO; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.TABLE_NAME = TABLE_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_WHERE", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
@@ -480,60 +488,34 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Extension> Get_Extension_By_Criteria_Adv ( string EXTENSION_TYPE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Extension> oList = new List<Extension>();
-dynamic p = new ExpandoObject();
-p.EXTENSION_TYPE = EXTENSION_TYPE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_CRITERIA_ADV", p);
-if (R != null) {foreach (var X in R) {
-Extension o = new Extension();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Extension> Get_Extension_By_Where_Adv ( string EXTENSION_TYPE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Extension> oList = new List<Extension>();
-dynamic p = new ExpandoObject();
-p.EXTENSION_TYPE = EXTENSION_TYPE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_EXTENSION_BY_WHERE_ADV", p);
-if (R != null) {foreach (var X in R) {
-Extension o = new Extension();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Table> Get_Table_By_Criteria_Adv ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_Criteria_Adv ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.TABLE_NAME = TABLE_NAME; p.DEPO = DEPO; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.TABLE_NAME = TABLE_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_CRITERIA_ADV", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(X["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(X["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(X["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(X["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(X["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(X["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(X["T_DEPO_OWNER_ID"]);
 oList.Add(o);
 }
 }
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Table> Get_Table_By_Where_Adv ( string TABLE_NAME, string DEPO, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Table> Get_Table_By_Where_Adv ( string TABLE_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Table> oList = new List<Table>();
 dynamic p = new ExpandoObject();
-p.TABLE_NAME = TABLE_NAME; p.DEPO = DEPO; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.TABLE_NAME = TABLE_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_WHERE_ADV", p);
 if (R != null) {foreach (var X in R) {
 Table o = new Table();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(X["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(X["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(X["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(X["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(X["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(X["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(X["T_DEPO_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -570,10 +552,74 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public void Delete_Extension ( Int32? EXTENSION_ID)
+public List<Table> Get_Table_By_Criteria_InList ( string TABLE_NAME, List<Int32?> DEPO_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
-var p = new { EXTENSION_ID = EXTENSION_ID };
-ExecuteDelete("UPG_DELETE_EXTENSION", p);
+List<Table> oList = new List<Table>();
+dynamic p = new ExpandoObject();
+p.TABLE_NAME = TABLE_NAME; p.DEPO_ID_LIST = string.Join(",", DEPO_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_CRITERIA_IN_LIST", p);
+if (R != null) {foreach (var X in R) {
+Table o = new Table();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Table> Get_Table_By_Where_InList ( string TABLE_NAME, List<Int32?> DEPO_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Table> oList = new List<Table>();
+dynamic p = new ExpandoObject();
+p.TABLE_NAME = TABLE_NAME; p.DEPO_ID_LIST = string.Join(",", DEPO_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_WHERE_IN_LIST", p);
+if (R != null) {foreach (var X in R) {
+Table o = new Table();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Table> Get_Table_By_Criteria_InList_Adv ( string TABLE_NAME, List<Int32?> DEPO_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Table> oList = new List<Table>();
+dynamic p = new ExpandoObject();
+p.TABLE_NAME = TABLE_NAME; p.DEPO_ID_LIST = string.Join(",", DEPO_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_CRITERIA_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+Table o = new Table();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(X["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(X["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(X["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(X["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(X["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(X["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(X["T_DEPO_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Table> Get_Table_By_Where_InList_Adv ( string TABLE_NAME, List<Int32?> DEPO_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Table> oList = new List<Table>();
+dynamic p = new ExpandoObject();
+p.TABLE_NAME = TABLE_NAME; p.DEPO_ID_LIST = string.Join(",", DEPO_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_TABLE_BY_WHERE_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+Table o = new Table();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Depo = new Depo();
+o.My_Depo.DEPO_ID = GV<Int32>(X["T_DEPO_DEPO_ID"]);o.My_Depo.DEPO_NAME = GV<String>(X["T_DEPO_DEPO_NAME"]);o.My_Depo.NB_OF_TYPE_A = GV<Int32>(X["T_DEPO_NB_OF_TYPE_A"]);o.My_Depo.NB_OF_TYPE_B = GV<Int32>(X["T_DEPO_NB_OF_TYPE_B"]);o.My_Depo.ENTRY_DATE = GV<String>(X["T_DEPO_ENTRY_DATE"]);o.My_Depo.ENTRY_USER_ID = GV<Int64>(X["T_DEPO_ENTRY_USER_ID"]);o.My_Depo.OWNER_ID = GV<Int32>(X["T_DEPO_OWNER_ID"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public void Delete_Depo ( Int32? DEPO_ID)
+{
+var p = new { DEPO_ID = DEPO_ID };
+ExecuteDelete("UPG_DELETE_DEPO", p);
 }
 public void Delete_Owner ( Int32? OWNER_ID)
 {
@@ -590,20 +636,20 @@ public void Delete_User ( long? USER_ID)
 var p = new { USER_ID = USER_ID };
 ExecuteDelete("UPG_DELETE_USER", p);
 }
-public void Delete_Extension_By_OWNER_ID ( Int32? OWNER_ID)
+public void Delete_Depo_By_OWNER_ID ( Int32? OWNER_ID)
 {
 var p = new { OWNER_ID = OWNER_ID };
-ExecuteDelete("UPG_DELETE_EXTENSION_BY_OWNER_ID", p);
+ExecuteDelete("UPG_DELETE_DEPO_BY_OWNER_ID", p);
 }
 public void Delete_Table_By_OWNER_ID ( Int32? OWNER_ID)
 {
 var p = new { OWNER_ID = OWNER_ID };
 ExecuteDelete("UPG_DELETE_TABLE_BY_OWNER_ID", p);
 }
-public void Delete_Table_By_DEPO ( string DEPO)
+public void Delete_Table_By_DEPO_ID ( Int32? DEPO_ID)
 {
-var p = new { DEPO = DEPO };
-ExecuteDelete("UPG_DELETE_TABLE_BY_DEPO", p);
+var p = new { DEPO_ID = DEPO_ID };
+ExecuteDelete("UPG_DELETE_TABLE_BY_DEPO_ID", p);
 }
 public void Delete_User_By_OWNER_ID ( Int32? OWNER_ID)
 {
@@ -615,12 +661,12 @@ public void Delete_User_By_USERNAME ( string USERNAME)
 var p = new { USERNAME = USERNAME };
 ExecuteDelete("UPG_DELETE_USER_BY_USERNAME", p);
 }
-public Int32? Edit_Extension ( Int32? EXTENSION_ID, string EXTENSION_TYPE, Int32? NUMBER_OF_EXTENSIONS, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
+public Int32? Edit_Depo ( Int32? DEPO_ID, string DEPO_NAME, Int32? NB_OF_TYPE_A, Int32? NB_OF_TYPE_B, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID)
 {
-Extension oExtension = new Extension();
-oExtension.EXTENSION_ID = EXTENSION_ID;oExtension.EXTENSION_TYPE = EXTENSION_TYPE;oExtension.NUMBER_OF_EXTENSIONS = NUMBER_OF_EXTENSIONS;oExtension.ENTRY_USER_ID = ENTRY_USER_ID;oExtension.ENTRY_DATE = ENTRY_DATE;oExtension.OWNER_ID = OWNER_ID;
-ExecuteEdit("UPG_EDIT_EXTENSION", oExtension, "EXTENSION_ID");
-return oExtension.EXTENSION_ID;
+Depo oDepo = new Depo();
+oDepo.DEPO_ID = DEPO_ID;oDepo.DEPO_NAME = DEPO_NAME;oDepo.NB_OF_TYPE_A = NB_OF_TYPE_A;oDepo.NB_OF_TYPE_B = NB_OF_TYPE_B;oDepo.ENTRY_DATE = ENTRY_DATE;oDepo.ENTRY_USER_ID = ENTRY_USER_ID;oDepo.OWNER_ID = OWNER_ID;
+ExecuteEdit("UPG_EDIT_DEPO", oDepo, "DEPO_ID");
+return oDepo.DEPO_ID;
 }
 public Int32? Edit_Owner ( Int32? OWNER_ID, string CODE, string MAINTENANCE_DUE_DATE, string DESCRIPTION, string ENTRY_DATE)
 {
@@ -629,10 +675,10 @@ oOwner.OWNER_ID = OWNER_ID;oOwner.CODE = CODE;oOwner.MAINTENANCE_DUE_DATE = MAIN
 ExecuteEdit("UPG_EDIT_OWNER", oOwner, "OWNER_ID");
 return oOwner.OWNER_ID;
 }
-public Int32? Edit_Table ( Int32? TABLE_ID, string TABLE_NAME, Int32? TABLE_AGE_COUNTER, bool? IS_CHARGING, Int32? CHARGING_PERCENTAGE, Int32? NB_OF_TYPE_A, Int32? NB_OF_TYPE_C, string DEPO, bool? IS_READY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
+public Int32? Edit_Table ( Int32? TABLE_ID, string TABLE_NAME, Int32? TABLE_AGE_COUNTER, bool? IS_CHARGING, Int32? NB_OF_TYPE_A, Int32? NB_OF_TYPE_C, Int32? CHARGING_PERCENTAGE, Int32? DEPO_ID, bool? IS_READY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
 {
 Table oTable = new Table();
-oTable.TABLE_ID = TABLE_ID;oTable.TABLE_NAME = TABLE_NAME;oTable.TABLE_AGE_COUNTER = TABLE_AGE_COUNTER;oTable.IS_CHARGING = IS_CHARGING;oTable.CHARGING_PERCENTAGE = CHARGING_PERCENTAGE;oTable.NB_OF_TYPE_A = NB_OF_TYPE_A;oTable.NB_OF_TYPE_C = NB_OF_TYPE_C;oTable.DEPO = DEPO;oTable.IS_READY = IS_READY;oTable.ENTRY_USER_ID = ENTRY_USER_ID;oTable.ENTRY_DATE = ENTRY_DATE;oTable.OWNER_ID = OWNER_ID;
+oTable.TABLE_ID = TABLE_ID;oTable.TABLE_NAME = TABLE_NAME;oTable.TABLE_AGE_COUNTER = TABLE_AGE_COUNTER;oTable.IS_CHARGING = IS_CHARGING;oTable.NB_OF_TYPE_A = NB_OF_TYPE_A;oTable.NB_OF_TYPE_C = NB_OF_TYPE_C;oTable.CHARGING_PERCENTAGE = CHARGING_PERCENTAGE;oTable.DEPO_ID = DEPO_ID;oTable.IS_READY = IS_READY;oTable.ENTRY_USER_ID = ENTRY_USER_ID;oTable.ENTRY_DATE = ENTRY_DATE;oTable.OWNER_ID = OWNER_ID;
 ExecuteEdit("UPG_EDIT_TABLE", oTable, "TABLE_ID");
 return oTable.TABLE_ID;
 }
@@ -684,6 +730,20 @@ oList.Add(o);
 }
 return oList;
 }
+public List<dynamic> UP_BULK_UPSERT_DEPO ( string JSON_CONTENT)
+{
+List<dynamic> oList = new List<dynamic>();
+dynamic p = new ExpandoObject();
+p.JSON_CONTENT = JSON_CONTENT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_DEPO", p);
+if (R != null) {foreach (var X in R) {
+dynamic o = new ExpandoObject();
+o.DEPO_ID = GV<Int32>(X["DEPO_ID"]);o.DEPO_NAME = GV<String>(X["DEPO_NAME"]);o.NB_OF_TYPE_A = GV<Int32>(X["NB_OF_TYPE_A"]);o.NB_OF_TYPE_B = GV<Int32>(X["NB_OF_TYPE_B"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<dynamic> UP_BULK_UPSERT_EXTENSION ( string JSON_CONTENT)
 {
 List<dynamic> oList = new List<dynamic>();
@@ -720,7 +780,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_TABLE", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.TABLE_ID = GV<Int32>(X["TABLE_ID"]);o.TABLE_NAME = GV<String>(X["TABLE_NAME"]);o.TABLE_AGE_COUNTER = GV<Int32>(X["TABLE_AGE_COUNTER"]);o.IS_CHARGING = GV<Boolean>(X["IS_CHARGING"]);o.CHARGING_PERCENTAGE = GV<Int32>(X["CHARGING_PERCENTAGE"]);o.NB_OF_TYPE_A = GV<Int32>(X["NB_OF_TYPE_A"]);o.NB_OF_TYPE_C = GV<Int32>(X["NB_OF_TYPE_C"]);o.DEPO = GV<String>(X["DEPO"]);o.IS_READY = GV<Boolean>(X["IS_READY"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
+o.TABLE_ID = GV<Int32>(X["TABLE_ID"]);o.TABLE_NAME = GV<String>(X["TABLE_NAME"]);o.TABLE_AGE_COUNTER = GV<Int32>(X["TABLE_AGE_COUNTER"]);o.IS_CHARGING = GV<Boolean>(X["IS_CHARGING"]);o.NB_OF_TYPE_A = GV<Int32>(X["NB_OF_TYPE_A"]);o.NB_OF_TYPE_C = GV<Int32>(X["NB_OF_TYPE_C"]);o.CHARGING_PERCENTAGE = GV<Int32>(X["CHARGING_PERCENTAGE"]);o.DEPO_ID = GV<Int32>(X["DEPO_ID"]);o.IS_READY = GV<Boolean>(X["IS_READY"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
 oList.Add(o);
 }
 }

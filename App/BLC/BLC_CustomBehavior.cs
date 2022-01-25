@@ -320,18 +320,18 @@ namespace BLC
                 }
                 i_Table.TABLE_ID = _AppContext.Edit_Table
                 (
-                i_Table.TABLE_ID
-                , i_Table.TABLE_NAME
-                , i_Table.TABLE_AGE_COUNTER
-                , i_Table.IS_CHARGING
-                , i_Table.CHARGING_PERCENTAGE
-                , i_Table.NB_OF_TYPE_A
-                , i_Table.NB_OF_TYPE_C
-                , i_Table.DEPO
-                , i_Table.IS_READY
-                , i_Table.ENTRY_USER_ID
-                , i_Table.ENTRY_DATE
-                , i_Table.OWNER_ID
+                    i_Table.TABLE_ID
+                    , i_Table.TABLE_NAME
+                    , i_Table.TABLE_AGE_COUNTER
+                    , i_Table.IS_CHARGING
+                    , i_Table.NB_OF_TYPE_A
+                    , i_Table.NB_OF_TYPE_C
+                    , i_Table.CHARGING_PERCENTAGE
+                    , i_Table.DEPO_ID
+                    , i_Table.IS_READY
+                    , i_Table.ENTRY_USER_ID
+                    , i_Table.ENTRY_DATE
+                    , i_Table.OWNER_ID
                 );
 
                 
@@ -422,6 +422,11 @@ namespace BLC
         public Int32? TABLE_ID { get; set; }
         #endregion
     }
+    #endregion
+    #region table advanced
+    #region Table
+
+    #endregion
     #endregion
     #endregion
 

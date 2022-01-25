@@ -46,22 +46,30 @@ namespace UnitTesting
 
 
 
+            //var oParams_Get_Depo_By_OWNER_ID = new Params_Get_Depo_By_OWNER_ID() { OWNER_ID = 1 };
+            //var resulyt = oBLC.Get_Depo_By_OWNER_ID(oParams_Get_Depo_By_OWNER_ID);
+            //Console.WriteLine(resulyt);
+            //Console.WriteLine(resulyt);
 
 
 
-            //Table oTable = new Table();
-            //oTable.TABLE_ID = -1;
-            //oTable.TABLE_NAME = "jan 6";
-            //oTable.TABLE_AGE_COUNTER = 40;
-            //oTable.IS_CHARGING = true;
-            //oTable.CHARGING_PERCENTAGE = 100;
-            //oTable.NB_OF_TYPE_A = 51;
-            //oTable.NB_OF_TYPE_C = 50;
-            //oTable.IS_READY = false;
-            //oTable.OWNER_ID = 1;
-            //oTable.ENTRY_USER_ID = 1;
+            Table oTable = new Table();
+            oTable.TABLE_ID = -1;
+            oTable.TABLE_NAME = "jan 6";
+            oTable.TABLE_AGE_COUNTER = 40;
+            oTable.IS_CHARGING = true;
+            oTable.CHARGING_PERCENTAGE = 100;
+            oTable.DEPO_ID = 1;
+            oTable.NB_OF_TYPE_A = 51;
+            oTable.NB_OF_TYPE_C = 50;
+            oTable.IS_READY = false;
+            oTable.OWNER_ID = 1;
+            oTable.ENTRY_USER_ID = 1;
 
-            //oBLC.Edit_Table(oTable);
+            oBLC.Edit_Tables(oTable);
+
+            Console.WriteLine(oTable);
+
 
 
             #region test authenticate

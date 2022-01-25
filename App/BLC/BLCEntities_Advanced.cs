@@ -21,8 +21,8 @@ using System.Threading;
 
 namespace BLC
 {
-#region Extension
-public partial class Extension
+#region Depo
+public partial class Depo
 {
 #region Advanced Properties
 #endregion
@@ -39,6 +39,7 @@ public partial class Owner
 public partial class Table
 {
 #region Advanced Properties
+public Depo My_Depo {get;set;}
 #endregion
 }
 #endregion
