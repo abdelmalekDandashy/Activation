@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting", "..\UnitTesti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkerService1", "..\WorkerService1\WorkerService1.csproj", "{0FA41803-18E4-499F-ACC3-3784D682640D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "..\WebApi\WebApi.csproj", "{937EB0AB-352F-4299-BA87-BF745DBE2FE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "..\WebApi\WebApi.csproj", "{937EB0AB-352F-4299-BA87-BF745DBE2FE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "push-notifications-API", "..\push-notifications-API\push-notifications-API.csproj", "{CAA6BEB8-BA77-41F4-BB2F-EFCEDB64E8CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{937EB0AB-352F-4299-BA87-BF745DBE2FE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{937EB0AB-352F-4299-BA87-BF745DBE2FE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{937EB0AB-352F-4299-BA87-BF745DBE2FE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA6BEB8-BA77-41F4-BB2F-EFCEDB64E8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA6BEB8-BA77-41F4-BB2F-EFCEDB64E8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA6BEB8-BA77-41F4-BB2F-EFCEDB64E8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA6BEB8-BA77-41F4-BB2F-EFCEDB64E8CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
