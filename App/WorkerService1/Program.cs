@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using System.Configuration;
 using BLC;
 
+
 namespace WorkerService1
 {
     public class Program
