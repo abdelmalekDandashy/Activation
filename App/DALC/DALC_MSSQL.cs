@@ -368,6 +368,36 @@ oList.Add(o);
 }
 return oList;
 }
+public List<Depo> Get_Depo_By_Criteria ( string DEPO_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Depo> oList = new List<Depo>();
+dynamic p = new ExpandoObject();
+p.DEPO_NAME = DEPO_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_DEPO_BY_CRITERIA", p);
+if (R != null) {foreach (var X in R) {
+Depo o = new Depo();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Depo> Get_Depo_By_Where ( string DEPO_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Depo> oList = new List<Depo>();
+dynamic p = new ExpandoObject();
+p.DEPO_NAME = DEPO_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_DEPO_BY_WHERE", p);
+if (R != null) {foreach (var X in R) {
+Depo o = new Depo();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
 public List<Owner> Get_Owner_By_Criteria ( string CODE, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Owner> oList = new List<Owner>();
@@ -458,11 +488,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Criteria ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Criteria ( string USERNAME, string PASSWORD, string FIREBASE_TOKEN, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.FIREBASE_TOKEN = FIREBASE_TOKEN; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -473,14 +503,44 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Where ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Where ( string USERNAME, string PASSWORD, string FIREBASE_TOKEN, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.FIREBASE_TOKEN = FIREBASE_TOKEN; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Depo> Get_Depo_By_Criteria_Adv ( string DEPO_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Depo> oList = new List<Depo>();
+dynamic p = new ExpandoObject();
+p.DEPO_NAME = DEPO_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_DEPO_BY_CRITERIA_ADV", p);
+if (R != null) {foreach (var X in R) {
+Depo o = new Depo();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Depo> Get_Depo_By_Where_Adv ( string DEPO_NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Depo> oList = new List<Depo>();
+dynamic p = new ExpandoObject();
+p.DEPO_NAME = DEPO_NAME; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_DEPO_BY_WHERE_ADV", p);
+if (R != null) {foreach (var X in R) {
+Depo o = new Depo();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -522,11 +582,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Criteria_Adv ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Criteria_Adv ( string USERNAME, string PASSWORD, string FIREBASE_TOKEN, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.FIREBASE_TOKEN = FIREBASE_TOKEN; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_ADV", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -537,11 +597,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Where_Adv ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Where_Adv ( string USERNAME, string PASSWORD, string FIREBASE_TOKEN, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.FIREBASE_TOKEN = FIREBASE_TOKEN; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_ADV", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -682,10 +742,10 @@ oTable.TABLE_ID = TABLE_ID;oTable.TABLE_NAME = TABLE_NAME;oTable.TABLE_AGE_COUNT
 ExecuteEdit("UPG_EDIT_TABLE", oTable, "TABLE_ID");
 return oTable.TABLE_ID;
 }
-public long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string USERNAME, string PASSWORD, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE)
+public long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string USERNAME, string PASSWORD, string FIREBASE_TOKEN, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE)
 {
 User oUser = new User();
-oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.USER_TYPE_CODE = USER_TYPE_CODE;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
+oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.FIREBASE_TOKEN = FIREBASE_TOKEN;oUser.USER_TYPE_CODE = USER_TYPE_CODE;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
 ExecuteEdit("UPG_EDIT_USER", oUser, "USER_ID");
 return oUser.USER_ID;
 }
@@ -794,7 +854,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.FIREBASE_TOKEN = GV<String>(X["FIREBASE_TOKEN"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
 oList.Add(o);
 }
 }

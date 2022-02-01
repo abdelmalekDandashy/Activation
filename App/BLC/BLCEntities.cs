@@ -123,6 +123,24 @@ public partial class Params_Get_Table_By_DEPO_ID_List
 public List<Int32?> DEPO_ID_LIST {get;set;}
 
 }
+public partial class Params_Get_Depo_By_Criteria
+{
+
+public Int32? OWNER_ID {get;set;}
+public string DEPO_NAME {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_Depo_By_Where
+{
+
+public Int32? OWNER_ID {get;set;}
+public string DEPO_NAME {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
 public partial class Params_Get_Owner_By_Criteria
 {
 
@@ -189,6 +207,7 @@ public partial class Params_Get_User_By_Criteria
 public Int32? OWNER_ID {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string FIREBASE_TOKEN {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -200,6 +219,7 @@ public partial class Params_Get_User_By_Where
 public Int32? OWNER_ID {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string FIREBASE_TOKEN {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -334,6 +354,7 @@ public long? USER_ID {get;set;}
 public Int32? OWNER_ID {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string FIREBASE_TOKEN {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public bool? IS_ACTIVE {get;set;}
 public string ENTRY_DATE {get;set;}

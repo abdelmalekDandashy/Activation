@@ -293,6 +293,56 @@ oList.Add(oTable);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Table_By_DEPO_ID_List");}
 return oList;
 }
+public List<Depo> Get_Depo_By_Criteria(Params_Get_Depo_By_Criteria i_Params_Get_Depo_By_Criteria)
+{
+List<Depo> oList = new List<Depo>();
+Depo oDepo = new Depo();
+long? tmp_TOTAL_COUNT = 0;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Depo_By_Criteria");}
+#region Body Section.
+if ((i_Params_Get_Depo_By_Criteria.OWNER_ID == null) || (i_Params_Get_Depo_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Depo_By_Criteria.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Depo_By_Criteria.START_ROW == null) { i_Params_Get_Depo_By_Criteria.START_ROW = 0; }
+if ((i_Params_Get_Depo_By_Criteria.END_ROW == null) || (i_Params_Get_Depo_By_Criteria.END_ROW == 0)) { i_Params_Get_Depo_By_Criteria.END_ROW = 1000000; }
+List<DALC.Depo> oList_DBEntries = _AppContext.Get_Depo_By_Criteria(i_Params_Get_Depo_By_Criteria.DEPO_NAME,i_Params_Get_Depo_By_Criteria.OWNER_ID,i_Params_Get_Depo_By_Criteria.START_ROW,i_Params_Get_Depo_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oDepo = new Depo();
+oTools.CopyPropValues(oDBEntry, oDepo);
+oList.Add(oDepo);
+}
+}
+i_Params_Get_Depo_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Depo_By_Criteria");}
+return oList;
+}
+public List<Depo> Get_Depo_By_Where(Params_Get_Depo_By_Where i_Params_Get_Depo_By_Where)
+{
+List<Depo> oList = new List<Depo>();
+Depo oDepo = new Depo();
+long? tmp_TOTAL_COUNT = 0;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Depo_By_Where");}
+#region Body Section.
+if ((i_Params_Get_Depo_By_Where.OWNER_ID == null) || (i_Params_Get_Depo_By_Where.OWNER_ID == 0)) { i_Params_Get_Depo_By_Where.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Depo_By_Where.START_ROW == null) { i_Params_Get_Depo_By_Where.START_ROW = 0; }
+if ((i_Params_Get_Depo_By_Where.END_ROW == null) || (i_Params_Get_Depo_By_Where.END_ROW == 0)) { i_Params_Get_Depo_By_Where.END_ROW = 1000000; }
+List<DALC.Depo> oList_DBEntries = _AppContext.Get_Depo_By_Where(i_Params_Get_Depo_By_Where.DEPO_NAME,i_Params_Get_Depo_By_Where.OWNER_ID,i_Params_Get_Depo_By_Where.START_ROW,i_Params_Get_Depo_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oDepo = new Depo();
+oTools.CopyPropValues(oDBEntry, oDepo);
+oList.Add(oDepo);
+}
+}
+i_Params_Get_Depo_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Depo_By_Where");}
+return oList;
+}
 public List<Owner> Get_Owner_By_Criteria(Params_Get_Owner_By_Criteria i_Params_Get_Owner_By_Criteria)
 {
 List<Owner> oList = new List<Owner>();
@@ -453,7 +503,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Criteria");}
 if ((i_Params_Get_User_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_By_Criteria.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Criteria.START_ROW == null) { i_Params_Get_User_By_Criteria.START_ROW = 0; }
 if ((i_Params_Get_User_By_Criteria.END_ROW == null) || (i_Params_Get_User_By_Criteria.END_ROW == 0)) { i_Params_Get_User_By_Criteria.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria(i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria(i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.FIREBASE_TOKEN,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -478,7 +528,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Where");}
 if ((i_Params_Get_User_By_Where.OWNER_ID == null) || (i_Params_Get_User_By_Where.OWNER_ID == 0)) { i_Params_Get_User_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Where.START_ROW == null) { i_Params_Get_User_By_Where.START_ROW = 0; }
 if ((i_Params_Get_User_By_Where.END_ROW == null) || (i_Params_Get_User_By_Where.END_ROW == 0)) { i_Params_Get_User_By_Where.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where(i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where(i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.FIREBASE_TOKEN,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -1054,6 +1104,7 @@ i_User.USER_ID
 ,i_User.OWNER_ID
 ,i_User.USERNAME
 ,i_User.PASSWORD
+,i_User.FIREBASE_TOKEN
 ,i_User.USER_TYPE_CODE
 ,i_User.IS_ACTIVE
 ,i_User.ENTRY_DATE

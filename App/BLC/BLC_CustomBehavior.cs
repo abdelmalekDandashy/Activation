@@ -183,6 +183,7 @@ namespace BLC
         public User Authenticate(Params_Authenticate i_Params_Authenticate)
         {
             #region declaration
+            var Token = i_Params_Authenticate.FIREBASE_TOKEN;
 
             User oUser = new User();
             #endregion
@@ -203,7 +204,15 @@ namespace BLC
                     if(userResult != null)
                     {
                         oUser.USER_TYPE_CODE = userResult.USER_TYPE_CODE;
+
+                        // go to DB and insert/update token there
+                        //userResult.Fire
+                        userResult.FIREBASE_TOKEN = i_Params_Authenticate.FIREBASE_TOKEN;
+                        Edit_User(userResult);
+                       
                     }
+
+
 
                    
                     //oUser.USER_TYPE_CODE = oList[0].USER_TYPE_CODE;
@@ -222,7 +231,8 @@ namespace BLC
             return oUser;
 
         }
-        #endregion
+        #endregion authenticate
+
         #region delete_table
         public List<Table> Delete_Tables(Params_Delete_Tables i_Params_Delete_Tables)
         {
@@ -411,6 +421,8 @@ namespace BLC
         public int OWNER_ID { get; set; }
         public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
+
+        public string FIREBASE_TOKEN { get; set; }
 
         #endregion
     }
