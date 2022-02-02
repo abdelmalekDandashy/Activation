@@ -30,50 +30,6 @@ namespace UnitTesting
             Tools.Tools oTools = new Tools.Tools();
             #endregion
 
-            WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
-            tRequest.Method = "post";
-            //serverKey - Key from Firebase cloud messaging server  
-            tRequest.Headers.Add(string.Format("Authorization: key={0}", "AAAAhUx4cMY:APA91bHT3xtFC-Kwu9poDY2_R_CKNYVzKzJCEuASykdoanLKGxqo_L5Ku-Jl0nqDSOCKwYeCRnWj4dtMd480X8al-0TBnwla5dEIzfpu-wbcyZm-ZIUDwfGGRBKGESvXBpiAjgFuKhOW"));
-            //Sender Id - From firebase project setting  
-            tRequest.Headers.Add(string.Format("Sender: id={0}", "572513611974"));
-            tRequest.ContentType = "application/json";
-            var payload = new
-            {
-                to = "cCWE1c01Q-qT5GVYe9ee0f:APA91bGvrfUmjTFmx3srShHXZzDaLKwi9HX26_RklVgW1X6M7OE5Nw-YMErXXfsQzrmFrHR6k3uC-kL-dn5HoqfN90VZORXngfYZWCyCha1we9-iGSJRZsJv2mqvC05P1pu_NHFYTE_5",
-                priority = "high",
-                content_available = true,
-                notification = new
-                {
-                    body = "LAK byekloooooooooooooooo",
-                    title = "Wassim shubeh ?",
-                    badge = 1
-                },
-                data = new
-                {
-                    key1 = "value1",
-                    key2 = "value2"
-                }
-
-            };
-
-            string postbody = JsonConvert.SerializeObject(payload).ToString();
-            Byte[] byteArray = Encoding.UTF8.GetBytes(postbody);
-            tRequest.ContentLength = byteArray.Length;
-            using (Stream dataStream = tRequest.GetRequestStream())
-            {
-                dataStream.Write(byteArray, 0, byteArray.Length);
-                using (WebResponse tResponse = tRequest.GetResponse())
-                {
-                    using (Stream dataStreamResponse = tResponse.GetResponseStream())
-                    {
-                        if (dataStreamResponse != null) using (StreamReader tReader = new StreamReader(dataStreamResponse))
-                            {
-                                String sResponseFromServer = tReader.ReadToEnd();
-                                //result.Response = sResponseFromServer;
-                            }
-                    }
-                }
-            }
 
             //Params_Get_Extension_By_OWNER_ID oParams_Get_Extension_By_OWNER_ID  = new Params_Get_Extension_By_OWNER_ID();
 
@@ -100,24 +56,27 @@ namespace UnitTesting
             //Console.WriteLine(resulyt);
             //Console.WriteLine(resulyt);
 
+            for (var i = 0; i <= 10 ;i++)
+            {
+
+                Table oTable = new Table();
+                oTable.TABLE_ID = -1;
+                oTable.TABLE_NAME = "jan 6";
+                oTable.TABLE_AGE_COUNTER = 40;
+                oTable.IS_CHARGING = true;
+                oTable.CHARGING_PERCENTAGE = 50;
+                oTable.DEPO_ID = 1;
+                oTable.NB_OF_TYPE_A = 51;
+                oTable.NB_OF_TYPE_C = 50;
+                oTable.IS_READY = false;
+                oTable.OWNER_ID = 1;
+                oTable.ENTRY_USER_ID = 1;
+
+                oBLC.Edit_Tables(oTable);
+                Console.WriteLine(oTable.TABLE_ID);
+            }
 
 
-            //Table oTable = new Table();
-            //oTable.TABLE_ID = -1;
-            //oTable.TABLE_NAME = "jan 6";
-            //oTable.TABLE_AGE_COUNTER = 40;
-            //oTable.IS_CHARGING = true;
-            //oTable.CHARGING_PERCENTAGE = 100;
-            //oTable.DEPO_ID = 1;
-            //oTable.NB_OF_TYPE_A = 51;
-            //oTable.NB_OF_TYPE_C = 50;
-            //oTable.IS_READY = false;
-            //oTable.OWNER_ID = 1;
-            //oTable.ENTRY_USER_ID = 1;
-
-            //oBLC.Edit_Tables(oTable);
-
-            //Console.WriteLine(oTable);
 
 
 
