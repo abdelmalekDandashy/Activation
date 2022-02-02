@@ -20,9 +20,7 @@ namespace WorkerService1
     public class Worker : BackgroundService
     {
         #region sendNotification_METHOD
-
-
-        public void sendNotification(string i_notification)
+        public void sendNotification(string i_notification, string i_title, string i_body)
         {
             #region send firebase notification
             WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
@@ -39,8 +37,8 @@ namespace WorkerService1
                 content_available = true,
                 notification = new
                 {
-                    body = "wassim akalo men el loop",
-                    title = "Wassim shubeh ?",
+                    body = i_body,
+                    title = i_title,
                     badge = 1
                 },
                 data = new
@@ -69,9 +67,9 @@ namespace WorkerService1
                     }
                 }
             }
-            //Console.WriteLine("more ways how to send push not from c#");
-            //Console.WriteLine("https://stackoverflow.com/questions/37412963/send-push-to-android-by-c-sharp-using-fcm-firebase-cloud-messaging");
-            //Console.WriteLine("3 seconds passed");
+            Console.WriteLine("more ways how to send push not from c#");
+            Console.WriteLine("https://stackoverflow.com/questions/37412963/send-push-to-android-by-c-sharp-using-fcm-firebase-cloud-messaging");
+            Console.WriteLine("3 seconds passed");
             //await Task.Delay(3 * 1000, stoppingToken);
             #endregion
         }
@@ -99,62 +97,94 @@ namespace WorkerService1
                         Tools.Tools oTools = new Tools.Tools();
                 #endregion
 
-                //Params_Get_Extension_By_EXTENSION_ID oParams_Get_Extension_By_EXTENSION_ID = new Params_Get_Extension_By_EXTENSION_ID();
-                //oParams_Get_Extension_By_EXTENSION_ID.EXTENSION_ID = 1;
-
-                //var result = oBLC.Get_Extension_By_EXTENSION_ID(oParams_Get_Extension_By_EXTENSION_ID);
-                //Console.WriteLine(result.NUMBER_OF_EXTENSIONS);
-
-
-                Console.WriteLine("5 seconds passed");
-                await Task.Delay(5 * 1000, stoppingToken);
+             
 
                 var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
                 var resultTables = oBLC.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
 
 
-                //foreach(var table in resultTables)
-                //{
-                    
-
-                //    if(table.IS_CHARGING == true && table.CHARGING_PERCENTAGE <100)
-                //    {
-                //        var value = table.CHARGING_PERCENTAGE;
+                foreach (var table in resultTables)
+                {
+                  
 
 
-                //        switch (value)
-                //        {
-                //            case var expression when (value < 25):
-                //                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 15;
-                //                oBLC.Edit_Table(table);
-                //                Console.WriteLine(table.CHARGING_PERCENTAGE+" is now " + table.TABLE_NAME);
-                //                break;
-
-                //            case var expression when (value < 50):
-                //                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 12;
-                //                oBLC.Edit_Table(table);
-                //                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
-                //                break;
-
-                //            case var expression when (value < 90):
-                //                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 10;
-                //                oBLC.Edit_Table(table);
-                //                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
-                //                break;
-
-                //            case var expression when (value < 98):
-                //                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 3;
-                //                oBLC.Edit_Table(table);
-                //                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
-                //                break;
-                //        }
+                    if (
+                           table.IS_CHARGING == true
+                        && table.CHARGING_PERCENTAGE < 100 
+                        && table.TABLE_ID == 1 // comment later
+                        )
+                    {
+                        var value = table.CHARGING_PERCENTAGE;
 
 
-                //    }
-                //}
-       
+                        switch (value)
+                        {
+                            //1h:     30 % +15
+                            //1.5:    45 % +15
+                            //2h:     60 % +13
+                            //2.5 h:  73 % +11
+                            //3h:     84 % +7
+                            //3.5h:   91 % +5
+                            //4h:     96 % +4
+                            //4.5h    100%
+                            case var expression when (value < 45):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 15;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+
+                            case var expression when (value < 60):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 13;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+
+                            case var expression when (value < 73):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 11;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+
+                            case var expression when (value < 84):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 7;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+                            
+                            case var expression when (value < 91):
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 5;
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+                            
+                            case var expression when (value <= 100): //  93=> 97, 94=>98, 95=>99, 96=> 100
+                                table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 4;
+                                if(table.CHARGING_PERCENTAGE >= 100)
+                                {
+                                    table.CHARGING_PERCENTAGE = 100;
+                                }
+                                oBLC.Edit_Table(table);
+                                Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                                break;
+
+                            
+                            //case var expression when (value < 100):
+                            //    table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 1;
+                            //    oBLC.Edit_Table(table);
+                            //    Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+                            //    break;
+                        }
 
 
+                    }
+                    //if(table.CHARGING_PERCENTAGE == 100)
+                    //{
+                    //    //sendNotification(table) ;
+                    //}
+                }
+
+
+                await Task.Delay(1800 * 1000, stoppingToken);
             }
 
 
@@ -170,8 +200,8 @@ namespace WorkerService1
     {
 
         #region sendNotification_METHOD
-        public void sendNotification(string i_notification)
-        {
+        public void sendNotification(string i_notification, string i_title, string i_body)
+        {   
             #region send firebase notification
             WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
             tRequest.Method = "post";
@@ -187,8 +217,8 @@ namespace WorkerService1
                 content_available = true,
                 notification = new
                 {
-                    body = "wassim akalo men el loop",
-                    title = "Wassim shubeh ?",
+                    body = i_body,
+                    title = i_title,
                     badge = 1
                 },
                 data = new
@@ -229,74 +259,75 @@ namespace WorkerService1
         {
 
 
-            while (!stoppingToken.IsCancellationRequested)
-            {
+            //while (!stoppingToken.IsCancellationRequested)
+            //{
 
-                #region Declaration And Initialization Section.
+            //    #region Declaration And Initialization Section.
 
 
-                string _ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
-                BLC.BLCInitializer oBLCInitializer = new BLC.BLCInitializer();
-                oBLCInitializer.ConnectionString = _ConnectionString;
-                oBLCInitializer.OwnerID = 1;
-                oBLCInitializer.UserID = 1;
-                oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
-                BLC.BLC oBLC = new BLC.BLC(oBLCInitializer);
-                string str_Option = string.Empty;
-                string str_BH_ID = string.Empty;
-                string str_AC_ID = string.Empty;
-                string str_Bucket_Name = string.Empty;
-                string str_Main_Folder_Path = string.Empty;
-                Tools.Tools oTools = new Tools.Tools();
-                #endregion
+            //    string _ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+            //    BLC.BLCInitializer oBLCInitializer = new BLC.BLCInitializer();
+            //    oBLCInitializer.ConnectionString = _ConnectionString;
+            //    oBLCInitializer.OwnerID = 1;
+            //    oBLCInitializer.UserID = 1;
+            //    oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+            //    BLC.BLC oBLC = new BLC.BLC(oBLCInitializer);
+            //    string str_Option = string.Empty;
+            //    string str_BH_ID = string.Empty;
+            //    string str_AC_ID = string.Empty;
+            //    string str_Bucket_Name = string.Empty;
+            //    string str_Main_Folder_Path = string.Empty;
+            //    Tools.Tools oTools = new Tools.Tools();
+            //    #endregion
 
-                #region get firebase token and send low battery notification
+            //    #region get firebase token and send low battery notification
 
-                var oParams_Get_User_By_OWNER_ID = new Params_Get_User_By_OWNER_ID() { OWNER_ID= 1};
-                var AllUsers = oBLC.Get_User_By_OWNER_ID(oParams_Get_User_By_OWNER_ID);
+            //    var oParams_Get_User_By_OWNER_ID = new Params_Get_User_By_OWNER_ID() { OWNER_ID= 1};
+            //    var AllUsers = oBLC.Get_User_By_OWNER_ID(oParams_Get_User_By_OWNER_ID);
 
-                if(AllUsers != null && AllUsers.Count > 0)
-                {   
-                    var tokenList = new List<string>();
+            //    if(AllUsers != null && AllUsers.Count > 0)
+            //    {   
+            //        var tokenList = new List<string>();
 
-                    #region check_tables_battery
-                    #region declaration
-                    var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
-                    var AllTablesList = oBLC.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
-                    #endregion declaration
-                    if (AllTablesList != null && AllTablesList.Count > 0)
-                    {
-                        foreach (var table in AllTablesList)
-                        {
-                            if (table.CHARGING_PERCENTAGE <= 20)
-                            {
-                                foreach (var user in AllUsers)
-                                {
-                                    if (user.FIREBASE_TOKEN != null)
-                                    {
-                                        //tokenList.Add(token.FIREBASE_TOKEN);
-                                        sendNotification(user.FIREBASE_TOKEN);
-                                        Console.WriteLine(table.CHARGING_PERCENTAGE+"battery %                              was sent to"+user.USERNAME);
-                                        //await Task.Delay(1 * 1000 *3600, stoppingToken);
+            //        #region check_tables_battery
+            //        #region declaration
+            //        var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
+            //        var AllTablesList = oBLC.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
+            //        #endregion declaration
+            //        if (AllTablesList != null && AllTablesList.Count > 0)
+            //        {
+            //            foreach (var table in AllTablesList)
+            //            {
+            //                if (table.CHARGING_PERCENTAGE <= 20 && table.IS_CHARGING != true)
+            //                {
+            //                    foreach (var user in AllUsers)
+            //                    {
+            //                        if (user.FIREBASE_TOKEN != null)
+            //                        {
+            //                            var notificationTitle = "low battery percentage";
+            //                            var notificationBody = $"table {table.TABLE_NAME} battery is below 20%";
+            //                            sendNotification(user.FIREBASE_TOKEN,notificationTitle,notificationBody);
+            //                            Console.WriteLine(table.CHARGING_PERCENTAGE+"battery % was sent to"+user.USERNAME);
+            //                            //await Task.Delay(1 * 1000 *3600, stoppingToken);
                                         
-                                    }
-                                }
-                            }
-                        }
+            //                        }
+            //                    }
+            //                }
+            //            }
 
-                        #endregion check_tables_battery
+            //            #endregion check_tables_battery
                        
 
-                    }   //here close
-                }
+            //        }   //here close
+            //    }
 
 
-                #endregion
+            //    #endregion
 
-                await Task.Delay(10 * 1000, stoppingToken);
+            //    await Task.Delay(10 * 1000, stoppingToken);
 
 
-            }
+            //}
         }
 
 
