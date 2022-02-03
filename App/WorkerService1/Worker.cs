@@ -25,7 +25,7 @@ namespace WorkerService1
 
         #region sendNotification_METHOD
         public void sendNotification(string i_notification, string i_title, string i_body)
-        {
+        {   
             #region send firebase notification
             WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
             tRequest.Method = "post";
@@ -82,7 +82,7 @@ namespace WorkerService1
         {
            
             while (!stoppingToken.IsCancellationRequested)
-            {
+            {   
                 #region Declaration And Initialization Section.
            
            
@@ -101,18 +101,22 @@ namespace WorkerService1
                         Tools.Tools oTools = new Tools.Tools();
                 #endregion
 
-             
+                
 
                 var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
                 var resultTables = oBLC.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
 
+                var oParams_Get_User_By_OWNER_ID = new Params_Get_User_By_OWNER_ID() { OWNER_ID = 1 };
+                var AllUsers = oBLC.Get_User_By_OWNER_ID(oParams_Get_User_By_OWNER_ID);
+
+                
 
                 foreach (var table in resultTables)
                 {
                     if (
                            table.IS_CHARGING == true
                         && table.CHARGING_PERCENTAGE < 100 
-                        && table.TABLE_ID == 1 // comment later
+                        //&& table.TABLE_ID == 1 // comment later
                         )
                     {
                         var value = table.CHARGING_PERCENTAGE;
@@ -165,26 +169,34 @@ namespace WorkerService1
                                 }
                                 oBLC.Edit_Table(table);
                                 Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
+
+                            
                                 break;
 
                             
-                            //case var expression when (value < 100):
-                            //    table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 1;
-                            //    oBLC.Edit_Table(table);
-                            //    Console.WriteLine(table.CHARGING_PERCENTAGE + " is now " + table.TABLE_NAME);
-                            //    break;
                         }
 
 
                     }
-                    //if(table.CHARGING_PERCENTAGE == 100)
-                    //{
-                    //    //sendNotification(table) ;
-                    //}
+                    //if table.perc == 100 get all users and send notif
+                    if (AllUsers != null && AllUsers.Count > 0)
+                    {
+                        foreach (var user in AllUsers)
+                        {
+                            if (table.CHARGING_PERCENTAGE == 100 && table.IS_CHARGING == true)
+                            {
+                                sendNotification(user.FIREBASE_TOKEN, "the table", $"{table.TABLE_NAME} in depo {table.DEPO_ID} battery is FULL");
+                            }
+
+                        }
+
+                    }
                 }
 
 
-                await Task.Delay(1800 * 1000, stoppingToken);
+
+                //await Task.Delay(1800 * 1000, stoppingToken);
+                await Task.Delay(3 * 1000, stoppingToken);
             }
 
 
