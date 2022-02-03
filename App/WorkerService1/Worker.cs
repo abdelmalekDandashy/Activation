@@ -16,9 +16,13 @@ using System.Text;
 
 namespace WorkerService1
 {
-   
+    
     public class Worker : BackgroundService
     {
+        private string server_Key = ConfigurationManager.AppSettings["SERVER_KEY"];
+        private string sender_ID = ConfigurationManager.AppSettings["SENDER_ID"];
+        
+
         #region sendNotification_METHOD
         public void sendNotification(string i_notification, string i_title, string i_body)
         {
@@ -26,9 +30,9 @@ namespace WorkerService1
             WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
             tRequest.Method = "post";
             //serverKey - Key from Firebase cloud messaging server  
-            tRequest.Headers.Add(string.Format("Authorization: key={0}", "AAAAhUx4cMY:APA91bHT3xtFC-Kwu9poDY2_R_CKNYVzKzJCEuASykdoanLKGxqo_L5Ku-Jl0nqDSOCKwYeCRnWj4dtMd480X8al-0TBnwla5dEIzfpu-wbcyZm-ZIUDwfGGRBKGESvXBpiAjgFuKhOW"));
+            tRequest.Headers.Add(string.Format("Authorization: key={0}", server_Key));
             //Sender Id - From firebase project setting  
-            tRequest.Headers.Add(string.Format("Sender: id={0}", "572513611974"));
+            tRequest.Headers.Add(string.Format("Sender: id={0}", sender_ID));
             tRequest.ContentType = "application/json";
             var payload = new
             {
@@ -105,9 +109,6 @@ namespace WorkerService1
 
                 foreach (var table in resultTables)
                 {
-                  
-
-
                     if (
                            table.IS_CHARGING == true
                         && table.CHARGING_PERCENTAGE < 100 
@@ -115,8 +116,6 @@ namespace WorkerService1
                         )
                     {
                         var value = table.CHARGING_PERCENTAGE;
-
-
                         switch (value)
                         {
                             //1h:     30 % +15
@@ -127,6 +126,7 @@ namespace WorkerService1
                             //3.5h:   91 % +5
                             //4h:     96 % +4
                             //4.5h    100%
+
                             case var expression when (value < 45):
                                 table.CHARGING_PERCENTAGE = table.CHARGING_PERCENTAGE + 15;
                                 oBLC.Edit_Table(table);
@@ -198,17 +198,18 @@ namespace WorkerService1
 
     public class Worker2 : BackgroundService
     {
-
+        private string server_Key = ConfigurationManager.AppSettings["SERVER_KEY"];
+        private string sender_ID = ConfigurationManager.AppSettings["SENDER_ID"];
         #region sendNotification_METHOD
         public void sendNotification(string i_notification, string i_title, string i_body)
-        {   
+        {
             #region send firebase notification
             WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
             tRequest.Method = "post";
             //serverKey - Key from Firebase cloud messaging server  
-            tRequest.Headers.Add(string.Format("Authorization: key={0}", "AAAAhUx4cMY:APA91bHT3xtFC-Kwu9poDY2_R_CKNYVzKzJCEuASykdoanLKGxqo_L5Ku-Jl0nqDSOCKwYeCRnWj4dtMd480X8al-0TBnwla5dEIzfpu-wbcyZm-ZIUDwfGGRBKGESvXBpiAjgFuKhOW"));
+            tRequest.Headers.Add(string.Format("Authorization: key={0}", server_Key));
             //Sender Id - From firebase project setting  
-            tRequest.Headers.Add(string.Format("Sender: id={0}", "572513611974"));
+            tRequest.Headers.Add(string.Format("Sender: id={0}", sender_ID));
             tRequest.ContentType = "application/json";
             var payload = new
             {
@@ -259,75 +260,75 @@ namespace WorkerService1
         {
 
 
-            //while (!stoppingToken.IsCancellationRequested)
-            //{
+            while (!stoppingToken.IsCancellationRequested)
+            {
 
-            //    #region Declaration And Initialization Section.
-
-
-            //    string _ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
-            //    BLC.BLCInitializer oBLCInitializer = new BLC.BLCInitializer();
-            //    oBLCInitializer.ConnectionString = _ConnectionString;
-            //    oBLCInitializer.OwnerID = 1;
-            //    oBLCInitializer.UserID = 1;
-            //    oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
-            //    BLC.BLC oBLC = new BLC.BLC(oBLCInitializer);
-            //    string str_Option = string.Empty;
-            //    string str_BH_ID = string.Empty;
-            //    string str_AC_ID = string.Empty;
-            //    string str_Bucket_Name = string.Empty;
-            //    string str_Main_Folder_Path = string.Empty;
-            //    Tools.Tools oTools = new Tools.Tools();
-            //    #endregion
-
-            //    #region get firebase token and send low battery notification
-
-            //    var oParams_Get_User_By_OWNER_ID = new Params_Get_User_By_OWNER_ID() { OWNER_ID= 1};
-            //    var AllUsers = oBLC.Get_User_By_OWNER_ID(oParams_Get_User_By_OWNER_ID);
-
-            //    if(AllUsers != null && AllUsers.Count > 0)
-            //    {   
-            //        var tokenList = new List<string>();
-
-            //        #region check_tables_battery
-            //        #region declaration
-            //        var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
-            //        var AllTablesList = oBLC.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
-            //        #endregion declaration
-            //        if (AllTablesList != null && AllTablesList.Count > 0)
-            //        {
-            //            foreach (var table in AllTablesList)
-            //            {
-            //                if (table.CHARGING_PERCENTAGE <= 20 && table.IS_CHARGING != true)
-            //                {
-            //                    foreach (var user in AllUsers)
-            //                    {
-            //                        if (user.FIREBASE_TOKEN != null)
-            //                        {
-            //                            var notificationTitle = "low battery percentage";
-            //                            var notificationBody = $"table {table.TABLE_NAME} battery is below 20%";
-            //                            sendNotification(user.FIREBASE_TOKEN,notificationTitle,notificationBody);
-            //                            Console.WriteLine(table.CHARGING_PERCENTAGE+"battery % was sent to"+user.USERNAME);
-            //                            //await Task.Delay(1 * 1000 *3600, stoppingToken);
-                                        
-            //                        }
-            //                    }
-            //                }
-            //            }
-
-            //            #endregion check_tables_battery
-                       
-
-            //        }   //here close
-            //    }
+                #region Declaration And Initialization Section.
 
 
-            //    #endregion
+                string _ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+                BLC.BLCInitializer oBLCInitializer = new BLC.BLCInitializer();
+                oBLCInitializer.ConnectionString = _ConnectionString;
+                oBLCInitializer.OwnerID = 1;
+                oBLCInitializer.UserID = 1;
+                oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+                BLC.BLC oBLC = new BLC.BLC(oBLCInitializer);
+                string str_Option = string.Empty;
+                string str_BH_ID = string.Empty;
+                string str_AC_ID = string.Empty;
+                string str_Bucket_Name = string.Empty;
+                string str_Main_Folder_Path = string.Empty;
+                Tools.Tools oTools = new Tools.Tools();
+                #endregion
 
-            //    await Task.Delay(10 * 1000, stoppingToken);
+                #region get firebase token and send low battery notification
+
+                var oParams_Get_User_By_OWNER_ID = new Params_Get_User_By_OWNER_ID() { OWNER_ID = 1 };
+                var AllUsers = oBLC.Get_User_By_OWNER_ID(oParams_Get_User_By_OWNER_ID);
+
+                if (AllUsers != null && AllUsers.Count > 0)
+                {
+                    var tokenList = new List<string>();
+
+                    #region check_tables_battery
+                    #region declaration
+                    var oParams_Get_Table_By_OWNER_ID = new Params_Get_Table_By_OWNER_ID() { OWNER_ID = 1 };
+                    var AllTablesList = oBLC.Get_Table_By_OWNER_ID(oParams_Get_Table_By_OWNER_ID);
+                    #endregion declaration
+                    if (AllTablesList != null && AllTablesList.Count > 0)
+                    {
+                        foreach (var table in AllTablesList)
+                        {
+                            if (table.CHARGING_PERCENTAGE <= 20 && table.IS_CHARGING != true)
+                            {
+                                foreach (var user in AllUsers)
+                                {
+                                    if (user.FIREBASE_TOKEN != null)
+                                    {
+                                        var notificationTitle = "low battery percentage";
+                                        var notificationBody = $"table {table.TABLE_NAME} battery is below 20%";
+                                        sendNotification(user.FIREBASE_TOKEN, notificationTitle, notificationBody);
+                                        Console.WriteLine(table.CHARGING_PERCENTAGE + "battery % was sent to" + user.USERNAME);
+                                        //await Task.Delay(1 * 1000 *3600, stoppingToken);
+
+                                    }
+                                }
+                            }
+                        }
+
+                        #endregion check_tables_battery
 
 
-            //}
+                    }   //here close
+                }
+
+
+                #endregion
+
+                await Task.Delay(10 * 1000, stoppingToken);
+
+
+            }
         }
 
 
