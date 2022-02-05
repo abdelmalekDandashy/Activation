@@ -13,6 +13,8 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Net;
 using System.Text;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace WorkerService1
 {
@@ -341,8 +343,8 @@ namespace WorkerService1
 
 
             }
-        }
 
+        }
 
     }
 }
