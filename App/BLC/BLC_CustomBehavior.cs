@@ -384,9 +384,16 @@ namespace BLC
 
         }
 
-  
+
         #endregion
-    }
+
+        #region create-payment-intent
+        //public Paymen Pay(Params_Pay i_Params_Pay)
+        //{ 
+        
+        //}
+            #endregion
+        }
     #region Business Entities
     #region Setup
     #region SetupEntry

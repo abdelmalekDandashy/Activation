@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="RestSharp" Version="107.2.0" />
+    <PackageReference Include="Stripe.net" Version="39.89.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
 

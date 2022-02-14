@@ -262,9 +262,9 @@ namespace WorkerService1
                     }
                 }
             }
-            Console.WriteLine("more ways how to send push not from c#");
-            Console.WriteLine("https://stackoverflow.com/questions/37412963/send-push-to-android-by-c-sharp-using-fcm-firebase-cloud-messaging");
-            Console.WriteLine("3 seconds passed");
+            //Console.WriteLine("more ways how to send push not from c#");
+            //Console.WriteLine("https://stackoverflow.com/questions/37412963/send-push-to-android-by-c-sharp-using-fcm-firebase-cloud-messaging");
+            //Console.WriteLine("3 seconds passed");
             //await Task.Delay(3 * 1000, stoppingToken);
             #endregion
         }
@@ -338,7 +338,7 @@ namespace WorkerService1
 
 
                 #endregion
-
+                
                 await Task.Delay(10 * 1000, stoppingToken);
 
 

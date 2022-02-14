@@ -6,7 +6,8 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using System.Text;
-
+using Stripe;
+using Stripe.Identity;
 
 namespace UnitTesting
 {
@@ -30,6 +31,54 @@ namespace UnitTesting
             string str_Main_Folder_Path = string.Empty;
             Tools.Tools oTools = new Tools.Tools();
             #endregion
+
+            StripeConfiguration.ApiKey = "sk_test_51KPz5MK8AnNnWsUxYJd0ho7SCpSkJ1xj93p7YBxaU2GUPJFwjnhFXVY52qyovGqNULeBIk0eVnLNC3y00uuuW6kp004g7cScQY";
+
+
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 1099,
+                Currency = "aed",
+                PaymentMethodTypes = new List<string> {
+                  "card",
+                },
+            };
+
+            var service = new PaymentIntentService();
+            var intent = service.Create(options);
+            Console.WriteLine(intent);
+
+
+
+
+            //// Create the session
+            //var options = new VerificationSessionCreateOptions
+            //{
+            //    Type = "document",
+            //    Metadata = new Dictionary<string, string>
+            //        {
+            //        {"user_id", "{{USER_ID}}"},
+            //        },
+            //};
+
+            //var service = new VerificationSessionService();
+            //var verificationSession = service.Create(options);
+
+            //// return only the client secret to the frontend.
+            //var clientSecret = verificationSession.ClientSecret;
+            //Console.WriteLine(clientSecret);
+
+
+
+
+
+
+            //StripeConfiguration.ApiKey = "sk_test_51KPz5MK8AnNnWsUxYJd0ho7SCpSkJ1xj93p7YBxaU2GUPJFwjnhFXVY52qyovGqNULeBIk0eVnLNC3y00uuuW6kp004g7cScQY";
+            //var service = new CustomerService();
+            //var customers = service.List();
+            //Console.WriteLine(customers);
+            //Console.WriteLine(customers);
+
 
 
             //Params_Get_Extension_By_OWNER_ID oParams_Get_Extension_By_OWNER_ID  = new Params_Get_Extension_By_OWNER_ID();
@@ -57,25 +106,25 @@ namespace UnitTesting
             //Console.WriteLine(resulyt);
             //Console.WriteLine(resulyt);
 
-            for (var i = 0; i <= 10 ;i++)
-            {
+            //for (var i = 0; i <= 10 ;i++)
+            //{
 
-                Table oTable = new Table();
-                oTable.TABLE_ID = -1;
-                oTable.TABLE_NAME = "jan 6";
-                oTable.TABLE_AGE_COUNTER = 40;
-                oTable.IS_CHARGING = true;
-                oTable.CHARGING_PERCENTAGE = 50;
-                oTable.DEPO_ID = 1;
-                oTable.NB_OF_TYPE_A = 51;
-                oTable.NB_OF_TYPE_C = 50;
-                oTable.IS_READY = false;
-                oTable.OWNER_ID = 1;
-                oTable.ENTRY_USER_ID = 1;
+            //    Table oTable = new Table();
+            //    oTable.TABLE_ID = -1;
+            //    oTable.TABLE_NAME = "jan 6";
+            //    oTable.TABLE_AGE_COUNTER = 40;
+            //    oTable.IS_CHARGING = true;
+            //    oTable.CHARGING_PERCENTAGE = 50;
+            //    oTable.DEPO_ID = 1;
+            //    oTable.NB_OF_TYPE_A = 51;
+            //    oTable.NB_OF_TYPE_C = 50;
+            //    oTable.IS_READY = false;
+            //    oTable.OWNER_ID = 1;
+            //    oTable.ENTRY_USER_ID = 1;
 
-                oBLC.Edit_Tables(oTable);
-                Console.WriteLine(oTable.TABLE_ID);
-            }
+            //    oBLC.Edit_Tables(oTable);
+            //    Console.WriteLine(oTable.TABLE_ID);
+            //}
 
 
 
