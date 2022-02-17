@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
+using System.Text;
 using System.Transactions;
+using Newtonsoft.Json;
 
 namespace BLC
 {
@@ -20,6 +25,8 @@ namespace BLC
     public partial class BLC
     {
         #region Members
+        private string server_Key = ConfigurationManager.AppSettings["SERVER_KEY"];
+        private string sender_ID = ConfigurationManager.AppSettings["SENDER_ID"];
         #endregion        
         #region Setup
         #region EditSetup
@@ -390,10 +397,68 @@ namespace BLC
         #region create-payment-intent
         //public Paymen Pay(Params_Pay i_Params_Pay)
         //{ 
-        
+
         //}
+        #endregion
+
+        #region send notification
+        #region sendNotification_METHOD
+        public void sendNotification(string i_notification, string i_title, string i_body)
+        {   
+            #region send firebase notification
+            WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
+            tRequest.Method = "post";
+            //serverKey - Key from Firebase cloud messaging server  
+            tRequest.Headers.Add(string.Format("Authorization: key={0}", server_Key));
+            //Sender Id - From firebase project setting  
+            tRequest.Headers.Add(string.Format("Sender: id={0}", sender_ID));
+            tRequest.ContentType = "application/json";
+            var payload = new
+            {
+                to = i_notification,
+                priority = "high",
+                content_available = true,
+                notification = new
+                {
+                    body = i_body,
+                    title = i_title,
+                    badge = 1
+                },
+                data = new
+                {
+                    key1 = "value1",
+                    key2 = "value2"
+                }
+
+            };
+
+            string postbody = JsonConvert.SerializeObject(payload).ToString();
+            Byte[] byteArray = Encoding.UTF8.GetBytes(postbody);
+            tRequest.ContentLength = byteArray.Length;
+            using (Stream dataStream = tRequest.GetRequestStream())
+            {
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                using (WebResponse tResponse = tRequest.GetResponse())
+                {
+                    using (Stream dataStreamResponse = tResponse.GetResponseStream())
+                    {
+                        if (dataStreamResponse != null) using (StreamReader tReader = new StreamReader(dataStreamResponse))
+                            {
+                                String sResponseFromServer = tReader.ReadToEnd();
+                                //result.Response = sResponseFromServer;
+                            }
+                    }
+                }
+            }
+            //Console.WriteLine("more ways how to send push not from c#");
+            //Console.WriteLine("https://stackoverflow.com/questions/37412963/send-push-to-android-by-c-sharp-using-fcm-firebase-cloud-messaging");
+            //Console.WriteLine("3 seconds passed");
+            //await Task.Delay(3 * 1000, stoppingToken);
             #endregion
         }
+        #endregion
+        #endregion send notification
+    }
     #region Business Entities
     #region Setup
     #region SetupEntry
@@ -444,9 +509,12 @@ namespace BLC
     #endregion
     #region table advanced
     #region Table
-
+    public partial class Table
+    {
+        public Table data { get; set; }
+    }
     #endregion
-    #endregion
+    #endregion  
     #endregion
 
     #region Uploaded_file

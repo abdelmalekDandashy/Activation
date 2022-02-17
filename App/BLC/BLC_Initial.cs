@@ -105,13 +105,59 @@ namespace BLC
             #region Body Section.
             this.OnPreEvent_Edit_Table += BLC_OnPreEvent_Edit_Table;
             this.OnPostEvent_Edit_Table += BLC_OnPostEvent_Edit_Table;
+            this.OnPostEvent_Edit_Tables += BLC_OnPostEvent_Edit_Tables;
+            this.OnPreEvent_Edit_Tables += BLC_OnPreEvent_Edit_Tables;
 
 
            
             #endregion
         }
 
-      
+        private void BLC_OnPreEvent_Edit_Tables(Table i_Table, Enum_EditMode i_Enum_EditMode)
+        {
+            //throw new NotImplementedException();
+            if (i_Enum_EditMode == Enum_EditMode.Update)
+            {
+                var oTableParams = new Params_Get_Table_By_TABLE_ID() { TABLE_ID = i_Table.TABLE_ID };
+                var oTable = this.Get_Table_By_TABLE_ID(oTableParams);
+                if(oTable != null)
+                {
+                var data = new Table();
+                data.IS_CHARGING = oTable.IS_CHARGING;
+                i_Table.data = data;
+                //Console.WriteLine(i_Table);
+                }
+            }
+        }
+
+        private void BLC_OnPostEvent_Edit_Tables(List<Table> i_Result, Table i_Table, Enum_EditMode i_Enum_EditMode)
+        {
+            var oParams_Get_User_By_OWNER_ID = new Params_Get_User_By_OWNER_ID() { OWNER_ID = 1 };
+            var AllUsers = this.Get_User_By_OWNER_ID(oParams_Get_User_By_OWNER_ID);
+            
+            if(AllUsers != null && AllUsers.Count > 0)
+            {
+
+            if (i_Table.data != null && i_Table.data.IS_CHARGING != i_Table.IS_CHARGING) {
+                            
+                    foreach (var user in AllUsers)
+                    {
+
+                        if (i_Table.IS_CHARGING == true)
+                        {
+                            sendNotification(user.FIREBASE_TOKEN, $"The Table{i_Table.TABLE_NAME}", "is now charging");
+                        }
+                        else
+                        {
+                            sendNotification(user.FIREBASE_TOKEN, $"The Table{i_Table.TABLE_NAME}", "is unplugged from charger");
+                        }
+                    }
+
+                }; 
+            }
+            //Console.WriteLine(i_Table.data);
+            //throw new NotImplementedException();
+        }
 
         private void BLC_OnPostEvent_Edit_Table(Table i_Table, Enum_EditMode i_Enum_EditMode)
         {
