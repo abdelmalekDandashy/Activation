@@ -189,7 +189,7 @@ namespace WorkerService1
 
 
                 //await Task.Delay(1800 * 1000, stoppingToken);
-                await Task.Delay(3 * 1000, stoppingToken);
+                await Task.Delay(60 * 1000, stoppingToken);
             }
 
 
@@ -368,7 +368,7 @@ namespace WorkerService1
 
                 #endregion
                 
-                await Task.Delay(10 * 1000, stoppingToken);
+                await Task.Delay(60 * 1000, stoppingToken);
 
 
             }
@@ -499,7 +499,7 @@ namespace WorkerService1
 
 
                 //await Task.Delay(1800 * 1000, stoppingToken);
-                await Task.Delay(500, stoppingToken);
+                await Task.Delay(60 * 1000, stoppingToken);
             }
 
 
